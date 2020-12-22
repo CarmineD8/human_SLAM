@@ -5,4 +5,4 @@ The folder contains three packages:
   - odom_laser_tf
   - sharelaser
   
-  Navigation_2d is the indigo version of the https://github.com/skasperski/navigation_2d package, 
+Navigation_2d is the indigo version of the https://github.com/skasperski/navigation_2d package. It is the same package, but the launch folder has been modified with some bag files created for the 
