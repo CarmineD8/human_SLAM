@@ -16,3 +16,5 @@ Example:
 ```
 roslaunch nav2d_tutorials zena_two_robots.launch
 ```
+
+The other two packages are used for building the frame related to the lasers for the different human operators, and to publish laser data in different topics, which is necessary for building the map in a collaborative way
