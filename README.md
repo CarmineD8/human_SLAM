@@ -1,1 +1,1 @@
-human_odometry_SLAM
+#Package for human localization and mapping
