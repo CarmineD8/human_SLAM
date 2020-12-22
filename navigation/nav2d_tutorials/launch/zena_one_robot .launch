@@ -1,0 +1,36 @@
+<launch>
+
+	<node name="R0_MapAlign" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 /map /robot_0/map 100"/>
+
+	<group ns="robot_0">
+		<param name="robot_id" value="1" />
+		<param name="tf_prefix" type="string" value="robot_0"/>
+		<rosparam file="$(find nav2d_tutorials)/param/ros.yaml"/>
+
+		<node pkg="odom_laser_tf" type="odom_laser_tf_node" name="FrameBroadcaster" />
+
+		<node name="Mapper" pkg="nav2d_karto" type="mapper" output="screen">
+			<remap from="base_scan" to="base_scan2"/>
+			<remap from="karto_in" to="/shared_scans_r2"/>
+			<remap from="karto_out" to="/shared_scans_r1"/>
+			<rosparam file="$(find nav2d_tutorials)/config/zena2_r0.yaml"/>
+		</node>
+
+	<!--node pkg="rosbag" type="play" name="player_image" args="-r 0.1 $(find image_matching)/launch/image_0.bag"-->
+		<!--remap from="/input_image" to="/robot_0/input_image"/-->
+	<!--/node-->
+	</group>
+
+	<!--node pkg="image_matching" name="Matcher" type="multi_matching" output="screen"/-->
+
+	<!--rosbag play-->
+	<node pkg="rosbag" type="play" name="player0" args="--clock -r 0.1 $(find nav2d_tutorials)/launch/bag_files/2Robots_CLAM/r0.bag">
+		<remap from="body_pose" to="/robot_0/body_pose"/>
+		<remap from="head_pose" to="/robot_0/head_pose"/>
+		<remap from="odomscan"  to="/robot_0/base_scan"/>
+	</node>
+
+	<!-- RVIZ to view the visualization -->
+	<node name="RVIZ_R0" pkg="rviz" type="rviz" args=" -d $(find nav2d_tutorials)/param/R0.rviz" />
+
+</launch>

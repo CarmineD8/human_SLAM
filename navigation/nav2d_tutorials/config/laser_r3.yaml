@@ -1,0 +1,12 @@
+#The input localized laser for robot 0
+input_scan: /robot_3/karto_out
+input_object: /robot_3/object_out
+
+#The output localized laser for robot 0
+output_first_scan: /share_laser_scan_3
+output_second_scan: /share_laser_scan_0
+output_third_scan: /share_laser_scan_1
+
+output_first_object: /share_object_3
+output_second_object: /share_object_0
+output_third_object: /share_object_1

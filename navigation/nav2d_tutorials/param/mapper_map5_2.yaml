@@ -1,0 +1,28 @@
+### Mapper ################################################
+
+grid_resolution: 0.1
+range_threshold: 8.0
+map_update_rate: 5
+publish_pose_graph: true
+max_covariance: 0.01
+transform_publish_period: 0.1
+min_map_size: 5
+
+### Localizer #############################################
+
+min_particles: 2000
+max_particles: 20000
+alpha_slow: 0.001 #0.001
+alpha_fast: 0.1 #0.1
+
+### Karto #################################################
+
+# For a full list of available parameters and their
+# corresponding default values, see OpenKarto/OpenMapper.h
+
+MinimumTravelDistance: 1.0
+MinimumTravelHeading: 0.52
+LoopSearchMaximumDistance: 5.0
+LoopMatchMinimumChainSize: 5.0 #10
+LinkScanMaximumDistance: 8.0 
+###########################################################

@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/laboratorium/catkin_ws/src/navigation_2d/nav2d_karto/cmake-build-debug/devel/setup.sh

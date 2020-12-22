@@ -1,0 +1,1438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" buildAllGenerated="true">
+    <generated>
+      <config projectName="nav2d_karto" targetName="sensor_msgs_generate_messages_py" />
+      <config projectName="nav2d_karto" targetName="geometry_msgs_generate_messages_lisp" />
+      <config projectName="nav2d_karto" targetName="geometry_msgs_generate_messages_cpp" />
+      <config projectName="nav2d_karto" targetName="actionlib_generate_messages_py" />
+      <config projectName="nav2d_karto" targetName="actionlib_msgs_generate_messages_lisp" />
+      <config projectName="nav2d_karto" targetName="nav2d_msgs_generate_messages_cpp" />
+      <config projectName="nav2d_karto" targetName="rosgraph_msgs_generate_messages_py" />
+      <config projectName="nav2d_karto" targetName="std_msgs_generate_messages_py" />
+      <config projectName="nav2d_karto" targetName="nav2d_msgs_generate_messages_py" />
+      <config projectName="nav2d_karto" targetName="tf2_msgs_generate_messages_lisp" />
+      <config projectName="nav2d_karto" targetName="clean_test_results" />
+      <config projectName="nav2d_karto" targetName="std_msgs_generate_messages_cpp" />
+      <config projectName="nav2d_karto" targetName="tf2_msgs_generate_messages_py" />
+      <config projectName="nav2d_karto" targetName="rosgraph_msgs_generate_messages_cpp" />
+      <config projectName="nav2d_karto" targetName="tests" />
+      <config projectName="nav2d_karto" targetName="run_tests" />
+      <config projectName="nav2d_karto" targetName="download_extra_data" />
+      <config projectName="nav2d_karto" targetName="gtest_main" />
+      <config projectName="nav2d_karto" targetName="visualization_msgs_generate_messages_cpp" />
+      <config projectName="nav2d_karto" targetName="tf2_msgs_generate_messages_cpp" />
+      <config projectName="nav2d_karto" targetName="nav_msgs_generate_messages_lisp" />
+      <config projectName="nav2d_karto" targetName="geometry_msgs_generate_messages_py" />
+      <config projectName="nav2d_karto" targetName="doxygen" />
+      <config projectName="nav2d_karto" targetName="std_msgs_generate_messages_lisp" />
+      <config projectName="nav2d_karto" targetName="actionlib_generate_messages_lisp" />
+      <config projectName="nav2d_karto" targetName="actionlib_msgs_generate_messages_py" />
+      <config projectName="nav2d_karto" targetName="actionlib_msgs_generate_messages_cpp" />
+      <config projectName="nav2d_karto" targetName="sensor_msgs_generate_messages_lisp" />
+      <config projectName="nav2d_karto" targetName="rosgraph_msgs_generate_messages_lisp" />
+      <config projectName="nav2d_karto" targetName="actionlib_generate_messages_cpp" />
+      <config projectName="nav2d_karto" targetName="nav2d_msgs_generate_messages_eus" />
+      <config projectName="nav2d_karto" targetName="roscpp_generate_messages_py" />
+      <config projectName="nav2d_karto" targetName="nav_msgs_generate_messages_py" />
+      <config projectName="nav2d_karto" targetName="MultiMapper" />
+      <config projectName="nav2d_karto" targetName="nav2d_msgs_generate_messages_lisp" />
+      <config projectName="nav2d_karto" targetName="nav_msgs_generate_messages_cpp" />
+      <config projectName="nav2d_karto" targetName="gtest" />
+      <config projectName="nav2d_karto" targetName="roscpp_generate_messages_cpp" />
+      <config projectName="nav2d_karto" targetName="tf_generate_messages_py" />
+      <config projectName="nav2d_karto" targetName="visualization_msgs_generate_messages_py" />
+      <config projectName="nav2d_karto" targetName="OpenKarto" />
+      <config projectName="nav2d_karto" targetName="sensor_msgs_generate_messages_cpp" />
+      <config projectName="nav2d_karto" targetName="tf_generate_messages_cpp" />
+      <config projectName="nav2d_karto" targetName="mapper" />
+      <config projectName="nav2d_karto" targetName="visualization_msgs_generate_messages_lisp" />
+      <config projectName="nav2d_karto" targetName="roscpp_generate_messages_lisp" />
+      <config projectName="nav2d_karto" targetName="tf_generate_messages_lisp" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2254ec7c-a820-4fdb-99b7-68728f4ed1ae" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="MultiMapper.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MultiMapper.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15480">
+              <caret line="774" column="15" lean-forward="false" selection-start-line="774" selection-start-column="15" selection-end-line="774" selection-end-column="15" />
+              <folding>
+                <element signature="e#8058#8090#0" expanded="false" />
+                <element signature="e#8092#8195#0" expanded="false" />
+                <element signature="e#8197#9248#0" expanded="false" />
+                <element signature="e#9250#10491#0" expanded="false" />
+                <element signature="e#10493#10623#0" expanded="false" />
+                <element signature="e#11233#24689#0" expanded="false" />
+                <element signature="e#24691#25050#0" expanded="false" />
+                <element signature="e#25052#27288#0" expanded="false" />
+                <element signature="e#33614#34653#0" expanded="false" />
+                <element signature="e#38321#38824#0" expanded="false" />
+                <element signature="e#38826#38980#0" expanded="false" />
+                <element signature="e#38982#39304#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OpenMapper.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/OpenMapper.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="14260">
+              <caret line="713" column="17" lean-forward="false" selection-start-line="713" selection-start-column="9" selection-end-line="713" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OpenMapper.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenMapper.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="1688" column="26" lean-forward="false" selection-start-line="1688" selection-start-column="26" selection-end-line="1688" selection-end-column="26" />
+              <folding>
+                <element signature="e#743#770#0" expanded="true" />
+                <element signature="e#813#833#0" expanded="true" />
+                <element signature="e#4180#5308#0" expanded="false" />
+                <element signature="e#5314#5530#0" expanded="false" />
+                <element signature="e#6402#6705#1" expanded="false" />
+                <element signature="e#6710#7147#0" expanded="false" />
+                <element signature="e#7153#7259#0" expanded="false" />
+                <element signature="e#7268#7628#0" expanded="false" />
+                <element signature="e#7632#7970#0" expanded="false" />
+                <element signature="e#7976#8247#0" expanded="false" />
+                <element signature="e#8253#8520#0" expanded="false" />
+                <element signature="e#10325#10642#0" expanded="false" />
+                <element signature="e#10971#11209#0" expanded="false" />
+                <element signature="e#11215#11567#0" expanded="false" />
+                <element signature="e#13972#14009#0" expanded="true" />
+                <element signature="e#14300#14373#0" expanded="false" />
+                <element signature="e#14377#16427#0" expanded="false" />
+                <element signature="e#16337#16384#0" expanded="true" />
+                <element signature="e#16854#16898#0" expanded="true" />
+                <element signature="e#26537#37004#0" expanded="false" />
+                <element signature="e#37010#40932#0" expanded="false" />
+                <element signature="e#40938#42875#0" expanded="false" />
+                <element signature="e#42881#43202#0" expanded="false" />
+                <element signature="e#43208#44016#0" expanded="false" />
+                <element signature="e#44020#45075#0" expanded="false" />
+                <element signature="e#45081#46015#0" expanded="false" />
+                <element signature="e#46019#48061#0" expanded="false" />
+                <element signature="e#48069#49684#0" expanded="false" />
+                <element signature="e#49690#49967#0" expanded="false" />
+                <element signature="e#49973#50241#0" expanded="false" />
+                <element signature="e#50544#52296#1" expanded="false" />
+                <element signature="e#50617#50782#0" expanded="false" />
+                <element signature="e#50788#50817#0" expanded="false" />
+                <element signature="e#50788#50866#0" expanded="false" />
+                <element signature="e#50882#51070#0" expanded="false" />
+                <element signature="e#50882#52291#0" expanded="false" />
+                <element signature="e#52606#53658#1" expanded="false" />
+                <element signature="e#52963#53546#0" expanded="false" />
+                <element signature="e#53956#54430#0" expanded="false" />
+                <element signature="e#54436#54588#0" expanded="false" />
+                <element signature="e#87041#87736#0" expanded="false" />
+                <element signature="e#87743#89009#0" expanded="false" />
+                <element signature="e#89015#90725#0" expanded="false" />
+                <element signature="e#91713#92041#0" expanded="false" />
+                <element signature="e#92045#92079#0" expanded="false" />
+                <element signature="e#92045#92385#0" expanded="false" />
+                <element signature="e#92389#92414#0" expanded="false" />
+                <element signature="e#92389#92499#0" expanded="false" />
+                <element signature="e#98444#98714#0" expanded="false" />
+                <element signature="e#105938#106830#0" expanded="false" />
+                <element signature="e#106834#107079#0" expanded="false" />
+                <element signature="e#107083#107389#0" expanded="false" />
+                <element signature="e#107393#107472#0" expanded="false" />
+                <element signature="e#107476#107578#0" expanded="false" />
+                <element signature="e#107582#107652#0" expanded="false" />
+                <element signature="e#107656#107758#0" expanded="false" />
+                <element signature="e#107762#107864#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MapperNode.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MapperNode.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="520">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpaSolver.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SpaSolver.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="590">
+              <caret line="83" column="66" lean-forward="false" selection-start-line="83" selection-start-column="64" selection-end-line="83" selection-end-column="71" />
+              <folding>
+                <element signature="e#714#738#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Geometry.h" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/Geometry.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="2658" column="27" lean-forward="true" selection-start-line="2658" selection-start-column="27" selection-end-line="2658" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>added</find>
+      <find>ScanMatcher</find>
+      <find>ScanMatcherGridSet</find>
+      <find>Create</find>
+      <find>OpenMapper</find>
+      <find>ScanMatcher::Create</find>
+      <find>ComputeOffsets</find>
+      <find>class ScanMatcher</find>
+      <find>ScanMatched</find>
+      <find>AddVe</find>
+      <find>MatchS</find>
+      <find>mLaser</find>
+      <find>mCustomerOrderArray</find>
+      <find>createFromRosMessage</find>
+      <find>SetLastScan</find>
+      <find>AddE</find>
+      <find>MaxProb</find>
+      <find>Max_Prob</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/OpenKarto/source/SensorData.cpp" />
+        <option value="$PROJECT_DIR$/OpenKarto/source/OpenKarto/GridIndexLookup.h" />
+        <option value="$PROJECT_DIR$/src/MapperNode.cpp" />
+        <option value="$PROJECT_DIR$/OpenKarto/source/Objects.cpp" />
+        <option value="$PROJECT_DIR$/OpenKarto/source/OpenKarto/SensorData.h" />
+        <option value="$PROJECT_DIR$/OpenKarto/source/OpenKarto/OpenMapper.h" />
+        <option value="$PROJECT_DIR$/src/spa2d.cpp" />
+        <option value="$PROJECT_DIR$/src/SpaSolver.cpp" />
+        <option value="$PROJECT_DIR$/OpenKarto/source/OpenKarto/Objects.h" />
+        <option value="$PROJECT_DIR$/include/nav2d_karto/MultiMapper.h" />
+        <option value="$PROJECT_DIR$/src/MultiMapper.cpp" />
+        <option value="$PROJECT_DIR$/OpenKarto/source/OpenMapper.cpp" />
+        <option value="$PROJECT_DIR$/OpenKarto/source/OpenKarto/Geometry.h" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="OCFindUsagesOptions" text="false" ivars="false" properties="true" derivedClasses="false" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="60" />
+    <option name="y" value="21" />
+    <option name="width" value="1860" />
+    <option name="height" value="1059" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nav2d_karto" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nav2d_karto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nav2d_karto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nav2d_karto" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nav2d_karto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nav2d_karto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nav2d_karto" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nav2d_karto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="js.eslint.eslintPackage" value="" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.mapper">
+    <configuration default="true" type="CLion_Remote" factoryName="GDB Remote Debug" remoteCommand="" symbolFile="" sysroot="">
+      <method />
+    </configuration>
+    <configuration default="true" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" PASS_PARENT_ENVS_2="true" TEST_MODE="SUITE_TEST">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="ChromiumRemoteDebugType" factoryName="Chromium Remote">
+      <method />
+    </configuration>
+    <configuration default="true" type="CompoundRunConfigurationType" factoryName="Compound Run Configuration">
+      <method />
+    </configuration>
+    <configuration default="true" type="FirefoxRemoteDebugType" factoryName="Firefox Remote">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeWebKit" factoryName="NW.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="nav2d_karto" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="ReactNative" factoryName="React Native">
+      <node-interpreter value="project" />
+      <platform value="ANDROID" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="nav2d_karto" />
+      <method />
+    </configuration>
+    <configuration default="true" type="XSLT" factoryName="XSLT">
+      <option name="myOutputFile" />
+      <option name="myOpenOutputFile" value="false" />
+      <option name="myOpenInBrowser" value="false" />
+      <option name="mySmartErrorHandling" value="true" />
+      <option name="myRunnerPort" value="34873" />
+      <option name="myVmArguments" />
+      <option name="myWorkingDirectory" />
+      <option name="myModule" />
+      <option name="myJdk" />
+      <parameters />
+      <OutputType value="CONSOLE" save-to-file="false" />
+      <FileType name="XML" />
+      <JdkChoice value="FROM_MODULE" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.grunt" factoryName="Grunt.js">
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="nav2d_karto" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="nav2d_karto" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="nav2d_karto" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="nav2d_karto" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="nav2d_karto" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="actionlib_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="actionlib_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="actionlib_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="actionlib_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="actionlib_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="actionlib_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="actionlib_msgs_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="actionlib_msgs_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="actionlib_msgs_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="actionlib_msgs_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="actionlib_msgs_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="actionlib_msgs_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="clean_test_results" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="clean_test_results" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="download_extra_data" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="download_extra_data" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="doxygen" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="doxygen" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="geometry_msgs_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="geometry_msgs_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="geometry_msgs_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="geometry_msgs_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="geometry_msgs_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="geometry_msgs_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="mapper" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="mapper" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="nav2d_karto" RUN_TARGET_NAME="mapper">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="MultiMapper" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="MultiMapper" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="nav2d_msgs_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="nav2d_msgs_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="nav2d_msgs_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="nav2d_msgs_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="nav2d_msgs_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="nav2d_msgs_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="nav_msgs_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="nav_msgs_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="nav_msgs_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="nav_msgs_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="nav_msgs_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="nav_msgs_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="OpenKarto" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="OpenKarto" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="roscpp_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="roscpp_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="roscpp_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="roscpp_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="roscpp_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="roscpp_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="rosgraph_msgs_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="rosgraph_msgs_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="rosgraph_msgs_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="rosgraph_msgs_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="rosgraph_msgs_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="rosgraph_msgs_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="run_tests" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="run_tests" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="sensor_msgs_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="sensor_msgs_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="sensor_msgs_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="sensor_msgs_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="sensor_msgs_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="sensor_msgs_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="std_msgs_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="std_msgs_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="std_msgs_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="std_msgs_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="std_msgs_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="std_msgs_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="tests" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="tests" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="tf2_msgs_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="tf2_msgs_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="tf2_msgs_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="tf2_msgs_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="tf2_msgs_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="tf2_msgs_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="tf_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="tf_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="tf_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="tf_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="tf_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="tf_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="visualization_msgs_generate_messages_cpp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="visualization_msgs_generate_messages_cpp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="visualization_msgs_generate_messages_lisp" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="visualization_msgs_generate_messages_lisp" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="visualization_msgs_generate_messages_py" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="visualization_msgs_generate_messages_py" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="gtest" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="gtest" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="gtest_main" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="gtest_main" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="nav2d_msgs_generate_messages_eus" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="nav2d_karto" TARGET_NAME="nav2d_msgs_generate_messages_eus" CONFIG_NAME="Debug">
+      <envs />
+      <method />
+    </configuration>
+    <list size="48">
+      <item index="0" class="java.lang.String" itemvalue="Application.Build All" />
+      <item index="1" class="java.lang.String" itemvalue="Application.actionlib_generate_messages_cpp" />
+      <item index="2" class="java.lang.String" itemvalue="Application.actionlib_generate_messages_lisp" />
+      <item index="3" class="java.lang.String" itemvalue="Application.actionlib_generate_messages_py" />
+      <item index="4" class="java.lang.String" itemvalue="Application.actionlib_msgs_generate_messages_cpp" />
+      <item index="5" class="java.lang.String" itemvalue="Application.actionlib_msgs_generate_messages_lisp" />
+      <item index="6" class="java.lang.String" itemvalue="Application.actionlib_msgs_generate_messages_py" />
+      <item index="7" class="java.lang.String" itemvalue="Application.clean_test_results" />
+      <item index="8" class="java.lang.String" itemvalue="Application.download_extra_data" />
+      <item index="9" class="java.lang.String" itemvalue="Application.doxygen" />
+      <item index="10" class="java.lang.String" itemvalue="Application.geometry_msgs_generate_messages_cpp" />
+      <item index="11" class="java.lang.String" itemvalue="Application.geometry_msgs_generate_messages_lisp" />
+      <item index="12" class="java.lang.String" itemvalue="Application.geometry_msgs_generate_messages_py" />
+      <item index="13" class="java.lang.String" itemvalue="Application.mapper" />
+      <item index="14" class="java.lang.String" itemvalue="Application.MultiMapper" />
+      <item index="15" class="java.lang.String" itemvalue="Application.nav2d_msgs_generate_messages_cpp" />
+      <item index="16" class="java.lang.String" itemvalue="Application.nav2d_msgs_generate_messages_lisp" />
+      <item index="17" class="java.lang.String" itemvalue="Application.nav2d_msgs_generate_messages_py" />
+      <item index="18" class="java.lang.String" itemvalue="Application.nav_msgs_generate_messages_cpp" />
+      <item index="19" class="java.lang.String" itemvalue="Application.nav_msgs_generate_messages_lisp" />
+      <item index="20" class="java.lang.String" itemvalue="Application.nav_msgs_generate_messages_py" />
+      <item index="21" class="java.lang.String" itemvalue="Application.OpenKarto" />
+      <item index="22" class="java.lang.String" itemvalue="Application.roscpp_generate_messages_cpp" />
+      <item index="23" class="java.lang.String" itemvalue="Application.roscpp_generate_messages_lisp" />
+      <item index="24" class="java.lang.String" itemvalue="Application.roscpp_generate_messages_py" />
+      <item index="25" class="java.lang.String" itemvalue="Application.rosgraph_msgs_generate_messages_cpp" />
+      <item index="26" class="java.lang.String" itemvalue="Application.rosgraph_msgs_generate_messages_lisp" />
+      <item index="27" class="java.lang.String" itemvalue="Application.rosgraph_msgs_generate_messages_py" />
+      <item index="28" class="java.lang.String" itemvalue="Application.run_tests" />
+      <item index="29" class="java.lang.String" itemvalue="Application.sensor_msgs_generate_messages_cpp" />
+      <item index="30" class="java.lang.String" itemvalue="Application.sensor_msgs_generate_messages_lisp" />
+      <item index="31" class="java.lang.String" itemvalue="Application.sensor_msgs_generate_messages_py" />
+      <item index="32" class="java.lang.String" itemvalue="Application.std_msgs_generate_messages_cpp" />
+      <item index="33" class="java.lang.String" itemvalue="Application.std_msgs_generate_messages_lisp" />
+      <item index="34" class="java.lang.String" itemvalue="Application.std_msgs_generate_messages_py" />
+      <item index="35" class="java.lang.String" itemvalue="Application.tests" />
+      <item index="36" class="java.lang.String" itemvalue="Application.tf2_msgs_generate_messages_cpp" />
+      <item index="37" class="java.lang.String" itemvalue="Application.tf2_msgs_generate_messages_lisp" />
+      <item index="38" class="java.lang.String" itemvalue="Application.tf2_msgs_generate_messages_py" />
+      <item index="39" class="java.lang.String" itemvalue="Application.tf_generate_messages_cpp" />
+      <item index="40" class="java.lang.String" itemvalue="Application.tf_generate_messages_lisp" />
+      <item index="41" class="java.lang.String" itemvalue="Application.tf_generate_messages_py" />
+      <item index="42" class="java.lang.String" itemvalue="Application.visualization_msgs_generate_messages_cpp" />
+      <item index="43" class="java.lang.String" itemvalue="Application.visualization_msgs_generate_messages_lisp" />
+      <item index="44" class="java.lang.String" itemvalue="Application.visualization_msgs_generate_messages_py" />
+      <item index="45" class="java.lang.String" itemvalue="Application.gtest" />
+      <item index="46" class="java.lang.String" itemvalue="Application.gtest_main" />
+      <item index="47" class="java.lang.String" itemvalue="Application.nav2d_msgs_generate_messages_eus" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2254ec7c-a820-4fdb-99b7-68728f4ed1ae" name="Default" comment="" />
+      <created>1494186517879</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1494186517879</updated>
+      <workItem from="1494186523008" duration="615000" />
+      <workItem from="1494936526648" duration="9574000" />
+      <workItem from="1495104223419" duration="23413000" />
+      <workItem from="1495440130975" duration="37613000" />
+      <workItem from="1495643246411" duration="2506000" />
+      <workItem from="1495784538772" duration="2802000" />
+      <workItem from="1495790160536" duration="12603000" />
+      <workItem from="1496044248073" duration="28487000" />
+      <workItem from="1496131658182" duration="16563000" />
+      <workItem from="1496303853940" duration="6167000" />
+      <workItem from="1496648374078" duration="1398000" />
+      <workItem from="1496658943389" duration="3309000" />
+      <workItem from="1496663037470" duration="12743000" />
+      <workItem from="1496734391270" duration="18184000" />
+      <workItem from="1496821147117" duration="15261000" />
+      <workItem from="1496909193155" duration="7365000" />
+      <workItem from="1497000880583" duration="4966000" />
+      <workItem from="1497254876159" duration="17205000" />
+      <workItem from="1497339432881" duration="13694000" />
+      <workItem from="1497427082234" duration="14169000" />
+      <workItem from="1497519431428" duration="2703000" />
+      <workItem from="1497605469793" duration="69000" />
+      <workItem from="1497605565769" duration="13499000" />
+      <workItem from="1497865548348" duration="3395000" />
+      <workItem from="1497945376584" duration="3168000" />
+      <workItem from="1498032519547" duration="11461000" />
+      <workItem from="1498117211794" duration="2743000" />
+      <workItem from="1498203853935" duration="5506000" />
+      <workItem from="1498463926791" duration="7839000" />
+      <workItem from="1498550399480" duration="6700000" />
+      <workItem from="1498636845204" duration="15184000" />
+      <workItem from="1498810178983" duration="8584000" />
+      <workItem from="1499066006288" duration="5518000" />
+      <workItem from="1499086409996" duration="2428000" />
+      <workItem from="1499155593484" duration="771000" />
+      <workItem from="1499178645036" duration="1198000" />
+      <workItem from="1499248672095" duration="1254000" />
+      <workItem from="1499329397587" duration="1463000" />
+      <workItem from="1499414218025" duration="2651000" />
+      <workItem from="1499421187187" duration="33000" />
+      <workItem from="1499763649571" duration="4935000" />
+      <workItem from="1499850788684" duration="4179000" />
+      <workItem from="1499936460329" duration="7478000" />
+      <workItem from="1500021214790" duration="13672000" />
+      <workItem from="1500297239381" duration="3245000" />
+      <workItem from="1500884746127" duration="6824000" />
+      <workItem from="1500969496944" duration="154000" />
+      <workItem from="1500969912416" duration="1396000" />
+      <workItem from="1501056207998" duration="4835000" />
+      <workItem from="1501143093465" duration="1859000" />
+      <workItem from="1501488850340" duration="691000" />
+      <workItem from="1501491060808" duration="2583000" />
+      <workItem from="1501593751283" duration="599000" />
+      <workItem from="1501771820159" duration="297000" />
+      <workItem from="1502116806044" duration="41000" />
+      <workItem from="1502299383409" duration="259000" />
+      <workItem from="1502464400359" duration="85000" />
+      <workItem from="1502895969101" duration="256000" />
+      <workItem from="1503059176618" duration="783000" />
+      <workItem from="1503593044398" duration="679000" />
+      <workItem from="1504094537806" duration="1229000" />
+      <workItem from="1504595998491" duration="666000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="401549000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="60" y="21" width="1860" height="1059" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20228384" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2474359" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31813473" sideWeight="0.49772283" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1830635" sideWeight="0.50227714" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29948187" sideWeight="0.49512038" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22948718" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2474359" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28333333" sideWeight="0.49772283" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1830635" sideWeight="0.50227714" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1474359" sideWeight="0.49512038" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22602281" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22435898" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="19" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenMapper.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18240">
+          <caret line="912" column="5" lean-forward="true" selection-start-line="912" selection-start-column="5" selection-end-line="912" selection-end-column="5" />
+          <folding>
+            <element signature="e#743#770#0" expanded="true" />
+            <element signature="e#813#833#0" expanded="true" />
+            <element signature="e#4180#5308#0" expanded="false" />
+            <element signature="e#5314#5530#0" expanded="false" />
+            <element signature="e#6402#6705#1" expanded="false" />
+            <element signature="e#6710#7147#0" expanded="false" />
+            <element signature="e#7153#7259#0" expanded="false" />
+            <element signature="e#7268#7628#0" expanded="false" />
+            <element signature="e#7632#7970#0" expanded="false" />
+            <element signature="e#7976#8247#0" expanded="false" />
+            <element signature="e#8253#8520#0" expanded="false" />
+            <element signature="e#10325#10642#0" expanded="false" />
+            <element signature="e#10971#11209#0" expanded="false" />
+            <element signature="e#11215#11567#0" expanded="false" />
+            <element signature="e#13972#14009#0" expanded="true" />
+            <element signature="e#14300#14373#0" expanded="false" />
+            <element signature="e#14377#16427#0" expanded="false" />
+            <element signature="e#16337#16384#0" expanded="true" />
+            <element signature="e#16854#16898#0" expanded="true" />
+            <element signature="e#26537#37004#0" expanded="false" />
+            <element signature="e#37010#40932#0" expanded="false" />
+            <element signature="e#40938#42875#0" expanded="false" />
+            <element signature="e#42881#43202#0" expanded="false" />
+            <element signature="e#43208#44016#0" expanded="false" />
+            <element signature="e#44020#45075#0" expanded="false" />
+            <element signature="e#45081#46015#0" expanded="false" />
+            <element signature="e#46019#48061#0" expanded="false" />
+            <element signature="e#48069#49684#0" expanded="false" />
+            <element signature="e#49690#49967#0" expanded="false" />
+            <element signature="e#49973#50241#0" expanded="false" />
+            <element signature="e#50544#52296#1" expanded="false" />
+            <element signature="e#50617#50782#0" expanded="false" />
+            <element signature="e#50788#50817#0" expanded="false" />
+            <element signature="e#50788#50866#0" expanded="false" />
+            <element signature="e#50882#51070#0" expanded="false" />
+            <element signature="e#50882#52291#0" expanded="false" />
+            <element signature="e#52606#53658#1" expanded="false" />
+            <element signature="e#52963#53546#0" expanded="false" />
+            <element signature="e#53956#54430#0" expanded="false" />
+            <element signature="e#54436#54588#0" expanded="false" />
+            <element signature="e#87041#87736#0" expanded="false" />
+            <element signature="e#87743#89009#0" expanded="false" />
+            <element signature="e#89015#90725#0" expanded="false" />
+            <element signature="e#91713#92041#0" expanded="false" />
+            <element signature="e#92045#92079#0" expanded="false" />
+            <element signature="e#92045#92385#0" expanded="false" />
+            <element signature="e#92389#92414#0" expanded="false" />
+            <element signature="e#92389#92499#0" expanded="false" />
+            <element signature="e#98444#98714#0" expanded="false" />
+            <element signature="e#105938#106830#0" expanded="false" />
+            <element signature="e#106834#107079#0" expanded="false" />
+            <element signature="e#107083#107389#0" expanded="false" />
+            <element signature="e#107393#107472#0" expanded="false" />
+            <element signature="e#107476#107578#0" expanded="false" />
+            <element signature="e#107582#107652#0" expanded="false" />
+            <element signature="e#107656#107758#0" expanded="false" />
+            <element signature="e#107762#107864#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/GridIndexLookup.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/GridIndexLookup.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MultiMapper.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#8058#8090#0" expanded="false" />
+            <element signature="e#8092#8195#0" expanded="false" />
+            <element signature="e#8197#9248#0" expanded="false" />
+            <element signature="e#9250#10491#0" expanded="false" />
+            <element signature="e#10493#10623#0" expanded="false" />
+            <element signature="e#11233#24689#0" expanded="false" />
+            <element signature="e#24691#25050#0" expanded="false" />
+            <element signature="e#25052#27288#0" expanded="false" />
+            <element signature="e#33614#34653#0" expanded="false" />
+            <element signature="e#38321#38824#0" expanded="false" />
+            <element signature="e#38826#38980#0" expanded="false" />
+            <element signature="e#38982#39304#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1980">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/CoordinateConverter.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2924">
+          <caret line="39" column="8" lean-forward="false" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///opt/ros/indigo/include/nav2d_karto/OpenKarto/OpenMapper.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="982" column="92" lean-forward="false" selection-start-line="982" selection-start-column="73" selection-end-line="982" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/GridIndexLookup.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="320" column="97" lean-forward="true" selection-start-line="320" selection-start-column="97" selection-end-line="320" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/GridIndexLookup.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/Grid.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="462" column="7" lean-forward="false" selection-start-line="462" selection-start-column="7" selection-end-line="462" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/Dataset.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1007">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/OpenKarto.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-100">
+          <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/Parameter.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4049">
+          <caret line="405" column="23" lean-forward="false" selection-start-line="405" selection-start-column="10" selection-end-line="405" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/Parameter.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="82" column="13" lean-forward="false" selection-start-line="82" selection-start-column="4" selection-end-line="82" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/Module.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="65" column="7" lean-forward="true" selection-start-line="65" selection-start-column="7" selection-end-line="65" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/Objects.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="39" column="6" lean-forward="false" selection-start-line="39" selection-start-column="2" selection-end-line="39" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OccupancyGrid.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1152">
+          <caret line="155" column="44" lean-forward="false" selection-start-line="155" selection-start-column="44" selection-end-line="155" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/String.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="106" column="30" lean-forward="false" selection-start-line="106" selection-start-column="20" selection-end-line="106" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/String.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="105" column="10" lean-forward="false" selection-start-line="105" selection-start-column="4" selection-end-line="105" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/x86_64-linux-gnu/c++/4.8/bits/c++config.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="185" column="28" lean-forward="false" selection-start-line="185" selection-start-column="28" selection-end-line="185" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/Types.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="137" column="15" lean-forward="false" selection-start-line="137" selection-start-column="10" selection-end-line="137" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../devel/include/nav2d_msgs/LocalizedScan.h" />
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/SmartPointer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="880">
+          <caret line="44" column="4" lean-forward="false" selection-start-line="44" selection-start-column="4" selection-end-line="44" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/Exception.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="37" column="21" lean-forward="false" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/Sensor.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="228" column="111" lean-forward="false" selection-start-line="228" selection-start-column="106" selection-end-line="228" selection-end-column="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/SensorData.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-68">
+          <caret line="229" column="40" lean-forward="false" selection-start-line="229" selection-start-column="22" selection-end-line="229" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/Identifier.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2700">
+          <caret line="135" column="27" lean-forward="false" selection-start-line="135" selection-start-column="19" selection-end-line="135" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/Object.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3260">
+          <caret line="163" column="8" lean-forward="false" selection-start-line="163" selection-start-column="4" selection-end-line="163" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/Identifier.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="57" column="9" lean-forward="false" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../nav2d_localizer/include/nav2d_localizer/SelfLocalizer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="50" column="9" lean-forward="false" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/List.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="506" column="4" lean-forward="true" selection-start-line="506" selection-start-column="4" selection-end-line="506" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/stdlib.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="388" column="21" lean-forward="false" selection-start-line="388" selection-start-column="14" selection-end-line="388" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/SensorData.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2194">
+          <caret line="114" column="26" lean-forward="false" selection-start-line="114" selection-start-column="26" selection-end-line="114" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../devel/include/nav2d_msgs/RobotPose.h" />
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/Event.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="982" column="33" lean-forward="false" selection-start-line="982" selection-start-column="25" selection-end-line="982" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/nav2d_karto/spa2d.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4860">
+          <caret line="243" column="88" lean-forward="false" selection-start-line="243" selection-start-column="69" selection-end-line="243" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/gcc/x86_64-linux-gnu/4.8/include/float.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="105" column="20" lean-forward="false" selection-start-line="105" selection-start-column="20" selection-end-line="105" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/Math.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5020">
+          <caret line="251" column="45" lean-forward="false" selection-start-line="251" selection-start-column="21" selection-end-line="251" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nav2d_karto.project">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-300">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="33" column="37" lean-forward="false" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/Objects.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="118" column="5" lean-forward="true" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/nav2d_karto/MultiMapper.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="48" column="21" lean-forward="true" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1352">
+          <caret line="142" column="28" lean-forward="false" selection-start-line="142" selection-start-column="28" selection-end-line="142" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/nav2d_karto/SpaSolver.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" column="23" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/OpenMapper.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14260">
+          <caret line="713" column="17" lean-forward="false" selection-start-line="713" selection-start-column="9" selection-end-line="713" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/spa2d.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9300">
+          <caret line="465" column="59" lean-forward="false" selection-start-line="465" selection-start-column="59" selection-end-line="465" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MultiMapper.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15480">
+          <caret line="774" column="15" lean-forward="false" selection-start-line="774" selection-start-column="15" selection-end-line="774" selection-end-column="15" />
+          <folding>
+            <element signature="e#8058#8090#0" expanded="false" />
+            <element signature="e#8092#8195#0" expanded="false" />
+            <element signature="e#8197#9248#0" expanded="false" />
+            <element signature="e#9250#10491#0" expanded="false" />
+            <element signature="e#10493#10623#0" expanded="false" />
+            <element signature="e#11233#24689#0" expanded="false" />
+            <element signature="e#24691#25050#0" expanded="false" />
+            <element signature="e#25052#27288#0" expanded="false" />
+            <element signature="e#33614#34653#0" expanded="false" />
+            <element signature="e#38321#38824#0" expanded="false" />
+            <element signature="e#38826#38980#0" expanded="false" />
+            <element signature="e#38982#39304#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MapperNode.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenMapper.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="1688" column="26" lean-forward="false" selection-start-line="1688" selection-start-column="26" selection-end-line="1688" selection-end-column="26" />
+          <folding>
+            <element signature="e#743#770#0" expanded="true" />
+            <element signature="e#813#833#0" expanded="true" />
+            <element signature="e#4180#5308#0" expanded="false" />
+            <element signature="e#5314#5530#0" expanded="false" />
+            <element signature="e#6402#6705#1" expanded="false" />
+            <element signature="e#6710#7147#0" expanded="false" />
+            <element signature="e#7153#7259#0" expanded="false" />
+            <element signature="e#7268#7628#0" expanded="false" />
+            <element signature="e#7632#7970#0" expanded="false" />
+            <element signature="e#7976#8247#0" expanded="false" />
+            <element signature="e#8253#8520#0" expanded="false" />
+            <element signature="e#10325#10642#0" expanded="false" />
+            <element signature="e#10971#11209#0" expanded="false" />
+            <element signature="e#11215#11567#0" expanded="false" />
+            <element signature="e#13972#14009#0" expanded="true" />
+            <element signature="e#14300#14373#0" expanded="false" />
+            <element signature="e#14377#16427#0" expanded="false" />
+            <element signature="e#16337#16384#0" expanded="true" />
+            <element signature="e#16854#16898#0" expanded="true" />
+            <element signature="e#26537#37004#0" expanded="false" />
+            <element signature="e#37010#40932#0" expanded="false" />
+            <element signature="e#40938#42875#0" expanded="false" />
+            <element signature="e#42881#43202#0" expanded="false" />
+            <element signature="e#43208#44016#0" expanded="false" />
+            <element signature="e#44020#45075#0" expanded="false" />
+            <element signature="e#45081#46015#0" expanded="false" />
+            <element signature="e#46019#48061#0" expanded="false" />
+            <element signature="e#48069#49684#0" expanded="false" />
+            <element signature="e#49690#49967#0" expanded="false" />
+            <element signature="e#49973#50241#0" expanded="false" />
+            <element signature="e#50544#52296#1" expanded="false" />
+            <element signature="e#50617#50782#0" expanded="false" />
+            <element signature="e#50788#50817#0" expanded="false" />
+            <element signature="e#50788#50866#0" expanded="false" />
+            <element signature="e#50882#51070#0" expanded="false" />
+            <element signature="e#50882#52291#0" expanded="false" />
+            <element signature="e#52606#53658#1" expanded="false" />
+            <element signature="e#52963#53546#0" expanded="false" />
+            <element signature="e#53956#54430#0" expanded="false" />
+            <element signature="e#54436#54588#0" expanded="false" />
+            <element signature="e#87041#87736#0" expanded="false" />
+            <element signature="e#87743#89009#0" expanded="false" />
+            <element signature="e#89015#90725#0" expanded="false" />
+            <element signature="e#91713#92041#0" expanded="false" />
+            <element signature="e#92045#92079#0" expanded="false" />
+            <element signature="e#92045#92385#0" expanded="false" />
+            <element signature="e#92389#92414#0" expanded="false" />
+            <element signature="e#92389#92499#0" expanded="false" />
+            <element signature="e#98444#98714#0" expanded="false" />
+            <element signature="e#105938#106830#0" expanded="false" />
+            <element signature="e#106834#107079#0" expanded="false" />
+            <element signature="e#107083#107389#0" expanded="false" />
+            <element signature="e#107393#107472#0" expanded="false" />
+            <element signature="e#107476#107578#0" expanded="false" />
+            <element signature="e#107582#107652#0" expanded="false" />
+            <element signature="e#107656#107758#0" expanded="false" />
+            <element signature="e#107762#107864#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SpaSolver.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="590">
+          <caret line="83" column="66" lean-forward="false" selection-start-line="83" selection-start-column="64" selection-end-line="83" selection-end-column="71" />
+          <folding>
+            <element signature="e#714#738#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OpenKarto/source/OpenKarto/Geometry.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="2658" column="27" lean-forward="true" selection-start-line="2658" selection-start-column="27" selection-end-line="2658" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

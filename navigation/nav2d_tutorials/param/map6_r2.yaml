@@ -1,0 +1,46 @@
+### Mapper ################################################
+
+grid_resolution: 0.1
+range_threshold: 6.0
+map_update_rate: 1
+publish_pose_graph: true
+max_covariance: 0.01
+transform_publish_period: 0.1
+min_map_size: 8
+
+### Localizer #############################################
+
+min_particles: 500
+max_particles: 15000
+alpha_slow: 0.001 #0.001
+alpha_fast: 0.1 #0.1
+min_translation: 0.05 #0.2
+min_rotation: 0.08 #0.5
+pop_err: 0.01 #0.01
+pop_z: 0.99 #0.99  
+odom_alpha1: 0.05 #0.25
+odom_alpha2: 0.05 #0.25
+odom_alpha3: 0.1 #0.25
+odom_alpha4: 0.05 #0.25
+odom_alpha5: 0.03 
+laser_model_type: 2 #2
+laser_z_hit: 0.95 #0.95
+laser_z_short: 0.1 #0.1
+laser_z_rand: 0.05 #0.05
+laser_likelihood_max_dist: 5.0 #2.0
+### Karto #################################################
+
+# For a full list of available parameters and their
+# corresponding default values, see OpenKarto/OpenMapper.h
+UseScanBarycenter: true
+UseResponseExpansion: true
+MinimumTravelDistance: 1.0
+MinimumTravelHeading: 0.6
+LoopSearchMaximumDistance: 8.0
+LoopMatchMinimumChainSize: 5.0 #10
+LinkScanMaximumDistance: 8.0 
+ScanBufferSize: 20  #70 7 ScanBufferSize = ScanBufferMaximunScanDistance/#MinimumTravelHeadi7g
+ScanBufferMaximumScanDistance: 20 #20.0 2 per indoor
+CorrelationSearchSpaceDimension: 1.0 #1.0 #0.3 0.4 per indoor
+CorrelationSearchSpaceResolution: 0.01 #0.01
+###########################################################

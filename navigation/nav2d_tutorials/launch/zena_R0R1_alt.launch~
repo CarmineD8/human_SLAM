@@ -1,0 +1,62 @@
+<launch>
+
+	<node name="R0_MapAlign" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 /map /robot_0/map 100"/>
+	<node name="R1_MapAlign" pkg="tf" type="static_transform_publisher" args="0 200 0 0 0 0 /map /robot_1/map 100"/>
+
+	<group ns="robot_0">
+		<param name="robot_id" value="1" />
+		<param name="tf_prefix" type="string" value="robot_0"/>
+		<rosparam file="$(find nav2d_tutorials)/param/ros.yaml"/>
+
+		<node pkg="odom_laser_tf" type="odom_laser_tf_node" name="FrameBroadcaster" />
+		
+		<node name="Mapper" pkg="nav2d_karto" type="mapper" output="screen">
+			<remap from="karto_in" to="/sharedscan2"/>
+			<remap from="karto_out" to="/sharedscan1"/>
+			<remap from="base_scan" to="base_scan2"/>	
+			<rosparam file="$(find nav2d_tutorials)/launch/4Robots_CLAM/zena4_r0.yaml"/>
+		</node>
+
+	</group>
+
+
+	<group ns="robot_1">
+		<param name="robot_id" value="2" />
+		<param name="tf_prefix" type="string" value="robot_1"/>
+		<rosparam file="$(find nav2d_tutorials)/param/ros.yaml"/>
+
+		<node pkg="odom_laser_tf" type="odom_laser_tf_node" name="FrameBroadcaster" />
+
+		<!-- Start the Navigator to move the robot autonomously -->
+		<node name="Navigator" pkg="nav2d_navigator" type="navigator">
+			<rosparam file="$(find nav2d_tutorials)/param/navigator.yaml"/>
+		</node>
+
+		<node name="Localize" pkg="nav2d_navigator" type="localize_client" />
+		<node name="Explore" pkg="nav2d_navigator" type="explore_client" />
+
+		<node name="Mapper" pkg="nav2d_karto" type="mapper" output="screen">
+			<remap from="karto_in" to="/sharedscan1"/>
+			<remap from="karto_out" to="/sharedscan2"/>
+			<remap from="base_scan" to="base_scan2"/>
+			<rosparam file="$(find nav2d_tutorials)/launch/4Robots_CLAM/zena4_r1.yaml"/>
+		</node>
+
+	</group>
+
+	<!-- RVIZ to view the visualization -->
+	<node name="RVIZ_R1" pkg="rviz" type="rviz" args=" -d $(find nav2d_tutorials)/param/R01.rviz" />
+
+	<!--rosbag play-->
+	<node pkg="rosbag" type="play" name="player_r0" args="--clock -r 0.008 $(find nav2d_tutorials)/launch/4Robots_CLAM_Strategy2/Group_1/r0.bag">
+		<remap from="body_pose" to="robot_0/body_pose"/>
+		<remap from="head_pose" to="robot_0/head_pose"/>
+		<remap from="odomscan" to="robot_0/base_scan"/>
+	</node>
+
+	<node pkg="rosbag" type="play" name="player_r1" args="-r 0.008 $(find nav2d_tutorials)/launch/4Robots_CLAM_Strategy2/Group_1/r1.bag">
+		<remap from="body_pose" to="robot_1/body_pose"/>
+		<remap from="head_pose" to="robot_1/head_pose"/>
+		<remap from="odomscan" to="robot_1/base_scan"/>
+	</node>
+</launch>

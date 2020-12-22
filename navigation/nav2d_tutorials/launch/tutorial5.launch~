@@ -1,0 +1,28 @@
+<launch>
+
+	<!--node name = "keyboard" pkg="move_robot_keyboard" type="command_image"/-->
+	<!--node pkg="move_robot_keyboard" type="publish_image" name="readImage" output="screen" /-->
+
+	<!-- Start Mapper to genreate map from laser scans -->
+	<node name="Mapper" pkg="nav2d_karto" type="mapper" output="screen">  
+	<remap from="scan" to="base_scan2"/> 
+	<rosparam file="$(find nav2d_tutorials)/param/mapper2.yaml"/>
+	</node>
+		
+	<node name="RVIZ" pkg="rviz" type="rviz" args=" -d $(find nav2d_tutorials)/param/tutorial3.rviz" />  
+
+	<node name="broadcaster" pkg="pose_to_tftf" type="tf_node" />  
+
+	<node pkg="rosbag" type="play" name="player_laser" args="--clock $(find nav2d_tutorials)/launch/zena.bag">
+		<remap from="body_pose" to="odompose" />
+		<remap from="head_pose" to="headpose" />
+		<remap from="odomscan" to="base_scan"/>
+	</node> 
+
+	<!--node pkg="rosbag" type="play" name="player_image" args="-r 0.1 $(find image_matching)/launch/images.bag"/-->
+	
+	<!--node pkg="image_matching" name="Matcher" type="match_description" output="screen" /-->
+
+	<!--node pkg="rosbag" type="record" name="recorder" args=" /input_image" /-->
+
+</launch>

@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/laboratorium/catkin_ws/src/odom_laser_tf/cmake-build-debug/devel/setup.sh

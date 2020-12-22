@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/haorui/catkin_ws/src/navigation_2d/nav2d_msgs/cmake-build-debug/devel/setup.sh

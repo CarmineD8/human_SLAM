@@ -1,0 +1,20 @@
+<launch>
+
+	<!--node name = "keyboard" pkg="move_robot_keyboard" type="command_image"/-->
+	<!--node pkg="move_robot_keyboard" type="publish_image" name="readImage" output="screen" /-->
+
+	<!-- Start Mapper to genreate map from laser scans -->
+	<node name="Mapper" pkg="nav2d_karto" type="mapper" output="screen">  
+	<remap from="scan" to="base_scan2"/> 
+	<rosparam file="$(find nav2d_tutorials)/param/mapper2.yaml"/>
+	</node>
+		
+	<node name="RVIZ" pkg="rviz" type="rviz" args=" -d $(find nav2d_tutorials)/param/tutorial3.rviz" />  
+
+	<node name="broadcaster" pkg="pose_to_tftf" type="tf_node">
+		<remap from="odompose" to="body_pose"/> 
+		<remap from="headpose" to="head_pose" />
+		<remap from="base_scan" to="odomscan"/>
+	</node>  
+
+</launch>

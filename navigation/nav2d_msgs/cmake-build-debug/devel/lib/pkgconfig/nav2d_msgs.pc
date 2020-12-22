@@ -1,0 +1,8 @@
+prefix=/home/haorui/catkin_ws/src/navigation_2d/nav2d_msgs/cmake-build-debug/devel
+
+Name: nav2d_msgs
+Description: Description of nav2d_msgs
+Version: 0.3.2
+Cflags: -I/home/haorui/catkin_ws/src/navigation_2d/nav2d_msgs/cmake-build-debug/devel/include
+Libs: -L/home/haorui/catkin_ws/src/navigation_2d/nav2d_msgs/cmake-build-debug/devel/lib 
+Requires: message_runtime std_msgs sensor_msgs geometry_msgs

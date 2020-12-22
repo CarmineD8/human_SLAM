@@ -1,0 +1,12 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/nav2d_msgs_generate_messages_py"
+  "devel/lib/python2.7/dist-packages/nav2d_msgs/msg/_LocalizedScan.py"
+  "devel/lib/python2.7/dist-packages/nav2d_msgs/msg/_LocalizedObject.py"
+  "devel/lib/python2.7/dist-packages/nav2d_msgs/msg/_RobotPose.py"
+  "devel/lib/python2.7/dist-packages/nav2d_msgs/msg/__init__.py"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang )
+  include(CMakeFiles/nav2d_msgs_generate_messages_py.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

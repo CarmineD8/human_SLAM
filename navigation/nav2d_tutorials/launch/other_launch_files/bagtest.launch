@@ -1,0 +1,24 @@
+<launch>
+
+<node pkg="rosbag" type="play" name="player_r0" args="--clock $(find nav2d_tutorials)/launch/bags_4robots/R0.bag">
+	<remap from="body_pose" to="robot_0/body_pose"/>
+	<remap from="head_pose" to="robot_0/head_pose"/>
+	<remap from="odomscan" to="robot_0/base_scan"/>
+</node>
+<node pkg="rosbag" type="play" name="player_r1" args="$(find nav2d_tutorials)/launch/bags_4robots/R1.bag">
+	<remap from="body_pose" to="robot_1/body_pose"/>
+	<remap from="head_pose" to="robot_1/head_pose"/>
+	<remap from="odomscan" to="robot_1/base_scan"/>
+</node>
+<node pkg="rosbag" type="play" name="player_r2" args="$(find nav2d_tutorials)/launch/bags_4robots/R2.bag">
+	<remap from="body_pose" to="robot_2/body_pose"/>
+	<remap from="head_pose" to="robot_2/head_pose"/>
+	<remap from="odomscan" to="robot_2/base_scan"/>
+</node>
+<node pkg="rosbag" type="play" name="player_r3" args="$(find nav2d_tutorials)/launch/bags_4robots/R3.bag">
+	<remap from="body_pose" to="robot_3/body_pose"/>
+	<remap from="head_pose" to="robot_3/head_pose"/>
+	<remap from="odomscan" to="robot_3/base_scan"/>
+</node>
+
+</launch>

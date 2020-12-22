@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: odom_laser_tf
+Description: Description of odom_laser_tf
+Version: 0.0.0
+Cflags: 
+Libs: -L/usr/local/lib 
+Requires: 

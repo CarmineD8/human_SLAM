@@ -1,0 +1,8 @@
+prefix=/home/laboratorium/catkin_ws/src/odom_laser_tf/cmake-build-debug/devel
+
+Name: odom_laser_tf
+Description: Description of odom_laser_tf
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/laboratorium/catkin_ws/src/odom_laser_tf/cmake-build-debug/devel/lib 
+Requires: 

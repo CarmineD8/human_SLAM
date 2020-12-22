@@ -1,0 +1,35 @@
+<launch>
+        <node name="R1_MapAlign" pkg="tf" type="static_transform_publisher" args="100 50 0 0 0 0 /map /robot_1/map 100"/>
+	<group ns="robot_1">
+		<param name="robot_id" value="2" />
+		<param name="tf_prefix" type="string" value="robot_1"/>
+		<rosparam file="$(find nav2d_tutorials)/param/ros.yaml"/>
+
+		<node pkg="odom_laser_tf" type="odom_laser_tf_node" name="Broadcaster_r1"/>
+     	<!--<node pkg="odom_laser_tf" type="laser_map_tf_node" name="Listener_r1"/>-->
+
+		<!-- Start the Navigator to move the robot autonomously -->
+		<node name="Navigator" pkg="nav2d_navigator" type="navigator">
+			<rosparam file="$(find nav2d_tutorials)/param/navigator.yaml"/>
+		</node>
+
+		<node name="Localize" pkg="nav2d_navigator" type="localize_client" />
+		<node name="Explore" pkg="nav2d_navigator" type="explore_client" />
+
+		<node name="Mapper" pkg="nav2d_karto" type="mapper" output="screen">
+			<remap from="base_scan" to="base_scan2"/>
+			<remap from="karto_in" to="/shared_scans_r1"/>
+			<remap from="karto_out" to="/shared_scans_r2"/>
+			<rosparam file="$(find nav2d_tutorials)/param/mapper2.yaml"/>
+		</node>
+
+	</group>
+
+	<!-- RVIZ to view the visualization -->
+	<node name="RVIZ" pkg="rviz" type="rviz" args=" -d $(find nav2d_tutorials)/param/zena.rviz" />
+
+	<!--rosbag play-->
+	<node pkg="rosbag" type="play" name="player_r1" args="-r 0.1 $(find nav2d_tutorials)/launch/Group_2/R1.bag"/>
+
+</launch>
+

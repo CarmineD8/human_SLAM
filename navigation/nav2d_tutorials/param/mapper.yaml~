@@ -1,0 +1,39 @@
+### Mapper ################################################
+
+grid_resolution: 0.1
+range_threshold: 8.0 #10.0
+map_update_rate: 1
+publish_pose_graph: true
+max_covariance: 0.02
+transform_publish_period: 0.1
+min_map_size: 120
+
+### Localizer #############################################
+
+min_particles: 500   #does not be used by the localizer
+max_particles: 25000
+alpha_slow: 0.001 #0.001
+alpha_fast: 0.1 #0.1
+min_translation: 0.05 #0.2
+min_rotation: 0.5 #0.5
+pop_err: 0.01 #0.01
+pop_z: 0.99 #0.99  
+odom_alpha1: 0.6 #0.25
+odom_alpha2: 0.6 #0.25
+odom_alpha3: 0.6 #0.25
+odom_alpha4: 0.6 #0.25 
+laser_model_type: 2
+
+### Karto #################################################
+
+# For a full list of available parameters and their
+# corresponding default values, see OpenKarto/OpenMapper.h
+UseScanMatching: true 
+MinimumTravelDistance: 0.1
+MinimumTravelHeading: 0.5
+LoopSearchMaximumDistance: 10.0
+LoopMatchMinimumChainSize: 5.0 #10
+
+ScanBufferSize: 40
+ScanBufferMaximumScanDistance: 20
+###########################################################
