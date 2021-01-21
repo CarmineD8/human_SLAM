@@ -24,7 +24,7 @@
 	<!--node pkg="image_matching" name="Matcher" type="multi_matching" output="screen"/-->
 
 	<!--rosbag play-->
-	<node pkg="rosbag" type="play" name="player0" args="--clock -r 0.1 $(find nav2d_tutorials)/launch/bag_files/2Robots_CLAM/r0.bag">
+	<node pkg="rosbag" type="play" name="player0" args="--clock -r 0.25 $(find nav2d_tutorials)/launch/bag_files/2Robots_CLAM/r0.bag">
 		<remap from="body_pose" to="/robot_0/body_pose"/>
 		<remap from="head_pose" to="/robot_0/head_pose"/>
 		<remap from="odomscan"  to="/robot_0/base_scan"/>

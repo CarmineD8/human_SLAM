@@ -54,7 +54,7 @@ MultiMapper::MultiMapper()
 	mVerticesPublisher = mapperNode.advertise<visualization_msgs::Marker>("vertices", 1, true);
 	mEdgesPublisher = mapperNode.advertise<visualization_msgs::Marker>("edges", 1, true);
 	mPosePublisher = robotNode.advertise<geometry_msgs::PoseStamped>("localization_result", 1, true);
-	mCustomerSubscriber = robotNode.subscribe(mCustomInputTopic,1,&MultiMapper::receiveCustomerOrder, this);
+	// mCustomerSubscriber = robotNode.subscribe(mCustomInputTopic,1,&MultiMapper::receiveCustomerOrder, this);
 
 	// Initialize KARTO-Mapper
 	mMapper = new karto::OpenMapper(true);
@@ -269,23 +269,23 @@ karto::LocalizedObject* MultiMapper::createObject(const karto::Identifier& robot
     return new karto::LocalizedObject(robot);
 }
 
-void MultiMapper::receiveCustomerOrder(const image_msg::ImageLocation prob_vector)  /// works
-{
-    ///Here the subscribe function already decided that if it's the first order or not
-    mCustomerOrder = true;
-    mFirstOrder = false;
-    mCustomerProbArray = prob_vector.prob;
+// void MultiMapper::receiveCustomerOrder(const image_msg::ImageLocation prob_vector)  /// works
+// {
+//     ///Here the subscribe function already decided that if it's the first order or not
+//     mCustomerOrder = true;
+//     mFirstOrder = false;
+//     mCustomerProbArray = prob_vector.prob;
 
-    if(mCustomerProbArray.size() == 1) mFirstOrder = true;
-    else{
-        kt_float MaxProb = 0.0;
-        for(size_t i = 0; i < mCustomerProbArray.size() - 1; i++){
-            if(mCustomerProbArray[i]>MaxProb)
-                MaxProb = mCustomerProbArray[i];
-        }
-        if(MaxProb <= 0.0) mFirstOrder = true;
-    }
-}
+//     if(mCustomerProbArray.size() == 1) mFirstOrder = true;
+//     else{
+//         kt_float MaxProb = 0.0;
+//         for(size_t i = 0; i < mCustomerProbArray.size() - 1; i++){
+//             if(mCustomerProbArray[i]>MaxProb)
+//                 MaxProb = mCustomerProbArray[i];
+//         }
+//         if(MaxProb <= 0.0) mFirstOrder = true;
+//     }
+// }
 
 void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr& scan)
 {

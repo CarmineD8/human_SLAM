@@ -8,6 +8,7 @@ int main(int argc, char **argv)
 	// Initialize ROS
 	ros::init(argc, argv, "MultiMapper");
 	ros::NodeHandle node;
+	
 
 	// Create a scan-solver
 	SpaSolver* solver = new SpaSolver();
