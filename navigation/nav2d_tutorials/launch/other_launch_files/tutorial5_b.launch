@@ -6,9 +6,15 @@
 	<!-- Start Mapper to genreate map from laser scans -->
 	<node name="Mapper" pkg="nav2d_karto" type="mapper" output="screen">  
 	<remap from="scan" to="base_scan2"/> 
-	<rosparam file="$(find nav2d_tutorials)/param/mapper2.yaml"/>
+	<rosparam file="$(find nav2d_tutorials)/param/mapper_indoor.yaml"/>
 	</node>
 		
+	<!--rosbag play-->
+	<node pkg="rosbag" type="play" name="player0" args="--clock -r 0.2 $(find nav2d_tutorials)/launch/Bags/2021-01-25-12-51-35.bag">
+	</node>
+
+	<node name="Input" pkg="keyboard" type="keyboard">
+    </node>		
 	<node name="RVIZ" pkg="rviz" type="rviz" args=" -d $(find nav2d_tutorials)/param/tutorial3.rviz" />  
 
 	<node name="broadcaster" pkg="pose_to_tftf" type="tf_node">

@@ -1,0 +1,189 @@
+#include <ros/ros.h>
+#include <tf/transform_broadcaster.h>
+#include <geometry_msgs/Twist.h>
+#include <sensor_msgs/LaserScan.h>
+#include <imu_pedometer/imu.h>
+
+
+ros::Publisher scan_pub;
+float pose_x=0, pose_y=0, pose_z=2.0;
+float pose_x_saved=0, pose_y_saved=0;
+float pose_x_saved2=0, pose_y_saved2=0;
+float head_x=0, head_y=0, body_z=2.0;
+bool flag=false;
+int timer=0;
+int count = 0;
+
+
+void imuCallback(const imu_pedometer::imu::ConstPtr& msg)
+{
+/*if ((msg->tstamp > 2143.0) & (msg->tstamp < 2180.0))
+{
+timer=1;
+}
+else if ((msg->tstamp > 2248.0) & (msg->tstamp < 2293.0))
+{
+timer=3;
+}
+else if ((msg->tstamp > 2180.0) & (msg->tstamp < 2196.0))
+{
+timer=2;
+}
+
+else
+{
+timer=0;
+}*/
+}
+
+void poseCallback(const geometry_msgs::Twist::ConstPtr& msg){
+/* if (timer==0)
+ {pose_x=msg->linear.x;
+ pose_y=msg->linear.y;}
+else if (timer==1)
+ {pose_x=1.4*msg->linear.x;
+ pose_y=1.4*msg->linear.y;}
+else if (timer==2)
+ {pose_x=4.8*msg->linear.x;
+ pose_y=4.8*msg->linear.y;}
+else if (timer==3)
+ {pose_x=1.6*msg->linear.x;
+ pose_y=1.6*msg->linear.y;}*/
+ pose_x=msg->linear.x*8.0/6.0;
+ pose_y=msg->linear.y*8.0/6.0; 
+ body_z=msg->angular.z;
+}
+
+void headCallback(const geometry_msgs::Twist::ConstPtr& msg){
+ head_x=msg->linear.x;
+ head_y=msg->linear.y; 
+ pose_z=msg->angular.z;
+ flag=true;
+}
+
+void laserCallback(sensor_msgs::LaserScan msg){
+count++;
+sensor_msgs::LaserScan scan;
+scan = msg;
+scan.header.stamp = ros::Time::now();
+scan_pub.publish(scan);
+}
+
+int main(int argc, char** argv){
+  ros::init(argc, argv, "my_tf_broadcaster");
+   ros::NodeHandle node;
+
+  scan_pub = node.advertise<sensor_msgs::LaserScan>("/base_scan2", 50);
+  ros::Subscriber sub = node.subscribe("/odompose", 50, &poseCallback);
+  ros::Subscriber sub2 = node.subscribe("/base_scan", 50, &laserCallback);
+  ros::Subscriber sub3 = node.subscribe("/headpose",50, &headCallback);
+  ros::Subscriber sub4 = node.subscribe("/imudata",50, &imuCallback);
+  ros::Rate loop_rate(25);
+
+  float  pose_x_back=0, pose_y_back=0, pose_z_back=2.0;
+  float  diff_x=0, diff_y=0, diff_z=0.0;
+  float diff_x2=0, diff_y2=0;
+  float diff_x_back=0, diff_y_back=0, diff_z_back=0;
+  float pose_x_back2=0, pose_y_back2=0;
+
+
+   while (ros::ok())
+  {
+
+     ros::spinOnce();
+
+  pose_x_saved=pose_x;
+  pose_y_saved=pose_y;
+
+  diff_x=pose_x-pose_x_back;
+  diff_y=pose_y-pose_y_back;
+  diff_z=pose_z-pose_z_back;
+
+  diff_x2=pose_x-pose_x_back2;
+  diff_y2=pose_y-pose_y_back2;
+
+std::cout<< "diff_x: " << diff_x << std::endl << std::endl;
+std::cout<< "diff_x2: " <<  diff_x2  <<  std::endl << std::endl;
+
+std::cout << "pose_x: " << pose_x << " pose_x_saved: " << pose_x_saved << " pose_x_back: " << pose_x_back << " pose_x_back2: " << pose_x_back2 << std::endl << std::endl; 
+ 
+ if (diff_z>3.14)
+ {diff_z=diff_z-6.28;}
+ 
+ if (diff_z<-3.14)
+ {diff_z=diff_z+6.28;}
+
+  std::cout << diff_z << std::endl;
+  if (flag==true)
+  {
+  if (fabs(diff_z) >1.0)
+  {diff_z=diff_z/300;
+   pose_z=pose_z_back+diff_z;}
+  else if (fabs(diff_z) >0.2)
+  {diff_z=diff_z/30;
+   pose_z=pose_z_back+diff_z;}
+   if (fabs(diff_x)>0.6)
+   pose_x=pose_x_back2;
+   else
+   { pose_x=pose_x_back2 + diff_x ;
+   diff_x_back=diff_x;}
+  
+
+   if (fabs(diff_y)>0.6)
+   pose_y=pose_y_back2;
+   else
+   { pose_y = pose_y_back2 + diff_y;
+   diff_y_back=diff_y;}
+  }
+
+  int test= -1 +rand()%3;
+  std::cout << test << std::endl << std::endl;
+
+  if (flag==false)
+  {
+   diff_x=diff_x_back;
+   diff_y=diff_y_back;
+   diff_z=diff_z_back;
+   pose_x=pose_x_back2+diff_x/10;
+   pose_y=pose_y_back2+diff_y/10;
+   pose_z=pose_z+float(test)/20.0;
+   }
+
+  std::cout << "x: " << pose_x << std::endl;
+  std::cout << "y: " << pose_y << std::endl;
+  std::cout << "ang: " << pose_z << std::endl << std::endl;
+
+  static tf::TransformBroadcaster br;
+  tf::Transform transform;
+  //transform.setOrigin( tf::Vector3(pose_x, pose_y, 0.0) );
+	transform.setOrigin( tf::Vector3(pose_x, pose_y, 0.0) );
+  tf::Quaternion q;
+  q.setRPY(0, 0, pose_z);//body_z);//pose_z);
+  transform.setRotation(q);
+  tf::Transform t2;
+
+  t2.setOrigin(tf::Vector3(0.0, 0.0, 0.0));
+  tf::Quaternion q2;
+  q2.setRPY(0.0, 0.0, body_z - pose_z);
+  t2.setRotation(q2);
+  
+  br.sendTransform(tf::StampedTransform(t2, ros::Time::now(), "laser", "base_link"));
+  br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "odometry_offset", "laser"));
+  
+  pose_x_back=pose_x_saved;
+  pose_y_back=pose_y_saved;
+
+  pose_x_back2=pose_x;
+  pose_y_back2=pose_y;
+
+  pose_z_back=pose_z;
+
+  diff_z_back=diff_z;
+
+  flag=false;
+  loop_rate.sleep();  
+
+  }
+  
+  return 0;
+};

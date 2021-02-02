@@ -14,6 +14,8 @@
 #include <std_msgs/Int16.h>
 // #include <image_msg/ImageLocation.h>
 #include <OpenKarto/OpenKarto.h>
+#include <keyboard/Key.h>
+#include <list>
 
 #include <string>
 #include <map>
@@ -34,8 +36,8 @@ public:
 	void receiveLocalizedScan(const nav2d_msgs::LocalizedScan::ConstPtr& scan);
     void receiveLocalizedObject(const nav2d_msgs::LocalizedObject::ConstPtr& object);
 	void receiveInitialPose(const geometry_msgs::PoseWithCovarianceStamped::ConstPtr& pose);
-	// void receiveCustomerOrder(const image_msg::ImageLocation prob_vec);
-    // void sendLocalizedScan(const sensor_msgs::LaserScan::ConstPtr& scan, const karto::Pose2& pose);
+	void receiveCustomerOrder(const keyboard::Key keyboard_msg);
+    void sendLocalizedScan(const sensor_msgs::LaserScan::ConstPtr& scan, const karto::Pose2& pose);
     void sendLocalizedScan(const sensor_msgs::LaserScan::ConstPtr& scan, const karto::Pose2& pose, const std::vector<kt_float> ProbVec);
     void sendLocalizedObject(const karto::LocalizedObjectPtr object);
 	void onMessage(const void* sender, karto::MapperEventArguments& args);
@@ -98,6 +100,8 @@ private:
     bool mFirstOrder;
 	ros::WallTime mLastMapUpdate;
     std::vector<kt_float> mCustomerProbArray;
+	kt_float OrderNum;
+    std::list<int> OrderArr;	
 
 	// Frames and Topics
 	std::string mLaserFrame;
