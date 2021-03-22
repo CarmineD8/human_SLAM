@@ -15,7 +15,7 @@ max_particles: 20000
 alpha_slow: 0.001 #0.001
 alpha_fast: 0.1 #0.1
 min_translation: 0.2 #0.2
-min_rotation: 1 #0.5
+min_rotation: 0.7 #0.5
 pop_err: 0.01 #0.01
 pop_z: 0.99 #0.99  
 odom_alpha1: 0.25 #0.25
