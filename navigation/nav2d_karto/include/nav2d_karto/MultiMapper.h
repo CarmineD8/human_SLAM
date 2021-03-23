@@ -73,6 +73,7 @@ private:
 	ros::Publisher mEdgesPublisher;
 	ros::Publisher mPosePublisher;
 	ros::Publisher mOtherRobotsPublisher;
+	ros::Publisher mMarkersPublisher;
 	ros::Subscriber mLaserSubscriber;
 	ros::Subscriber mScanSubscriber;
 	ros::Subscriber mObjectSubscriber;
