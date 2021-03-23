@@ -73,6 +73,7 @@ private:
 	ros::Publisher mEdgesPublisher;
 	ros::Publisher mPosePublisher;
 	ros::Publisher mOtherRobotsPublisher;
+	ros::Publisher mMarkersPublisher;
 	ros::Subscriber mLaserSubscriber;
 	ros::Subscriber mScanSubscriber;
 	ros::Subscriber mObjectSubscriber;
@@ -92,16 +93,18 @@ private:
 	double mRangeThreshold;     // Maximum range of laser sensor. (All robots MUST use the same due to Karto-Mapper!)
 	double mMaxCovariance;      // When to accept the result of the particle filter?
 	int mState;	                // What am I doing? (waiting, localizing, mapping)
-	int mMapUpdateRate;	        // Publish the map every # received updates.
+	double mMapUpdateRate;	        // Publish the map every # received updates.
 	bool mPublishPoseGraph;	    // Whether or not to publish the pose graph as marker-message.
 	int mNodesAdded;            // Number of nodes added to the pose graph.
 	int mMinMapSize;            // Minimum map size (# of nodes) needed for localization.
     bool mCustomerOrder;        // Check if there is customer order.
     bool mFirstOrder;
+	// karto::LocalizedObjectPtr markedObject;
 	ros::WallTime mLastMapUpdate;
     std::vector<kt_float> mCustomerProbArray;
 	kt_float OrderNum;
     std::list<int> OrderArr;	
+	std::vector<karto::LocalizedObjectPtr> markedList;
 
 	// Frames and Topics
 	std::string mLaserFrame;

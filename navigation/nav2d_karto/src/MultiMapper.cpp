@@ -28,7 +28,7 @@ MultiMapper::MultiMapper()
 	ros::NodeHandle mapperNode("~/");
 	mapperNode.param("grid_resolution", mMapResolution, 0.05);
 	mapperNode.param("range_threshold", mRangeThreshold, 30.0);
-	mapperNode.param("map_update_rate", mMapUpdateRate, 1);
+	mapperNode.param("map_update_rate", mMapUpdateRate, 1.0);
 	mapperNode.param("publish_pose_graph", mPublishPoseGraph, true);
 	mapperNode.param("max_covariance", mMaxCovariance, 0.05);
 	mapperNode.param("min_map_size", mMinMapSize, 50);
@@ -53,6 +53,7 @@ MultiMapper::MultiMapper()
 
 	mVerticesPublisher = mapperNode.advertise<visualization_msgs::Marker>("vertices", 1, true);
 	mEdgesPublisher = mapperNode.advertise<visualization_msgs::Marker>("edges", 1, true);
+	mMarkersPublisher = mapperNode.advertise<visualization_msgs::Marker>("markers", 1, true);
 	mPosePublisher = robotNode.advertise<geometry_msgs::PoseStamped>("localization_result", 1, true);
 	mCustomerSubscriber = robotNode.subscribe(mCustomInputTopic, 1, &MultiMapper::receiveCustomerOrder, this);
 
@@ -464,6 +465,9 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 			karto::LocalizedLaserScanPtr laserScan = createFromRosMessage(*scan, mLaser->GetIdentifier());
 			karto::CustomItemPtr ProbListItem = new karto::CustomItem(laserScan->GetIdentifier());
 			karto::List<kt_float> ProbList;
+
+			
+
 			for (size_t ArraySize = 0; ArraySize < mCustomerProbArray.size(); ArraySize++)
 			{
 				ProbList.Add(mCustomerProbArray[ArraySize]);
@@ -518,7 +522,11 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 				}
 				mNodesAdded++;
 				mMapChanged = true;
-
+				cout<<"In case it dies here"<<endl;
+				// karto::MapperGraph::VertexList MarkedNodes = mMapper->GetGraph()->GetVertices();
+				
+				// karto::LocalizedObjectPtr markedObject = MarkedNodes[MarkedNodes.Size()-1]->GetVertexObject();
+				//markedList.push_back(markedObject);
 				std::cout << "number of nodes: " << mNodesAdded << std::endl;
 				std::cout << "Pose after correction:" << std::endl;
 				std::cout << "x: " << laserScan->GetCorrectedPose().GetX() << std::endl;
@@ -739,6 +747,28 @@ bool MultiMapper::sendMap()
 			marker.points[2 * i + 1].z = 0;
 		}
 		mEdgesPublisher.publish(marker);
+
+		// // Publis special nodes
+		// cout<<"ARRIVED1111"<<endl;
+		// marker.header.frame_id = mMapFrame;
+		// marker.header.stamp = ros::Time();
+		// marker.id = 0;
+		// marker.type = visualization_msgs::Marker::SPHERE_LIST;
+
+		// marker.scale.x = 1;
+		// marker.scale.y = 1;
+		// marker.scale.z = 0.1;
+		// marker.color.a = 0.0;
+		// marker.color.r = 1.0;
+		// marker.color.g = 0.0;
+		// marker.color.b = 0.0;
+
+		// for (size_t i = 0; i < markedList.size(); i++)
+		// 	{
+		// 		marker.points[i].x = markedList[i]->GetCorrectedPose().GetX();
+		// 		marker.points[i].y = markedList[i]->GetCorrectedPose().GetY();
+		// 	}
+		// mMarkersPublisher.publish(marker);
 	}
 	return true;
 }
