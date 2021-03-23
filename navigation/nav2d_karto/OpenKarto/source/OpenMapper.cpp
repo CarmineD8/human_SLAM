@@ -1614,7 +1614,7 @@ namespace karto
             kt_double BestResponse = m_pLoopScanMatcher->MatchScan(pLastScan, ConnectChain, BestLastPose, BestLastCovariance, false, false);
             std::cout<<"Match around: "<<MatchingPose.GetX()<<", "<<MatchingPose.GetY()<<std::endl;
             std::cout<<"The response of last scan is: "<< BestResponse <<std::endl;
-            if(BestResponse >= 0.3 && OldPose.GetPosition().Distance(MatchingPose.GetPosition()) < 15){
+            if(BestResponse >= 0.3 && OldPose.GetPosition().Distance(MatchingPose.GetPosition()) < 100){
 //                std::cout<<"Found the match for the last scan!! Link it to the chain and correct the pose of the object!"<<std::endl;
                 std::cout<<"Last scan should be correct to the pose: ("<<BestLastPose.GetX()<<", "<<BestLastPose.GetY()<<", "<<BestLastPose.GetHeading()<<")"<<std::endl;
                 //pLastScan->SetSensorPose(OldPose);
@@ -1627,7 +1627,7 @@ namespace karto
             }
             else{
                 if(BestResponse < 0.3) std::cout<<"The response is too low, do not add constraints here!"<<std::endl;
-                if(OldPose.GetPosition().Distance(MatchingPose.GetPosition()) >= 15)
+                if(OldPose.GetPosition().Distance(MatchingPose.GetPosition()) >= 100)
                     std::cout<<"Wrong matching! The distance is: "<< OldPose.GetPosition().Distance(MatchingPose.GetPosition())<<std::endl;
             }
         }
