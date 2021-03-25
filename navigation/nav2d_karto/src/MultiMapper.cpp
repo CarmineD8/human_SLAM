@@ -432,14 +432,14 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 
 				for (const auto &e : mCustomerProbArray)
 				{
-					std::cout << e << ", "; 
+					std::cout << e << ", ";
 				}
-				cout << "]" <<endl;
+				cout << "]" << endl;
 
 				ros::WallDuration d = ros::WallTime::now() - mLastMapUpdate;
 				if (mMapUpdateRate > 0 && d.toSec() > mMapUpdateRate)
 				{
-					std::cout<<"CCCCCCCCCCCc"<<endl;
+					std::cout << "CCCCCCCCCCCc" << endl;
 					sendMap();
 				}
 
@@ -468,8 +468,6 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 			karto::CustomItemPtr ProbListItem = new karto::CustomItem(laserScan->GetIdentifier());
 			karto::List<kt_float> ProbList;
 
-			
-
 			for (size_t ArraySize = 0; ArraySize < mCustomerProbArray.size(); ArraySize++)
 			{
 				ProbList.Add(mCustomerProbArray[ArraySize]);
@@ -478,7 +476,7 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 
 			std::cout << "This object does not have match, put a normal scan here." << std::endl;
 			std::cout << "The number of received orders: " << mCustomerProbArray.size() << std::endl;
-			cout<<"PROB LIST is "<<ProbListItem<<endl;
+			cout << "PROB LIST is " << ProbListItem << endl;
 			laserScan->SetOdometricPose(kartoPose);
 			laserScan->SetCorrectedPose(kartoPose);
 			laserScan->AddCustomItem(ProbListItem);
@@ -508,12 +506,7 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 			// marker.color.b = 0.0;
 			// //marker.points.resize(vertices.Size());
 
-
-
-
 			// //
-
-
 
 			bool success;
 			try
@@ -556,11 +549,12 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 				}
 				mNodesAdded++;
 				mMapChanged = true;
-				cout<<"In case it dies here"<<endl;
-				// karto::MapperGraph::VertexList MarkedNodes = mMapper->GetGraph()->GetVertices();
-				
-				// karto::LocalizedObjectPtr markedObject = MarkedNodes[MarkedNodes.Size()-1]->GetVertexObject();
-				//markedList.push_back(markedObject);
+				cout << "In case it dies here" << endl;
+				karto::MapperGraph::VertexList MarkedNodes = mMapper->GetGraph()->GetVertices();
+
+				karto::LocalizedObjectPtr markedObject = MarkedNodes[MarkedNodes.Size() - 1]->GetVertexObject();
+				markedList.push_back(markedObject);
+
 				std::cout << "number of nodes: " << mNodesAdded << std::endl;
 				std::cout << "Pose after correction:" << std::endl;
 				std::cout << "x: " << laserScan->GetCorrectedPose().GetX() << std::endl;
@@ -571,9 +565,9 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 
 				for (const auto &e : mCustomerProbArray)
 				{
-					std::cout << e << ", "; 
+					std::cout << e << ", ";
 				}
-				cout << "]" <<endl;
+				cout << "]" << endl;
 
 				ros::WallDuration d = ros::WallTime::now() - mLastMapUpdate;
 				if (mMapUpdateRate > 0 && d.toSec() > mMapUpdateRate)
@@ -669,9 +663,9 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 
 				for (const auto &e : mCustomerProbArray)
 				{
-					std::cout << e << ", "; 
+					std::cout << e << ", ";
 				}
-				cout << "]" <<endl;
+				cout << "]" << endl;
 
 				ros::WallDuration d = ros::WallTime::now() - mLastMapUpdate;
 				if (mMapUpdateRate > 0 && d.toSec() > mMapUpdateRate)
@@ -741,19 +735,12 @@ bool MultiMapper::sendMap()
 		marker.pose.orientation.z = 0.0;
 		marker.pose.orientation.w = 1.0;
 
-		std::cout<<"Customer order is"<<mCustomerOrder<<endl;
-		if (mCustomerOrder)
-		{
-			std::cout<<"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"<<endl;
-			marker.scale.x = 1;
-			marker.scale.y = 1;
-			marker.scale.z = 0.1;
-		}
-		else {
-			marker.scale.x = 0.1;
-			marker.scale.y = 0.1;
-			marker.scale.z = 0.1;
-		}
+		std::cout << "Customer order is" << mCustomerOrder << endl;
+
+		marker.scale.x = 0.1;
+		marker.scale.y = 0.1;
+		marker.scale.z = 0.1;
+
 		marker.color.a = 1.0;
 		marker.color.r = 0.0;
 		marker.color.g = 1.0;
@@ -766,7 +753,7 @@ bool MultiMapper::sendMap()
 			marker.points[i].y = vertices[i]->GetVertexObject()->GetCorrectedPose().GetY();
 			marker.points[i].z = 0;
 		}
-		cout<<"11111111111"<<endl;
+		cout << "11111111111" << endl;
 		mVerticesPublisher.publish(marker);
 
 		// Publish the edges
@@ -794,28 +781,41 @@ bool MultiMapper::sendMap()
 		}
 		mEdgesPublisher.publish(marker);
 
-		// // Publis special nodes
-		// cout<<"ARRIVED1111"<<endl;
-		// marker.header.frame_id = mMapFrame;
-		// marker.header.stamp = ros::Time();
-		// marker.id = 0;
-		// marker.type = visualization_msgs::Marker::SPHERE_LIST;
+		// Publis special nodes
 
-		// marker.scale.x = 1;
-		// marker.scale.y = 1;
-		// marker.scale.z = 0.1;
-		// marker.color.a = 0.0;
-		// marker.color.r = 1.0;
-		// marker.color.g = 0.0;
-		// marker.color.b = 0.0;
+		visualization_msgs::Marker sp_nodes;
+		sp_nodes.header.frame_id = mMapFrame;
+		sp_nodes.header.stamp = ros::Time();
+		sp_nodes.id = 0;
+		sp_nodes.type = visualization_msgs::Marker::SPHERE_LIST;
+		sp_nodes.action = visualization_msgs::Marker::ADD;
 
-		// for (size_t i = 0; i < markedList.size(); i++)
-		// 	{
-		// 		marker.points[i].x = markedList[i]->GetCorrectedPose().GetX();
-		// 		marker.points[i].y = markedList[i]->GetCorrectedPose().GetY();
-		// 	}
-		// mMarkersPublisher.publish(marker);
-	}
+		sp_nodes.pose.position.x = 0;
+		sp_nodes.pose.position.y = 0;
+		sp_nodes.pose.position.z = 0;
+		sp_nodes.pose.orientation.x = 0.0;
+		sp_nodes.pose.orientation.y = 0.0;
+		sp_nodes.pose.orientation.z = 0.0;
+		sp_nodes.pose.orientation.w = 1.0;
+
+		sp_nodes.scale.x = 1;
+		sp_nodes.scale.y = 1;
+		sp_nodes.scale.z = 0.1;
+		sp_nodes.color.a = 1.0;
+		sp_nodes.color.r = 1.0;
+		sp_nodes.color.g = 0.0;
+		sp_nodes.color.b = 0.0;
+		sp_nodes.points.resize(markedList.size());
+		
+		for (int i = 0; i < markedList.size(); i++)
+		{
+			sp_nodes.points[i].x = markedList[i]->GetCorrectedPose().GetX();
+			sp_nodes.points[i].y = markedList[i]->GetCorrectedPose().GetY();
+			sp_nodes.points[i].z = 0;
+		}
+
+		mMarkersPublisher.publish(sp_nodes);
+		}
 	return true;
 }
 
