@@ -54,6 +54,7 @@ MultiMapper::MultiMapper()
 	mVerticesPublisher = mapperNode.advertise<visualization_msgs::Marker>("vertices", 1, true);
 	mEdgesPublisher = mapperNode.advertise<visualization_msgs::Marker>("edges", 1, true);
 	mMarkersPublisher = mapperNode.advertise<visualization_msgs::Marker>("markers", 1, true);
+	mMatchedPublisher = mapperNode.advertise<visualization_msgs::Marker>("matched_markers", 1, true);
 	mPosePublisher = robotNode.advertise<geometry_msgs::PoseStamped>("localization_result", 1, true);
 	mMarkersPublisher = mapperNode.advertise<visualization_msgs::Marker>("markers", 1, true);
 	mCustomerSubscriber = robotNode.subscribe(mCustomInputTopic, 1, &MultiMapper::receiveCustomerOrder, this);
@@ -667,6 +668,11 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 				}
 				cout << "]" << endl;
 
+				karto::MapperGraph::VertexList matchedNodes = mMapper->GetGraph()->GetVertices();
+
+				karto::LocalizedObjectPtr matchedObject = matchedNodes[matchedNodes.Size() - 1]->GetVertexObject();
+				matchedList.push_back(matchedObject);
+
 				ros::WallDuration d = ros::WallTime::now() - mLastMapUpdate;
 				if (mMapUpdateRate > 0 && d.toSec() > mMapUpdateRate)
 				{
@@ -781,7 +787,7 @@ bool MultiMapper::sendMap()
 		}
 		mEdgesPublisher.publish(marker);
 
-		// Publis special nodes
+		// Publish special nodes
 
 		visualization_msgs::Marker sp_nodes;
 		sp_nodes.header.frame_id = mMapFrame;
@@ -815,7 +821,42 @@ bool MultiMapper::sendMap()
 		}
 
 		mMarkersPublisher.publish(sp_nodes);
+
+		// Publish matched nodes
+
+		visualization_msgs::Marker m_nodes;
+		m_nodes.header.frame_id = mMapFrame;
+		m_nodes.header.stamp = ros::Time();
+		m_nodes.id = 0;
+		m_nodes.type = visualization_msgs::Marker::SPHERE_LIST;
+		m_nodes.action = visualization_msgs::Marker::ADD;
+
+		//m_nodes.pose.position.x = 0;
+		//m_nodes.pose.position.y = 0;
+		//m_nodes.pose.position.z = 0;
+		m_nodes.pose.orientation.x = 0.0;
+		m_nodes.pose.orientation.y = 0.0;
+		m_nodes.pose.orientation.z = 0.0;
+		m_nodes.pose.orientation.w = 1.0;
+
+		m_nodes.scale.x = 1;
+		m_nodes.scale.y = 1;
+		m_nodes.scale.z = 0.1;
+		m_nodes.color.a = 1.0;
+		m_nodes.color.r = 0.0;
+		m_nodes.color.g = 1.0;
+		m_nodes.color.b = 0.0;
+		m_nodes.points.resize(matchedList.size());
+
+		for (int i = 0; i < matchedList.size(); i++)
+		{
+			m_nodes.points[i].x = matchedList[i]->GetCorrectedPose().GetX();
+			m_nodes.points[i].y = matchedList[i]->GetCorrectedPose().GetY();
+			m_nodes.points[i].z = 0;
 		}
+
+		mMatchedPublisher.publish(m_nodes);
+	}
 	return true;
 }
 

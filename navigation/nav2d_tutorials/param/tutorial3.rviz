@@ -8,6 +8,7 @@ Panels:
         - /Map1
         - /TF1
         - /Marker1
+        - /Marker2
       Splitter Ratio: 0.5423280000686646
     Tree Height: 575
   - Class: rviz/Selection
@@ -182,7 +183,15 @@ Visualization Manager:
       Marker Topic: /Mapper/markers
       Name: Marker
       Namespaces:
-        {}
+        "": true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /Mapper/matched_markers
+      Name: Marker
+      Namespaces:
+        "": true
       Queue Size: 100
       Value: true
   Enabled: true
@@ -222,10 +231,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 7.436729907989502
+      Scale: 13.922122955322266
       Target Frame: map
-      X: 15.71780014038086
-      Y: -35.18450164794922
+      X: 29.785247802734375
+      Y: -8.534358978271484
     Saved: ~
 Window Geometry:
   Displays:

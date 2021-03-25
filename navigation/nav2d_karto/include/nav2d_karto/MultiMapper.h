@@ -74,6 +74,7 @@ private:
 	ros::Publisher mPosePublisher;
 	ros::Publisher mOtherRobotsPublisher;
 	ros::Publisher mMarkersPublisher;
+	ros::Publisher mMatchedPublisher;
 	ros::Subscriber mLaserSubscriber;
 	ros::Subscriber mScanSubscriber;
 	ros::Subscriber mObjectSubscriber;
@@ -105,6 +106,7 @@ private:
 	kt_float OrderNum;
     std::list<int> OrderArr;	
 	std::vector<karto::LocalizedObjectPtr> markedList;
+	std::vector<karto::LocalizedObjectPtr> matchedList;
 
 	// Frames and Topics
 	std::string mLaserFrame;
