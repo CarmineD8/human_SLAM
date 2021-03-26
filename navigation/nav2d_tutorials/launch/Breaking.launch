@@ -14,8 +14,14 @@
 	<node pkg="rosbag" type="play" name="player0" args="--clock -r 1.2 -s 0 $(find nav2d_tutorials)/launch/bag_files/2Robots_CLAM/r0.bag"> 
 	</node>
 
-	<node name="Input" pkg="keyboard" type="keyboard">
-    </node>		
+	<!-- launch ontology recognition -->
+
+	<node pkg="recognition" type="ontology_recogn.py" name="recognizer" output="screen" launch-prefix="xterm -e" >
+	</node>
+
+
+	<!-- <node name="Input" pkg="keyboard" type="keyboard">
+    </node>		 -->
 	<node name="RVIZ" pkg="rviz" type="rviz" args=" -d $(find nav2d_tutorials)/param/tutorial3.rviz" />  
 
 	<node name="broadcaster" pkg="pose_to_tftf" type="tf_node">

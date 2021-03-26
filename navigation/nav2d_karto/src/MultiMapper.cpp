@@ -23,7 +23,7 @@ MultiMapper::MultiMapper()
 	robotNode.param("map_service", mMapService, std::string("get_map"));
 	robotNode.param("laser_topic", mLaserTopic, std::string("scan"));
 	robotNode.param("map_topic", mMapTopic, std::string("map"));
-	robotNode.param("customer_order", mCustomInputTopic, std::string("Input/keyup"));
+	robotNode.param("customer_order", mCustomInputTopic, std::string("chatter"));
 
 	ros::NodeHandle mapperNode("~/");
 	mapperNode.param("grid_resolution", mMapResolution, 0.05);
@@ -277,13 +277,13 @@ karto::LocalizedObject *MultiMapper::createObject(const karto::Identifier &robot
 	return new karto::LocalizedObject(robot);
 }
 
-void MultiMapper::receiveCustomerOrder(const keyboard::Key keyboard_msg) /// works
+void MultiMapper::receiveCustomerOrder(const std_msgs::Int16 Index) /// works
 {
 
 	// ///Here the subscribe function already decided that if it's the first order or not
 	mCustomerOrder = true;
 	mFirstOrder = true;
-	OrderNum = keyboard_msg.code;
+	OrderNum = Index.data;
 
 	for (auto i : mCustomerProbArray)
 	{
@@ -440,7 +440,7 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 				ros::WallDuration d = ros::WallTime::now() - mLastMapUpdate;
 				if (mMapUpdateRate > 0 && d.toSec() > mMapUpdateRate)
 				{
-					std::cout << "CCCCCCCCCCCc" << endl;
+					
 					sendMap();
 				}
 
@@ -741,7 +741,7 @@ bool MultiMapper::sendMap()
 		marker.pose.orientation.z = 0.0;
 		marker.pose.orientation.w = 1.0;
 
-		std::cout << "Customer order is" << mCustomerOrder << endl;
+		
 
 		marker.scale.x = 0.1;
 		marker.scale.y = 0.1;
@@ -759,7 +759,7 @@ bool MultiMapper::sendMap()
 			marker.points[i].y = vertices[i]->GetVertexObject()->GetCorrectedPose().GetY();
 			marker.points[i].z = 0;
 		}
-		cout << "11111111111" << endl;
+
 		mVerticesPublisher.publish(marker);
 
 		// Publish the edges
