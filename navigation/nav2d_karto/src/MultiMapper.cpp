@@ -477,7 +477,7 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 
 			std::cout << "This object does not have match, put a normal scan here." << std::endl;
 			std::cout << "The number of received orders: " << mCustomerProbArray.size() << std::endl;
-			cout << "PROB LIST is " << ProbListItem << endl;
+			
 			laserScan->SetOdometricPose(kartoPose);
 			laserScan->SetCorrectedPose(kartoPose);
 			laserScan->AddCustomItem(ProbListItem);
@@ -550,7 +550,7 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 				}
 				mNodesAdded++;
 				mMapChanged = true;
-				cout << "In case it dies here" << endl;
+				
 				karto::MapperGraph::VertexList MarkedNodes = mMapper->GetGraph()->GetVertices();
 
 				karto::LocalizedObjectPtr markedObject = MarkedNodes[MarkedNodes.Size() - 1]->GetVertexObject();
