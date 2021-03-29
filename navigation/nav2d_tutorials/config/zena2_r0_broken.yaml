@@ -1,0 +1,68 @@
+### Mapper ################################################
+
+grid_resolution: 0.1 #0.05
+range_threshold: 8.0 #10 per indoor
+map_update_rate: 2
+publish_pose_graph: true
+max_covariance: 0.01 #0.05
+transform_publish_period: 0.5
+min_map_size: 5
+
+## Localizer #############################################
+
+min_particles: 500
+max_particles: 15000
+alpha_slow: 0.001 #0.001
+alpha_fast: 0.05 #0.1
+min_translation: 0.7 #0.2
+min_rotation: 0.5 #0.5
+pop_err: 0.01 #0.01
+pop_z: 0.99 #0.99  
+odom_alpha1: 0.05 #0.25
+odom_alpha2: 0.05 #0.25
+odom_alpha3: 0.1 #0.25
+odom_alpha4: 0.05 #0.25
+laser_model_type: 2 #2
+laser_z_hit: 0.95 #0.95
+laser_z_rand: 0.05 #0.05
+laser_likelihood_max_dist: 5.0 #2.0
+
+### Karto #################################################
+
+# For a full list of available parameters and their
+# corresponding default values, see OpenKarto/OpenMapper.h
+
+UseScanMatching: true   #use false in a simlator because the odomety and laser scan can give accurante infomation, for real environment, use true
+UseScanBarycenter: true
+UseResponseExpansion: true
+
+MinimumTravelDistance: 1 #0.5 #0.2        meglio 0.2 - 0.52 per walker4, 0.5 - 0.1 per walker 2-3 0.15 per indoor 
+MinimumTravelHeading:  0.5 #0.549 0.15 per indoor
+
+LinkMatchMinimumResponseFine: 0.6 #0.6
+LinkScanMaximumDistance: 10.0 #5.0 #5.0
+
+LoopSearchMaximumDistance: 10.0 #10.0 #4.0
+LoopSearchSpaceDimension: 10.0 
+LoopSearchSpaceSmearDeviation: 0.03 # 0.03
+
+
+LoopMatchMinimumChainSize: 10.0 #3.0 #10
+LoopMatchMinimumResponseFine: 0.5 #0.7
+LoopMatchMinimumResponseCoarse: 0.6 #0.7
+LoopMatchMaximumVarianceCoarse: 0.20 # 0.16 
+
+AngleVariancePenalty: 0.0152 #0.00609 #0.00609 0.0609 per indoor
+MinimumAnglePenalty: 0.9 #0.9
+DistanceVariancePenalty: 0.6 #0.3 3 per indoor
+MinimumDistancePenalty: 0.7 #0.5
+
+ScanBufferSize: 40  #70 7 ScanBufferSize = ScanBufferMaximunScanDistance/#MinimumTravelHeadi7g
+ScanBufferMaximumScanDistance: 20 #20.0 2 per indoor
+
+CorrelationSearchSpaceDimension: 2.0 #1.0 #0.3 0.4 per indoor
+CorrelationSearchSpaceResolution: 0.01 #0.01
+CoarseAngleResolution: 0.0349066 #0.0349066
+FineSearchAngleOffset: 0.00349066 #0.00349066
+CoarseSearchAngleOffset: 0.349066 #0.349066
+# ###########################################################

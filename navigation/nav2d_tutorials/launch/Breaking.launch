@@ -7,18 +7,23 @@
 	<node name="Mapper" pkg="nav2d_karto" type="mapper" output="screen">  
 	<remap from="scan" to="base_scan2"/> 
 	<!-- <rosparam file="$(find nav2d_tutorials)/param/mapper_indoor.yaml"/> -->
-    <rosparam file="$(find nav2d_tutorials)/config/zena2_r0.yaml"/>
+    <rosparam file="$(find nav2d_tutorials)/config/zena2_r0_broken.yaml"/>
 	</node>
 		
 	<!--rosbag play-->
-	<node pkg="rosbag" type="play" name="player0" args="--clock -r 1.2 -s 0 $(find nav2d_tutorials)/launch/bag_files/2Robots_CLAM/r0.bag" output="screen" launch-prefix="xterm -e">  
+	<!-- <node pkg="rosbag" type="play" name="player0" args="-clock -r 1.2 -s 0 $(find nav2d_tutorials)/launch/bag_files/2Robots_CLAM/r0.bag" output="screen" launch-prefix="xterm -e">  
+	</node> -->
+
+	<node pkg="rosbag" type="play" name="player0" args="--clock -r 1.4 -s 0 $(find nav2d_tutorials)/launch/bag_files/2Robots_CLAM/r0.bag" >  
 	</node>
 
 	<!-- launch ontology recognition -->
 
-	<node pkg="recognition" type="ontology_recogn.py" name="recognizer" output="screen" launch-prefix="xterm -e" >
-	</node>
+	<!-- <node pkg="recognition" type="ontology_recogn.py" name="recognizer" output="screen" launch-prefix="xterm -e" >
+	</node> -->
 
+	<node pkg="recognition" type="ontology_recogn.py" name="recognizer" output="screen" >
+	</node>
 
 	<!-- <node name="Input" pkg="keyboard" type="keyboard">
     </node>		 -->

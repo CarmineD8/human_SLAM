@@ -482,32 +482,6 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 			laserScan->SetCorrectedPose(kartoPose);
 			laserScan->AddCustomItem(ProbListItem);
 
-			// Set up marker
-
-			// karto::MapperGraph::VertexList vertices = mMapper->GetGraph()->GetVertices();
-			// visualization_msgs::Marker marker;
-			// marker.header.frame_id = mMapFrame;
-			// marker.header.stamp = ros::Time();
-			// marker.id = 0;
-			// marker.type = visualization_msgs::Marker::SPHERE_LIST;
-			// marker.action = visualization_msgs::Marker::ADD;
-			// marker.pose.position.x = kartoPose.GetX();
-			// marker.pose.position.y = kartoPose.GetY();
-			// marker.pose.position.z = 0;
-			// marker.pose.orientation.x = 0.0;
-			// marker.pose.orientation.y = 0.0;
-			// marker.pose.orientation.z = 0.0;
-			// marker.pose.orientation.w = 1.0;
-			// marker.scale.x = 1;
-			// marker.scale.y = 1;
-			// marker.scale.z = 1;
-			// marker.color.a = 1.0;
-			// marker.color.r = 0.0;
-			// marker.color.g = 1.0;
-			// marker.color.b = 0.0;
-			// //marker.points.resize(vertices.Size());
-
-			// //
 
 			bool success;
 			try
