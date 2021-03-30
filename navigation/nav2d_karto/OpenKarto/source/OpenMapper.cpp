@@ -1559,43 +1559,70 @@ namespace karto
             }
         }
 
-        ProbList.RemoveAt(ProbList.Size()-1);
+        //ProbList.RemoveAt(ProbList.Size()-1);
         printf("The special node IDs: [");
         karto_forEach(LocalizedObjectList, &SearchedObjectList) {
             LocalizedObject* pSearchedObject = *iter;
             printf("%d ", pSearchedObject->GetUniqueId());
+            
         }
-        printf("]\n");
-        if (SearchedObjectList.Size() != ProbList.Size()) {
-            std::cout << "Has " << SearchedObjectList.Size() << " special nodes but " << ProbList.Size() - 1
-                      << " probabilities." << std::endl;
-            std::cout << "Failed to find all the special nodes, crashed!" << std::endl;
-            assert(false);
+        // printf("]\n");
+        // if (SearchedObjectList.Size() != ProbList.Size()) {
+        //     std::cout << "Has " << SearchedObjectList.Size() << " special nodes but " << ProbList.Size() - 1
+        //               << " probabilities." << std::endl;
+        //     std::cout << "Failed to find all the special nodes, crashed!" << std::endl;
+        //     assert(false);
+        // }
+
+        // kt_float Max_Prob = 0.0;
+        // kt_int32s Max_Index = 0;
+        // for(kt_size_t i=0; i<ProbList.Size(); i++){
+        //     if(ProbList.Get(i) > Max_Prob){
+        //         Max_Prob = ProbList.Get(i);
+        //         Max_Index = i;
+        //     }
+        // }
+        float_t Dist=0.0;
+        float_t Min_Dist=1000000.0;
+        kt_float Index=0;
+        Pose2 OldPose = pLastScan->GetSensorPose();
+        std::vector<int16_t> Indices;
+        for(kt_size_t i=0; i<ProbList.Size()-1; i++){
+          if (ProbList.Get(ProbList.Size()-1)==ProbList.Get(i)){
+            Indices.push_back(i);
+            
+          }
         }
 
-        kt_float Max_Prob = 0.0;
-        kt_int32s Max_Index = 0;
-        for(kt_size_t i=0; i<ProbList.Size(); i++){
-            if(ProbList.Get(i) > Max_Prob){
-                Max_Prob = ProbList.Get(i);
-                Max_Index = i;
-            }
+        for(kt_size_t i=0; i<Indices.size(); i++){
+          Pose2 MatchingPose(OriginTransform.TransformPose(SearchedObjectList[Indices[i]]->GetCorrectedPose()).GetPosition(), OldPose.GetHeading());
+          Dist=OldPose.GetPosition().Distance(MatchingPose.GetPosition());
+        
+          if (Dist<Min_Dist){
+            Min_Dist=Dist;
+            
+            Index=i;
+          }
+
         }
 
-        if(Max_Prob > 0.0) FoundConnection = true;
-        if(!FoundConnection){
-          std::cout << "There's no connection!"<<std::endl;
-          return;
-        }
+
+        // if(Max_Prob > 0.0) FoundConnection = true;
+        // if(!FoundConnection){
+        //   std::cout << "There's no connection!"<<std::endl;
+        //   return;
+        // }
           ///When there is a connection, the last scan should try to match the chain
         if(pLastScan != NULL){
             LocalizedLaserScanList ConnectChain;
             kt_int32s HalfChainsize = m_pOpenMapper->m_pLoopMatchMinimumChainSize->GetValue();
             VertexList pVertexList = GetVertices();
             kt_int32s StartIndex = 0, EndIndex = pVertexList.Size() - 1;
-            LocalizedObject* pConnectObject = SearchedObjectList[Max_Index];
+            ;
+            LocalizedObject* pConnectObject = SearchedObjectList[Indices[0]];
+          
             kt_int32s pConnectID = pConnectObject->GetUniqueId();
-
+            
             if (pConnectID - HalfChainsize > 0) {StartIndex = pConnectID - HalfChainsize ;}
             if (pConnectID + HalfChainsize < EndIndex) {EndIndex = pConnectID + HalfChainsize;}
             std::cout << "Found chain from Scan "<<StartIndex<<" to Scan "<<EndIndex<<" for matching." << std::endl;
@@ -1608,7 +1635,7 @@ namespace karto
             }
             Pose2 BestLastPose;
             Matrix3 BestLastCovariance;
-            Pose2 OldPose = pLastScan->GetSensorPose();
+            
             Pose2 MatchingPose(OriginTransform.TransformPose(pConnectObject->GetCorrectedPose()).GetPosition(), OldPose.GetHeading());
             pLastScan->SetSensorPose(MatchingPose);
             kt_double BestResponse = m_pLoopScanMatcher->MatchScan(pLastScan, ConnectChain, BestLastPose, BestLastCovariance, false, false);
