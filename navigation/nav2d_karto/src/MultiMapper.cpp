@@ -293,9 +293,11 @@ void MultiMapper::receiveCustomerOrder(const keyboard::Key keyboard_msg) /// wor
 		}
 	}
 
-	std::vector<kt_float>::iterator it;
-	it = mCustomerProbArray.begin();
-	it = mCustomerProbArray.insert(it, OrderNum);
+	// std::vector<kt_float>::iterator it;
+	// it = mCustomerProbArray.begin();
+	// it = mCustomerProbArray.insert(it, OrderNum);
+
+	mCustomerProbArray.push_back(OrderNum);
 
 	// std::vector<kt_float> mCustomerProbArray{std::begin(OrderArr), std::end(OrderArr)};
 
