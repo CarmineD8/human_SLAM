@@ -282,7 +282,7 @@ void MultiMapper::receiveCustomerOrder(const keyboard::Key keyboard_msg) /// wor
 
 	// ///Here the subscribe function already decided that if it's the first order or not
 	mCustomerOrder = true;
-	mFirstOrder = true;
+	mFirstOrder = false;
 	OrderNum = keyboard_msg.code;
 
 	for (auto i : mCustomerProbArray)
@@ -442,7 +442,7 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 				ros::WallDuration d = ros::WallTime::now() - mLastMapUpdate;
 				if (mMapUpdateRate > 0 && d.toSec() > mMapUpdateRate)
 				{
-					std::cout << "CCCCCCCCCCCc" << endl;
+					
 					sendMap();
 				}
 
@@ -743,7 +743,7 @@ bool MultiMapper::sendMap()
 		marker.pose.orientation.z = 0.0;
 		marker.pose.orientation.w = 1.0;
 
-		std::cout << "Customer order is" << mCustomerOrder << endl;
+		
 
 		marker.scale.x = 0.1;
 		marker.scale.y = 0.1;
@@ -761,7 +761,7 @@ bool MultiMapper::sendMap()
 			marker.points[i].y = vertices[i]->GetVertexObject()->GetCorrectedPose().GetY();
 			marker.points[i].z = 0;
 		}
-		cout << "11111111111" << endl;
+		
 		mVerticesPublisher.publish(marker);
 
 		// Publish the edges
