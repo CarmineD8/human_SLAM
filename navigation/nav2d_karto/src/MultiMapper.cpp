@@ -282,32 +282,29 @@ void MultiMapper::receiveCustomerOrder(const keyboard::Key keyboard_msg) /// wor
 
 	// ///Here the subscribe function already decided that if it's the first order or not
 	mCustomerOrder = true;
-	mFirstOrder = false;
+	mFirstOrder = true;
 	OrderNum = keyboard_msg.code;
 
-	for (auto i : mCustomerProbArray)
-	{
-		if (i == OrderNum)
-		{
-			mFirstOrder = false;
-		}
-	}
+	// for (auto i : mCustomerProbArray)
+	// {
+	// 	if (i == OrderNum)
+	// 	{
+	// 		mFirstOrder = false;
+	// 	}
+	// }
+	
 
 	// std::vector<kt_float>::iterator it;
 	// it = mCustomerProbArray.begin();
 	// it = mCustomerProbArray.insert(it, OrderNum);
 
 	mCustomerProbArray.push_back(OrderNum);
+	if (mCustomerProbArray.size()>1)
+	{
+		mFirstOrder = false;
+	}
 
-	// std::vector<kt_float> mCustomerProbArray{std::begin(OrderArr), std::end(OrderArr)};
-
-	// for (const auto &e : mCustomerProbArray)
-	// {
-	// 	std::cout << e << " Prob vector output" << std::endl;
-
-	// }
 }
-
 void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 {
 	// Ignore own readings until map has been received

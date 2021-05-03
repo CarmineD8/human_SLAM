@@ -1540,7 +1540,7 @@ namespace karto
           CustomItemList pSearchedItemList = pSearchedObject->GetCustomItems();
           if (pSearchedObject->HasCustomItem() == false)
             continue;
-          else if (pSearchedItemList[0]->Read().Size() != ProbList.Size())
+          else //if (pSearchedItemList[0]->Read().Size() != ProbList.Size())
           {
             SearchedObjectList.Add(pSearchedObject);
             SearchedPoses.Add(pSearchedObject->GetCorrectedPose());
@@ -1649,10 +1649,10 @@ namespace karto
           LocalizedObject *pConnectObject;
           double respLim = 0.1;
           int semLim = 1;
-          double distLim = 30;
+          double distLim = 25;
           double factor;
           double dist;
-          for (kt_size_t i = 0; i < SearchedObjectList.Size(); i++)
+          for (kt_size_t i = 0; i < SearchedObjectList.Size()-1; i++)
           {
 
             pConnectObject = SearchedObjectList[i];
@@ -1666,7 +1666,7 @@ namespace karto
             
             //factor = dist * BestResponse * ra * 1000000;
             std::cout << "dist is " << dist << std::endl;
-            if (dist < distLim && abs(ProbList.Get(ProbList.Size()-1)-ProbList.Get(i)) <= semLim && i!=ProbList.Size()-1)
+            if (dist < distLim && abs(ProbList.Get(ProbList.Size()-1)-ProbList.Get(i)) <= semLim)
             {
               factor=1;
             }
@@ -1674,12 +1674,14 @@ namespace karto
             {
               factor=1000000000;
             }
+              std::cout << "factor is " << factor << std::endl;
               
               BestLastCovariance(0, 0) = BestLastCovariance(0, 0) * factor;
               BestLastCovariance(1, 1) = BestLastCovariance(1, 1) * factor;
               BestLastCovariance(2, 2) = BestLastCovariance(2, 2) * factor;
-              LinkObjects(pObject, pConnectObject, rMean, BestLastCovariance);
-              LinkObjects(pLastScan,pConnectObject, BestLastPose, BestLastCovariance);
+              LinkChainToScan(ConnectChain, pLastScan, BestLastPose, BestLastCovariance);
+              LinkObjects(pConnectObject,pObject, rMean, BestLastCovariance);
+              LinkObjects(pConnectObject,pLastScan, BestLastPose, BestLastCovariance);
           }
           //LinkObjects(pConnectObject, pLastScan, BestLastPose, BestLastCovariance);
           //         }
