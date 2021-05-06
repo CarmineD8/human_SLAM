@@ -106,7 +106,7 @@ namespace karto
      * Read this custom item data
      * @return custom item data
      */
-    const List<kt_float> Read(){
+    const List<std::string> Read(){
       return m_pCustomerData;
     }
     
@@ -114,7 +114,7 @@ namespace karto
      * Write data to this custom item
      * @param pValue the variable to be written
      */
-    void Write(const List<kt_float>& pData){
+    void Write(const List<std::string>& pData){
       m_pCustomerData = pData;
     }
 
@@ -125,7 +125,7 @@ namespace karto
     const CustomItem& operator=(const CustomItem&);
 
   private:
-      List<kt_float> m_pCustomerData;
+      List<std::string> m_pCustomerData;
   }; // CustomItem
 
   /**

@@ -12,6 +12,7 @@
 #include <nav2d_msgs/LocalizedObject.h>
 #include <nav2d_localizer/SelfLocalizer.h>
 #include <std_msgs/Int16.h>
+#include <std_msgs/String.h>
 // #include <image_msg/ImageLocation.h>
 #include <OpenKarto/OpenKarto.h>
 #include <keyboard/Key.h>
@@ -36,9 +37,9 @@ public:
 	void receiveLocalizedScan(const nav2d_msgs::LocalizedScan::ConstPtr& scan);
     void receiveLocalizedObject(const nav2d_msgs::LocalizedObject::ConstPtr& object);
 	void receiveInitialPose(const geometry_msgs::PoseWithCovarianceStamped::ConstPtr& pose);
-	void receiveCustomerOrder(const keyboard::Key keyboard_msg);
+	void receiveCustomerOrder(const std_msgs::String word);
     void sendLocalizedScan(const sensor_msgs::LaserScan::ConstPtr& scan, const karto::Pose2& pose);
-    void sendLocalizedScan(const sensor_msgs::LaserScan::ConstPtr& scan, const karto::Pose2& pose, const std::vector<kt_float> ProbVec);
+    void sendLocalizedScan(const sensor_msgs::LaserScan::ConstPtr& scan, const karto::Pose2& pose, const std::vector<std::string> ProbVec);
     void sendLocalizedObject(const karto::LocalizedObjectPtr object);
 	void onMessage(const void* sender, karto::MapperEventArguments& args);
 	bool getMap(nav_msgs::GetMap::Request  &req, nav_msgs::GetMap::Response &res);
@@ -102,8 +103,9 @@ private:
     bool mFirstOrder;
 	// karto::LocalizedObjectPtr markedObject;
 	ros::WallTime mLastMapUpdate;
-    std::vector<kt_float> mCustomerProbArray;
+    std::vector<std::string> mCustomerProbArray;
 	kt_float OrderNum;
+	std::string OrderWord;
     std::list<int> OrderArr;	
 	std::vector<karto::LocalizedObjectPtr> markedList;
 	std::vector<karto::LocalizedObjectPtr> matchedList;

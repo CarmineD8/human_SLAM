@@ -23,7 +23,8 @@ MultiMapper::MultiMapper()
 	robotNode.param("map_service", mMapService, std::string("get_map"));
 	robotNode.param("laser_topic", mLaserTopic, std::string("scan"));
 	robotNode.param("map_topic", mMapTopic, std::string("map"));
-	robotNode.param("customer_order", mCustomInputTopic, std::string("Input/keyup"));
+	// robotNode.param("customer_order", mCustomInputTopic, std::string("Input/keyup"));
+	robotNode.param("customer_order", mCustomInputTopic, std::string("chatter"));
 
 	ros::NodeHandle mapperNode("~/");
 	mapperNode.param("grid_resolution", mMapResolution, 0.05);
@@ -277,13 +278,13 @@ karto::LocalizedObject *MultiMapper::createObject(const karto::Identifier &robot
 	return new karto::LocalizedObject(robot);
 }
 
-void MultiMapper::receiveCustomerOrder(const keyboard::Key keyboard_msg) /// works
+void MultiMapper::receiveCustomerOrder(const std_msgs::String word) /// works
 {
 
 	// ///Here the subscribe function already decided that if it's the first order or not
 	mCustomerOrder = true;
 	mFirstOrder = true;
-	OrderNum = keyboard_msg.code;
+	OrderWord = word.data;
 
 	// for (auto i : mCustomerProbArray)
 	// {
@@ -298,7 +299,7 @@ void MultiMapper::receiveCustomerOrder(const keyboard::Key keyboard_msg) /// wor
 	// it = mCustomerProbArray.begin();
 	// it = mCustomerProbArray.insert(it, OrderNum);
 
-	mCustomerProbArray.push_back(OrderNum);
+	mCustomerProbArray.push_back(OrderWord);
 	if (mCustomerProbArray.size()>1)
 	{
 		mFirstOrder = false;
@@ -466,7 +467,7 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 
 			karto::LocalizedLaserScanPtr laserScan = createFromRosMessage(*scan, mLaser->GetIdentifier());
 			karto::CustomItemPtr ProbListItem = new karto::CustomItem(laserScan->GetIdentifier());
-			karto::List<kt_float> ProbList;
+			karto::List<std::string> ProbList;
 
 			for (size_t ArraySize = 0; ArraySize < mCustomerProbArray.size(); ArraySize++)
 			{
@@ -602,7 +603,7 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 			imageObject->SetCorrectedPose(kartoPose);
 
 			karto::CustomItemPtr ProbListItem = new karto::CustomItem(imageObject->GetIdentifier());
-			karto::List<kt_float> ProbList;
+			karto::List<std::string> ProbList;
 			for (size_t ArraySize = 0; ArraySize < mCustomerProbArray.size(); ArraySize++)
 			{
 				ProbList.Add(mCustomerProbArray[ArraySize]);
@@ -943,7 +944,7 @@ void MultiMapper::receiveLocalizedScan(const nav2d_msgs::LocalizedScan::ConstPtr
 	if (scan->prob_vec.size() > 0)
 	{
 		karto::CustomItemPtr ProbListItem = new karto::CustomItem(localizedScan->GetIdentifier());
-		karto::List<kt_float> ProbList;
+		karto::List<std::string> ProbList;
 		for (size_t i = 0; i < scan->prob_vec.size(); i++)
 			ProbList.Add(scan->prob_vec[i]);
 		ProbListItem->Write(ProbList);
@@ -1059,7 +1060,7 @@ void MultiMapper::sendLocalizedScan(const sensor_msgs::LaserScan::ConstPtr &scan
 	mScanPublisher.publish(rosScan);
 }
 
-void MultiMapper::sendLocalizedScan(const sensor_msgs::LaserScan::ConstPtr &scan, const karto::Pose2 &pose, const std::vector<kt_float> ProbVec)
+void MultiMapper::sendLocalizedScan(const sensor_msgs::LaserScan::ConstPtr &scan, const karto::Pose2 &pose, const std::vector<std::string> ProbVec)
 {
 	nav2d_msgs::LocalizedScan rosScan;
 	rosScan.robot_id = mRobotID;
@@ -1093,10 +1094,10 @@ void MultiMapper::sendLocalizedObject(const karto::LocalizedObjectPtr object)
 	nav2d_msgs::LocalizedObject pObject;
 	karto::CustomItemList imageItemList;
 	imageItemList = object->GetCustomItems();
-	karto::List<kt_float> ProbList = imageItemList[0]->Read();
+	karto::List<std::string> ProbList = imageItemList[0]->Read();
 	;
-	std::vector<float> ProbVec;
-	karto_forEach(karto::List<kt_float>, &ProbList)
+	std::vector<std::string> ProbVec;
+	karto_forEach(karto::List<std::string>, &ProbList)
 		ProbVec.push_back(*iter);
 
 	if (imageItemList.IsEmpty())
@@ -1125,8 +1126,8 @@ void MultiMapper::receiveLocalizedObject(const nav2d_msgs::LocalizedObject::Cons
 	sprintf(robot, "robot_%d", object->robot_id);
 	karto::Pose2 ObjectPose(object->x, object->y, object->yaw);
 	karto::CustomItemPtr ProbListItem = new karto::CustomItem(robot);
-	std::vector<float> ProbVec = object->prob_vec;
-	karto::List<kt_float> ProbList;
+	std::vector<std::string> ProbVec = object->prob_vec;
+	karto::List<std::string> ProbList;
 
 	for (size_t i = 0; i < ProbVec.size(); i++)
 		ProbList.Add(ProbVec[i]);

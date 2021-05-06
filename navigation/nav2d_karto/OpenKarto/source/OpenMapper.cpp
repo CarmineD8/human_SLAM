@@ -1532,7 +1532,7 @@ namespace karto
         LocalizedObjectList SearchedObjectList;
         Pose2List SearchedPoses;
         CustomItemList pObjectItemList = pObject->GetCustomItems();
-        List<kt_float> ProbList = pObjectItemList[0]->Read();
+        List<std::string> ProbList = pObjectItemList[0]->Read();
         karto_const_forEach(VertexList, &pVertexList)
         {
           Vertex<LocalizedObjectPtr> *pSearchedVertex = *iter;
@@ -1666,14 +1666,15 @@ namespace karto
             
             //factor = dist * BestResponse * ra * 1000000;
             std::cout << "dist is " << dist << std::endl;
-            if (dist < distLim && abs(ProbList.Get(ProbList.Size()-1)-ProbList.Get(i)) <= semLim)
-            {
-              factor=1;
-            }
-            else
-            {
-              factor=1000000000;
-            }
+            //      TO FIX
+            // if (dist < distLim && abs(ProbList.Get(ProbList.Size()-1)-ProbList.Get(i)) <= semLim)
+            // {
+            //   factor=1;
+            // }
+            // else
+            // {
+            //   factor=1000000000;
+            // }
               std::cout << "factor is " << factor << std::endl;
               
               BestLastCovariance(0, 0) = BestLastCovariance(0, 0) * factor;
