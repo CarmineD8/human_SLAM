@@ -45,6 +45,7 @@ public:
 	void publishLoop();
 	void publishTransform();
 	void setScanSolver(karto::ScanSolver* scanSolver);
+	int getSemDist(std::int16_t obj1,std::int16_t obj2);
 
 private:
 	// Private methods

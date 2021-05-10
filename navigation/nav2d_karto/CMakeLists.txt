@@ -123,6 +123,7 @@ add_executable(mapper
 	src/SpaSolver.cpp
 	src/spa2d.cpp
 	src/csparse.cpp
+  src/ros_Service.cpp
 )
 
 target_link_libraries(mapper MultiMapper ${CSPARSE_LIBRARY} ${catkin_LIBRARIES})

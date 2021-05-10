@@ -581,6 +581,10 @@ namespace karto
      * @param pObject object
      */
     void AddVertex(LocalizedObject* pObject);
+
+  public:
+
+    void start_service();
     
     /**
      * Creates an edge between the source object and the target object if it
@@ -1595,6 +1599,8 @@ namespace karto
      */    
     BasicEvent<EventArguments> ScansUpdated;
 
+    
+
   protected:
     //@cond EXCLUDE
     /**
@@ -1625,6 +1631,8 @@ namespace karto
      * Deallocates memory allocated in Initialize()
      */
     void Reset();
+
+    void start_service();
 
     /**
      * Processes an object.  If the object is a scan, the scan must be identified with a range finder sensor.

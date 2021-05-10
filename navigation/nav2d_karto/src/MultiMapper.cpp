@@ -61,7 +61,8 @@ MultiMapper::MultiMapper()
 
 	// Initialize KARTO-Mapper
 	mMapper = new karto::OpenMapper(true);
-
+	
+	
 	double param_d;
 	bool param_b;
 	int param_i;
@@ -184,6 +185,7 @@ MultiMapper::MultiMapper()
 		ROS_INFO("Initialized robot %d, waiting for map from robot 1 now.", mRobotID);
 		mSelfLocalizer = new SelfLocalizer();
 	}
+
 }
 
 MultiMapper::~MultiMapper()
@@ -277,8 +279,20 @@ karto::LocalizedObject *MultiMapper::createObject(const karto::Identifier &robot
 	return new karto::LocalizedObject(robot);
 }
 
+int MultiMapper::getSemDist(std::int16_t obj1,std::int16_t obj2)
+{
+	
+
+
+	
+}
+
+
+
+
 void MultiMapper::receiveCustomerOrder(const keyboard::Key keyboard_msg) /// works
 {
+	mMapper->start_service();
 
 	// ///Here the subscribe function already decided that if it's the first order or not
 	mCustomerOrder = true;

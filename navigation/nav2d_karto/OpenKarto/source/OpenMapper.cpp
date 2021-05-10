@@ -29,6 +29,7 @@
 
 #include <OpenKarto/OpenMapper.h>
 #include <OpenKarto/Logger.h>
+#include <ros_Service.h>
 
 namespace karto
 {
@@ -220,7 +221,9 @@ namespace karto
 
     kt_int32u m_RunningBufferMaximumSize;
     kt_double m_RunningBufferMaximumDistance;
-  }; // SensorDataManager
+  };
+
+  // SensorDataManager
 
   ////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////
@@ -1497,13 +1500,19 @@ namespace karto
     }
   }
 
+  ros_Service *ros_service;
+  void OpenMapper::start_service()
+  {
+    ros_service = new ros_Service();
+  }
+
   void MapperGraph::AddEdges(LocalizedObject *pObject)
   {
     Matrix3 covariance;
     covariance(0, 0) = MAX_VARIANCE;
     covariance(1, 1) = MAX_VARIANCE;
     covariance(2, 2) = MAX_VARIANCE;
-
+  
     LocalizedLaserScan *pScan = dynamic_cast<LocalizedLaserScan *>(pObject);
     if (pScan != NULL)
     {
@@ -1652,10 +1661,15 @@ namespace karto
           double distLim = 25;
           double factor;
           double dist;
-          for (kt_size_t i = 0; i < SearchedObjectList.Size()-1; i++)
-          {
+          int semDist;
+          int obj1 = ProbList.Get(ProbList.Size() - 1);
 
+          for (kt_size_t i = 0; i < SearchedObjectList.Size() - 1; i++)
+          {
+            int obj2 = ProbList.Get(i);
             pConnectObject = SearchedObjectList[i];
+            semDist = ros_service->getSemDist(obj1, obj2);
+            std::cout<<"Distance is "<<semDist<<std::endl;
             Pose2 MatchingPose(OriginTransform.TransformPose(pConnectObject->GetCorrectedPose()).GetPosition(), OldPose.GetHeading());
             pLastScan->SetSensorPose(MatchingPose);
             BestResponse = m_pLoopScanMatcher->MatchScan(pLastScan, ConnectChain, BestLastPose, BestLastCovariance, false, false);
@@ -1663,25 +1677,25 @@ namespace karto
 
             dist = OldPose.GetPosition().Distance(MatchingPose.GetPosition());
             Pose2 rMean = OriginTransform.InverseTransformPose(BestLastPose);
-            
+
             //factor = dist * BestResponse * ra * 1000000;
             std::cout << "dist is " << dist << std::endl;
-            if (dist < distLim && abs(ProbList.Get(ProbList.Size()-1)-ProbList.Get(i)) <= semLim)
+            if (dist < distLim && abs(ProbList.Get(ProbList.Size() - 1) - ProbList.Get(i)) <= semLim)
             {
-              factor=1;
+              factor = 1;
             }
             else
             {
-              factor=1000000000;
+              factor = 1000000000;
             }
-              std::cout << "factor is " << factor << std::endl;
-              
-              BestLastCovariance(0, 0) = BestLastCovariance(0, 0) * factor;
-              BestLastCovariance(1, 1) = BestLastCovariance(1, 1) * factor;
-              BestLastCovariance(2, 2) = BestLastCovariance(2, 2) * factor;
-              LinkChainToScan(ConnectChain, pLastScan, BestLastPose, BestLastCovariance);
-              LinkObjects(pConnectObject,pObject, rMean, BestLastCovariance);
-              LinkObjects(pConnectObject,pLastScan, BestLastPose, BestLastCovariance);
+            std::cout << "factor is " << factor << std::endl;
+
+            BestLastCovariance(0, 0) = BestLastCovariance(0, 0) * factor;
+            BestLastCovariance(1, 1) = BestLastCovariance(1, 1) * factor;
+            BestLastCovariance(2, 2) = BestLastCovariance(2, 2) * factor;
+            LinkChainToScan(ConnectChain, pLastScan, BestLastPose, BestLastCovariance);
+            LinkObjects(pConnectObject, pObject, rMean, BestLastCovariance);
+            LinkObjects(pConnectObject, pLastScan, BestLastPose, BestLastCovariance);
           }
           //LinkObjects(pConnectObject, pLastScan, BestLastPose, BestLastCovariance);
           //         }
@@ -1692,6 +1706,7 @@ namespace karto
         }
       }
     }
+    ros_service->~ros_Service();
   }
 
   void MapperGraph::AddEdges(LocalizedLaserScan *pScan, const Matrix3 &rCovariance)
