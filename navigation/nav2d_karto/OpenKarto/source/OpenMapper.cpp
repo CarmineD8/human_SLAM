@@ -1669,7 +1669,7 @@ namespace karto
             int obj2 = ProbList.Get(i);
             pConnectObject = SearchedObjectList[i];
             semDist = ros_service->getSemDist(obj1, obj2);
-            std::cout<<"Distance is "<<semDist<<std::endl;
+            std::cout<<"Sem Distance is "<<semDist<<std::endl;
             Pose2 MatchingPose(OriginTransform.TransformPose(pConnectObject->GetCorrectedPose()).GetPosition(), OldPose.GetHeading());
             pLastScan->SetSensorPose(MatchingPose);
             BestResponse = m_pLoopScanMatcher->MatchScan(pLastScan, ConnectChain, BestLastPose, BestLastCovariance, false, false);
@@ -1706,7 +1706,7 @@ namespace karto
         }
       }
     }
-    ros_service->~ros_Service();
+    
   }
 
   void MapperGraph::AddEdges(LocalizedLaserScan *pScan, const Matrix3 &rCovariance)

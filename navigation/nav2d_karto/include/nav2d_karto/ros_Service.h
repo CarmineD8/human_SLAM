@@ -39,7 +39,7 @@ public:
 
 	int getSemDist(std::int16_t obj1,std::int16_t obj2);
 
-
+	void callback_Dist(std_msgs::Int16 Dist);
 private:
 	// Private methods
 	
@@ -50,7 +50,7 @@ private:
 	ros::Publisher indPublisher;
 
 	std::string distTopic;
-
+	std::int16_t Dist;
 
 
 

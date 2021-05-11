@@ -61,7 +61,7 @@ MultiMapper::MultiMapper()
 
 	// Initialize KARTO-Mapper
 	mMapper = new karto::OpenMapper(true);
-	
+	mMapper->start_service();
 	
 	double param_d;
 	bool param_b;
@@ -186,6 +186,8 @@ MultiMapper::MultiMapper()
 		mSelfLocalizer = new SelfLocalizer();
 	}
 
+	
+
 }
 
 MultiMapper::~MultiMapper()
@@ -292,7 +294,7 @@ int MultiMapper::getSemDist(std::int16_t obj1,std::int16_t obj2)
 
 void MultiMapper::receiveCustomerOrder(const keyboard::Key keyboard_msg) /// works
 {
-	mMapper->start_service();
+	
 
 	// ///Here the subscribe function already decided that if it's the first order or not
 	mCustomerOrder = true;

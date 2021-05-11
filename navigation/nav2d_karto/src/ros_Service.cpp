@@ -8,8 +8,8 @@ ros_Service::ros_Service()
 	// Get parameters from the ROS parameter server
 	ros::NodeHandle n;
 	
-	// n.param("SEMANTIC DISTANCE", distSubscriber, std::string("sem_dist"));
-	// distSubscriber = n.subscribe(distTopic, 1, &ros_Service::getSemDist, this);
+	//n.param("sem_distance", distSubscriber, std::string("Sem_dist"));
+	distSubscriber = n.subscribe("Sem_dist", 10, &ros_Service::callback_Dist, this);
 	indPublisher=n.advertise<std_msgs::Int32MultiArray>("Sem_indices",1,true);           
 	
 
@@ -20,18 +20,25 @@ ros_Service::~ros_Service()
 {
 }
 
+void ros_Service::callback_Dist(std_msgs::Int16 DistR)
+{
+	Dist=DistR.data;
+	std::cout<<"ROS DIST IS "<<Dist<<std::endl;
+
+}
+
 int ros_Service::getSemDist(std::int16_t obj1,std::int16_t obj2)
 {
 	std_msgs::Int32MultiArray array;
-	array.data.clear();
+	
 	array.data.push_back(obj1);
 	array.data.push_back(obj2);
 	indPublisher.publish(array);
+	ros::spinOnce();
+
+	return Dist;
 	
-
-	return 1;
 } 
-
 
 
 
