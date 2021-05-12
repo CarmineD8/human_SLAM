@@ -1680,7 +1680,7 @@ namespace karto
 
             //factor = dist * BestResponse * ra * 1000000;
             std::cout << "dist is " << dist << std::endl;
-            if (dist < distLim && abs(ProbList.Get(ProbList.Size() - 1) - ProbList.Get(i)) <= semLim)
+            if (dist < distLim && semDist <= semLim)
             {
               factor = 1;
             }
