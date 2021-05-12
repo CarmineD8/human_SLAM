@@ -18,12 +18,12 @@
 #include <std_msgs/Int16.h>
 #include <std_msgs/Int32MultiArray.h>
 // #include <image_msg/ImageLocation.h>
-#include <OpenKarto/OpenKarto.h>
+//#include <OpenKarto/OpenKarto.h>
 #include <list>
 
 #include <string>
 #include <map>
-
+#include "service_node/GetSemDist.h"
 
 
 
@@ -39,7 +39,7 @@ public:
 
 	int getSemDist(std::int16_t obj1,std::int16_t obj2);
 
-	void callback_Dist(std_msgs::Int16 Dist);
+	//void callback_Dist(std_msgs::Int16 Dist);
 private:
 	// Private methods
 	
@@ -50,9 +50,10 @@ private:
 	ros::Publisher indPublisher;
 
 	std::string distTopic;
-	std::int16_t Dist;
-
-
+	//std::int16_t Dist;
+	ros::CallbackQueue my_queue;
+	service_node::GetSemDist srv;
+	ros::ServiceClient client;
 
 };
 #endif

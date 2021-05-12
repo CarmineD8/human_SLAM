@@ -16,7 +16,7 @@
 
 	<node name="Input" pkg="keyboard" type="keyboard">
     </node>		
-	<node name="Onto_dist_node" pkg="recognition" type="index2diff.py" output="screen">
+	<node name="dist_service" pkg="service_node" type="service_class.py" output="screen">
 	</node>
 
 	<node name="RVIZ" pkg="rviz" type="rviz" args=" -d $(find nav2d_tutorials)/param/tutorial3.rviz" />  

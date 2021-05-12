@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   nav2d_msgs
   nav2d_localizer
   keyboard
+  service_node
 )
 
 list(APPEND CMAKE_MODULE_PATH ${nav2d_karto_SOURCE_DIR}/cmake_modules)
@@ -52,6 +53,7 @@ include_directories(
   OpenKarto/source
   ${EIGEN3_INCLUDE_DIR}
   ${TBB_INCLUDE_DIRS}
+
   
 )
 
@@ -153,8 +155,8 @@ install(DIRECTORY OpenKarto/source/OpenKarto
   FILES_MATCHING PATTERN "*.h"
 )
 
-## Mark cpp header files for installation
-install(DIRECTORY include/${PROJECT_NAME}/
+
+install(DIRECTORY include/service_node/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
   FILES_MATCHING PATTERN "*.h"
 )
