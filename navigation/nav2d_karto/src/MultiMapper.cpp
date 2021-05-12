@@ -23,7 +23,8 @@ MultiMapper::MultiMapper()
 	robotNode.param("map_service", mMapService, std::string("get_map"));
 	robotNode.param("laser_topic", mLaserTopic, std::string("scan"));
 	robotNode.param("map_topic", mMapTopic, std::string("map"));
-	robotNode.param("customer_order", mCustomInputTopic, std::string("Input/keyup"));
+	//robotNode.param("customer_order", mCustomInputTopic, std::string("Input/keyup"));
+	robotNode.param("customer_order", mCustomInputTopic, std::string("index"));
 
 	ros::NodeHandle mapperNode("~/");
 	mapperNode.param("grid_resolution", mMapResolution, 0.05);
@@ -292,14 +293,14 @@ int MultiMapper::getSemDist(std::int16_t obj1,std::int16_t obj2)
 
 
 
-void MultiMapper::receiveCustomerOrder(const keyboard::Key keyboard_msg) /// works
+void MultiMapper::receiveCustomerOrder(const std_msgs::Int16 index) /// works
 {
 	
 
 	// ///Here the subscribe function already decided that if it's the first order or not
 	mCustomerOrder = true;
 	mFirstOrder = true;
-	OrderNum = keyboard_msg.code;
+	OrderNum = index.data;
 
 	// for (auto i : mCustomerProbArray)
 	// {

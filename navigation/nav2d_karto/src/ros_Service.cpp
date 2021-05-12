@@ -38,7 +38,6 @@ int ros_Service::getSemDist(std::int16_t obj1,std::int16_t obj2)
 	srv.request.b=obj2;
 	if (client.call(srv))
 	{
-		std::cout<<"RESPONSE IS "<<srv.response.sum<<std::endl;
 		return srv.response.sum;
 	}
 
