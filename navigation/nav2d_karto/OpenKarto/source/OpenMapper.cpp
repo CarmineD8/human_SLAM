@@ -1658,10 +1658,14 @@ namespace karto
           LocalizedObject *pConnectObject;
           double respLim = 0.1;
           int semLim = 1;
-          double distLim = 25;
+          double distLim = 15;
           double factor;
           double dist;
           int semDist;
+          double max = 1000000;
+          double Fd;
+          double Fs;
+          double Fr;
           int obj1 = ProbList.Get(ProbList.Size() - 1);
 
           for (kt_size_t i = 0; i < SearchedObjectList.Size() - 1; i++)
@@ -1673,20 +1677,47 @@ namespace karto
             Pose2 MatchingPose(OriginTransform.TransformPose(pConnectObject->GetCorrectedPose()).GetPosition(), OldPose.GetHeading());
             pLastScan->SetSensorPose(MatchingPose);
             BestResponse = m_pLoopScanMatcher->MatchScan(pLastScan, ConnectChain, BestLastPose, BestLastCovariance, false, false);
-            LinkChainToScan(ConnectChain, pLastScan, BestLastPose, BestLastCovariance);
+            //LinkChainToScan(ConnectChain, pLastScan, BestLastPose, BestLastCovariance);
 
             dist = OldPose.GetPosition().Distance(MatchingPose.GetPosition());
             Pose2 rMean = OriginTransform.InverseTransformPose(BestLastPose);
 
             //factor = dist * BestResponse * ra * 1000000;
             std::cout << "dist is " << dist << std::endl;
-            if (dist < distLim && semDist <= semLim)
+            std::cout<<"Dist is dist "<<dist<<" semDist is "<<semDist<<" scan response is "<<BestResponse<<std::endl;
+            if (dist < distLim && semDist <= semLim && BestResponse >= 0.3)
             {
-              factor = 1;
+              Fd=(max-1)/distLim*dist+1;
+              if (semDist=0)
+              {
+                Fs=1;
+              } 
+              else if (semDist=1)
+              {
+                Fs=max/4;
+              }
+
+              else if (semDist=2)
+              {
+                Fs=max/2;
+              }
+
+              else if (semDist>2)
+              {
+                Fs=max;
+              }
+
+              Fr= BestResponse+max*(1-BestResponse);
+
+              factor = (Fd+Fs+Fr)/3;
+              factor=1;
+
+              std::cout<<"Factor info "<<Fd<<" "<<Fs<<" "<<Fr<<std::endl;
             }
             else
             {
-              factor = 1000000000;
+              factor = max;
+              
             }
             std::cout << "factor is " << factor << std::endl;
 
