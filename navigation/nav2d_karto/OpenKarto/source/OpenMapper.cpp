@@ -1680,7 +1680,7 @@ namespace karto
             //LinkChainToScan(ConnectChain, pLastScan, BestLastPose, BestLastCovariance);
 
             dist = OldPose.GetPosition().Distance(MatchingPose.GetPosition());
-            Pose2 rMean = OriginTransform.InverseTransformPose(BestLastPose);
+            //Pose2 rMean = OriginTransform.InverseTransformPose(BestLastPose);
 
             //factor = dist * BestResponse * ra * 1000000;
             std::cout << "dist is " << dist << std::endl;
@@ -1710,7 +1710,7 @@ namespace karto
               Fr= BestResponse+max*(1-BestResponse);
 
               factor = (Fd+Fs+Fr)/3;
-              factor=1;
+            
 
               std::cout<<"Factor info "<<Fd<<" "<<Fs<<" "<<Fr<<std::endl;
             }
@@ -1719,12 +1719,14 @@ namespace karto
               factor = max;
               
             }
+            factor=1;
             std::cout << "factor is " << factor << std::endl;
-
-            BestLastCovariance(0, 0) = BestLastCovariance(0, 0) * factor;
-            BestLastCovariance(1, 1) = BestLastCovariance(1, 1) * factor;
-            BestLastCovariance(2, 2) = BestLastCovariance(2, 2) * factor;
+            
+            // BestLastCovariance(0, 0) = BestLastCovariance(0, 0) * factor;
+            // BestLastCovariance(1, 1) = BestLastCovariance(1, 1) * factor;
+            // BestLastCovariance(2, 2) = BestLastCovariance(2, 2) * factor;
             LinkChainToScan(ConnectChain, pLastScan, BestLastPose, BestLastCovariance);
+            Pose2 rMean = OriginTransform.InverseTransformPose(BestLastPose);
             LinkObjects(pConnectObject, pObject, rMean, BestLastCovariance);
             LinkObjects(pConnectObject, pLastScan, BestLastPose, BestLastCovariance);
           }
