@@ -1506,35 +1506,33 @@ namespace karto
     ros_service = new ros_Service();
   }
 
-  void MapperGraph::AddEdges(LocalizedObject *pObject)
+  void MapperGraph::AddEdges(LocalizedObject* pObject)
   {
     Matrix3 covariance;
     covariance(0, 0) = MAX_VARIANCE;
     covariance(1, 1) = MAX_VARIANCE;
     covariance(2, 2) = MAX_VARIANCE;
-  
-    LocalizedLaserScan *pScan = dynamic_cast<LocalizedLaserScan *>(pObject);
+    
+    LocalizedLaserScan* pScan = dynamic_cast<LocalizedLaserScan*>(pObject);
     if (pScan != NULL)
-    {
+    {      
       AddEdges(pScan, covariance);
     }
-    else
-    {
-      MapperSensorManager *pSensorManager = m_pOpenMapper->m_pMapperSensorManager;
-      const Identifier &rSensorName = pObject->GetSensorIdentifier();
+    else{
+      MapperSensorManager* pSensorManager = m_pOpenMapper->m_pMapperSensorManager;      
+      const Identifier& rSensorName = pObject->GetSensorIdentifier();
 
-      LocalizedLaserScan *pLastScan = pSensorManager->GetLastScan(rSensorName);
+      LocalizedLaserScan* pLastScan = pSensorManager->GetLastScan(rSensorName);
       LinkObjects(pLastScan, pObject, pObject->GetCorrectedPose(), covariance);
 
-      Transform OriginTransform(pObject->GetCorrectedPose(), pLastScan->GetCorrectedPose());
-      if (pObject->HasCustomItem())
-      {
-        std::cout << "Pose before correction: " << std::endl;
-        std::cout << "x: " << pObject->GetCorrectedPose().GetX() << std::endl;
-        std::cout << "y: " << pObject->GetCorrectedPose().GetY() << std::endl;
-        std::cout << "Heading: " << pObject->GetCorrectedPose().GetHeading() << std::endl;
+      Transform OriginTransform(pObject->GetCorrectedPose(),pLastScan->GetCorrectedPose());
+      if (pObject->HasCustomItem()){
+          std::cout<<"Pose before correction: "<<std::endl;
+        std::cout<<"x: "<<pObject->GetCorrectedPose().GetX()<<std::endl;
+        std::cout<<"y: "<<pObject->GetCorrectedPose().GetY()<<std::endl;
+        std::cout<<"Heading: "<<pObject->GetCorrectedPose().GetHeading()<<std::endl;
 
-        //        LocalizedObjectList pObjectList = m_pOpenMapper->m_pMapperSensorManager->GetAllObjects();
+//        LocalizedObjectList pObjectList = m_pOpenMapper->m_pMapperSensorManager->GetAllObjects();
 
         VertexList pVertexList = GetVertices();
         bool FoundConnection = false;
@@ -1542,206 +1540,105 @@ namespace karto
         Pose2List SearchedPoses;
         CustomItemList pObjectItemList = pObject->GetCustomItems();
         List<kt_float> ProbList = pObjectItemList[0]->Read();
-        karto_const_forEach(VertexList, &pVertexList)
-        {
-          Vertex<LocalizedObjectPtr> *pSearchedVertex = *iter;
-          LocalizedObject *pSearchedObject = pSearchedVertex->GetVertexObject();
-          CustomItemList pSearchedItemList = pSearchedObject->GetCustomItems();
-          if (pSearchedObject->HasCustomItem() == false)
-            continue;
-          else //if (pSearchedItemList[0]->Read().Size() != ProbList.Size())
-          {
-            SearchedObjectList.Add(pSearchedObject);
-            SearchedPoses.Add(pSearchedObject->GetCorrectedPose());
-          }
+        karto_const_forEach(VertexList, &pVertexList){
+            Vertex<LocalizedObjectPtr>* pSearchedVertex = *iter;
+            LocalizedObject* pSearchedObject = pSearchedVertex->GetVertexObject();
+            CustomItemList pSearchedItemList = pSearchedObject->GetCustomItems();
+            if(pSearchedObject->HasCustomItem() == false)
+                continue;
+            else if(pSearchedItemList[0]->Read().Size() != ProbList.Size()){
+                SearchedObjectList.Add(pSearchedObject);
+                SearchedPoses.Add(pSearchedObject->GetCorrectedPose());
+            }
         }
 
         //ProbList.RemoveAt(ProbList.Size()-1);
         printf("The special node IDs: [");
-        karto_forEach(LocalizedObjectList, &SearchedObjectList)
-        {
-          LocalizedObject *pSearchedObject = *iter;
-          printf("%d ", pSearchedObject->GetUniqueId());
+        karto_forEach(LocalizedObjectList, &SearchedObjectList) {
+            LocalizedObject* pSearchedObject = *iter;
+            printf("%d ", pSearchedObject->GetUniqueId());
+            
         }
-        // printf("]\n");
-        // if (SearchedObjectList.Size() != ProbList.Size()) {
-        //     std::cout << "Has " << SearchedObjectList.Size() << " special nodes but " << ProbList.Size() - 1
-        //               << " probabilities." << std::endl;
-        //     std::cout << "Failed to find all the special nodes, crashed!" << std::endl;
-        //     assert(false);
-        // }
+        printf("]\n");
+        if (SearchedObjectList.Size() != ProbList.Size()-1) {
+            std::cout << "Has " << SearchedObjectList.Size() << " special nodes but " << ProbList.Size() - 1
+                      << " probabilities." << std::endl;
+            std::cout << "Failed to find all the special nodes, crashed!" << std::endl;
+            assert(false);
+        }
 
-        // kt_float Max_Prob = 0.0;
-        // kt_int32s Max_Index = 0;
-        // for(kt_size_t i=0; i<ProbList.Size(); i++){
-        //     if(ProbList.Get(i) > Max_Prob){
-        //         Max_Prob = ProbList.Get(i);
-        //         Max_Index = i;
-        //     }
-        // }
-        float_t Dist = 0.0;
-        float_t Min_Dist = 1000000.0;
-        kt_float Index = 0;
+        
         Pose2 OldPose = pLastScan->GetSensorPose();
-        std::vector<int16_t> Indices;
-        for (kt_size_t i = 0; i < ProbList.Size() - 1; i++)
-        {
-          if (ProbList.Get(ProbList.Size() - 1) == ProbList.Get(i))
-          {
-            Indices.push_back(i);
-          }
-        }
+    
 
-        // for(kt_size_t i=0; i<Indices.size(); i++){
-        //   Pose2 MatchingPose(OriginTransform.TransformPose(SearchedObjectList[Indices[i]]->GetCorrectedPose()).GetPosition(), OldPose.GetHeading());
-        //   Dist=OldPose.GetPosition().Distance(MatchingPose.GetPosition());
-
-        //   if (Dist<Min_Dist){
-        //     Min_Dist=Dist;
-
-        //     Index=i;
-        //   }
-
-        // }
-
-        // if(Max_Prob > 0.0) FoundConnection = true;
-        // if(!FoundConnection){
-        //   std::cout << "There's no connection!"<<std::endl;
-        //   return;
-        // }
-        ///When there is a connection, the last scan should try to match the chain
-        if (pLastScan != NULL)
-        {
-          LocalizedLaserScanList ConnectChain;
-          kt_int32s HalfChainsize = m_pOpenMapper->m_pLoopMatchMinimumChainSize->GetValue();
-          VertexList pVertexList = GetVertices();
-          // kt_int32s StartIndex = 0, EndIndex = pVertexList.Size() - 1;
-          // ;
-
-          // LocalizedObject* pConnectObject = SearchedObjectList[Indices[Index]];
-
-          // kt_int32s pConnectID = pConnectObject->GetUniqueId();
-
-          // if (pConnectID - HalfChainsize > 0) {StartIndex = pConnectID - HalfChainsize ;}
-          // if (pConnectID + HalfChainsize < EndIndex) {EndIndex = pConnectID + HalfChainsize;}
-          // std::cout << "Found chain from Scan "<<StartIndex<<" to Scan "<<EndIndex<<" for matching." << std::endl;
-          kt_int32s StartIndex = 0, EndIndex = pVertexList.Size() - 1;
-          for (kt_int32s i = StartIndex; i <= EndIndex; i++)
-          {
-            LocalizedObject *iterObject = pVertexList[i]->GetVertexObject();
-            LocalizedLaserScan *iterScan = dynamic_cast<LocalizedLaserScan *>(iterObject);
-            if (iterScan != NULL)
+          ///When there is a connection, the last scan should try to match the chain
+        if(pLastScan != NULL){
+            LocalizedLaserScanList ConnectChain;
+            kt_int32s HalfChainsize = m_pOpenMapper->m_pLoopMatchMinimumChainSize->GetValue();
+            VertexList pVertexList = GetVertices();
+            kt_int32s StartIndex = 0, EndIndex = pVertexList.Size() - 1;
+            int ind1=ProbList.Get(ProbList.Size()-1);
+            int ind2;
+            int semDist;
+            double respLim=0.3;
+            double distLim=20;
+            int semDistLim=2;
+            for (int i = 0; i<SearchedObjectList.Size(); i++)
             {
-              ConnectChain.Add(iterScan);
+            EndIndex = pVertexList.Size() - 1;
+            StartIndex = 0;
+            ConnectChain.Clear();
+            
+            ind2 = ProbList.Get(i);
+            
+            semDist = ros_service->getSemDist(ind1,ind2);
+
+            LocalizedObject* pConnectObject = SearchedObjectList[i];
+          
+            kt_int32s pConnectID = pConnectObject->GetUniqueId();
+            
+            if (pConnectID - HalfChainsize > 0) {StartIndex = pConnectID - HalfChainsize ;}
+            if (pConnectID + HalfChainsize < EndIndex) {EndIndex = pConnectID + HalfChainsize;}
+            std::cout << "Found chain from Scan "<<StartIndex<<" to Scan "<<EndIndex<<" for matching." << std::endl;
+            for(kt_int32s i = StartIndex ; i <= EndIndex ; i++){
+                LocalizedObject* iterObject = pVertexList[i]->GetVertexObject();
+                LocalizedLaserScan* iterScan = dynamic_cast<LocalizedLaserScan*>(iterObject);
+                if (iterScan !=NULL){
+                    ConnectChain.Add(iterScan);
+                    
+                }
             }
-          }
-          //
-          //             Pose2 BestLastPose;
-          //             Matrix3 BestLastCovariance;
-          //             double respLim=0.1;
-          //             double distLim=100;
-          //             Pose2 MatchingPose(OriginTransform.TransformPose(pConnectObject->GetCorrectedPose()).GetPosition(), OldPose.GetHeading());
-          //             pLastScan->SetSensorPose(MatchingPose);
-          //             kt_double BestResponse = m_pLoopScanMatcher->MatchScan(pLastScan, ConnectChain, BestLastPose, BestLastCovariance, false, false);
-          //             std::cout<<"Match around: "<<MatchingPose.GetX()<<", "<<MatchingPose.GetY()<<std::endl;
-          //             std::cout<<"The response of last scan is: "<< BestResponse <<std::endl;
-          //             if(BestResponse >= respLim && OldPose.GetPosition().Distance(MatchingPose.GetPosition()) < distLim){
-          // //                std::cout<<"Found the match for the last scan!! Link it to the chain and correct the pose of the object!"<<std::endl;
-          //                 std::cout<<"Last scan should be correct to the pose: ("<<BestLastPose.GetX()<<", "<<BestLastPose.GetY()<<", "<<BestLastPose.GetHeading()<<")"<<std::endl;
-          //                 //pLastScan->SetSensorPose(OldPose);
-          //                 //TODO: MAYBE IT NOT THAT NECESSARY?
-
-          //std::cout<<"Connect the object ID: " <<pObject->GetUniqueId()<<" with ID: "<<pConnectObject->GetUniqueId()<<std::endl;
-          Pose2 BestLastPose;
-          Matrix3 BestLastCovariance;
-          kt_double BestResponse;
-          LocalizedObject *pConnectObject;
-          double respLim = 0.1;
-          int semLim = 1;
-          double distLim = 15;
-          double factor;
-          double dist;
-          int semDist;
-          double max = 1000000;
-          double Fd;
-          double Fs;
-          double Fr;
-          int obj1 = ProbList.Get(ProbList.Size() - 1);
-
-          for (kt_size_t i = 0; i < SearchedObjectList.Size() - 1; i++)
-          {
-            int obj2 = ProbList.Get(i);
-            pConnectObject = SearchedObjectList[i];
-            semDist = ros_service->getSemDist(obj1, obj2);
-            std::cout<<"Sem Distance is "<<semDist<<std::endl;
+            std::cout<<"Chain size is "<<ConnectChain.Size()<<std::endl;
+            Pose2 BestLastPose;
+            Matrix3 BestLastCovariance;
+            
             Pose2 MatchingPose(OriginTransform.TransformPose(pConnectObject->GetCorrectedPose()).GetPosition(), OldPose.GetHeading());
             pLastScan->SetSensorPose(MatchingPose);
-            BestResponse = m_pLoopScanMatcher->MatchScan(pLastScan, ConnectChain, BestLastPose, BestLastCovariance, false, false);
-            //LinkChainToScan(ConnectChain, pLastScan, BestLastPose, BestLastCovariance);
-
-            dist = OldPose.GetPosition().Distance(MatchingPose.GetPosition());
-            //Pose2 rMean = OriginTransform.InverseTransformPose(BestLastPose);
-
-            //factor = dist * BestResponse * ra * 1000000;
-            std::cout << "dist is " << dist << std::endl;
-            std::cout<<"Dist is dist "<<dist<<" semDist is "<<semDist<<" scan response is "<<BestResponse<<std::endl;
-            if (dist < distLim && semDist <= semLim && BestResponse >= 0.3)
-            {
-              Fd=(max-1)/distLim*dist+1;
-              if (semDist=0)
-              {
-                Fs=1;
-              } 
-              else if (semDist=1)
-              {
-                Fs=max/4;
-              }
-
-              else if (semDist=2)
-              {
-                Fs=max/2;
-              }
-
-              else if (semDist>2)
-              {
-                Fs=max;
-              }
-
-              Fr= BestResponse+max*(1-BestResponse);
-
-              factor = (Fd+Fs+Fr)/3;
-            
-
-              std::cout<<"Factor info "<<Fd<<" "<<Fs<<" "<<Fr<<std::endl;
+            kt_double BestResponse = m_pLoopScanMatcher->MatchScan(pLastScan, ConnectChain, BestLastPose, BestLastCovariance, false, false);
+            std::cout<<"Match around: "<<MatchingPose.GetX()<<", "<<MatchingPose.GetY()<<std::endl;
+            std::cout<<"The response of last scan is: "<< BestResponse <<std::endl;
+            if(BestResponse >= respLim && OldPose.GetPosition().Distance(MatchingPose.GetPosition()) <= distLim && semDist<=semDistLim){
+//                std::cout<<"Found the match for the last scan!! Link it to the chain and correct the pose of the object!"<<std::endl;
+                std::cout<<"Last scan should be correct to the pose: ("<<BestLastPose.GetX()<<", "<<BestLastPose.GetY()<<", "<<BestLastPose.GetHeading()<<")"<<std::endl;
+                //pLastScan->SetSensorPose(OldPose);
+                //TODO: MAYBE IT NOT THAT NECESSARY?
+                LinkChainToScan(ConnectChain, pLastScan, BestLastPose, BestLastCovariance);
+                Pose2 rMean = OriginTransform.InverseTransformPose(BestLastPose);
+                std::cout<<"Connect the object ID: " <<pObject->GetUniqueId()<<" with ID: "<<pConnectObject->GetUniqueId()<<std::endl;
+                LinkObjects(pConnectObject, pObject, rMean, BestLastCovariance);
+                LinkObjects(pConnectObject, pLastScan, BestLastPose, BestLastCovariance);
             }
-            else
-            {
-              factor = max;
-              
+            else{
+                if(BestResponse < respLim) std::cout<<"The response is too low, do not add constraints here!"<<std::endl;
+                if(OldPose.GetPosition().Distance(MatchingPose.GetPosition()) >= distLim)
+                    std::cout<<"Wrong matching! The distance is: "<< OldPose.GetPosition().Distance(MatchingPose.GetPosition())<<std::endl;
+                if(semDist>semDistLim) std::cout<<"Semantic distance is too big - "<< semDist;
             }
-            factor=1;
-            std::cout << "factor is " << factor << std::endl;
-            
-            // BestLastCovariance(0, 0) = BestLastCovariance(0, 0) * factor;
-            // BestLastCovariance(1, 1) = BestLastCovariance(1, 1) * factor;
-            // BestLastCovariance(2, 2) = BestLastCovariance(2, 2) * factor;
-            LinkChainToScan(ConnectChain, pLastScan, BestLastPose, BestLastCovariance);
-            Pose2 rMean = OriginTransform.InverseTransformPose(BestLastPose);
-            LinkObjects(pConnectObject, pObject, rMean, BestLastCovariance);
-            LinkObjects(pConnectObject, pLastScan, BestLastPose, BestLastCovariance);
           }
-          //LinkObjects(pConnectObject, pLastScan, BestLastPose, BestLastCovariance);
-          //         }
-          //         // else{
-          //         //     if(BestResponse < respLim) std::cout<<"The response is too low, do not add constraints here!"<<std::endl;
-          //         //     if(OldPose.GetPosition().Distance(MatchingPose.GetPosition()) >= distLim)
-          //         //         std::cout<<"Wrong matching! The distance is: "<< OldPose.GetPosition().Distance(MatchingPose.GetPosition())<<std::endl;
         }
       }
     }
-    
   }
-
   void MapperGraph::AddEdges(LocalizedLaserScan *pScan, const Matrix3 &rCovariance)
   {
     MapperSensorManager *pSensorManager = m_pOpenMapper->m_pMapperSensorManager;
