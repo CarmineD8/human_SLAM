@@ -529,7 +529,7 @@ namespace karto
     return pScanMatcher;
   }
   ///Match pScan agianst rBaseScans
-  kt_double ScanMatcher::MatchScan(LocalizedLaserScan *pScan, const LocalizedLaserScanList &rBaseScans, Pose2 &rMean, Matrix3 &rCovariance, kt_bool doPenalize, kt_bool doRefineMatch)
+  kt_double ScanMatcher::MatchScan(LocalizedLaserScan *pScan, const LocalizedLaserScanList &rBaseScans, Pose2 &rMean, Matrix3 &rCovariance, kt_bool doPenalize, kt_bool doRefineMatch, bool customObj)
   {
     SmartPointer<ScanMatcherGridSet> pScanMatcherGridSet;
 
@@ -601,7 +601,7 @@ namespace karto
     ///Actual scan-matching, the scanPose is the search center of the correlateScan function,
     ///It directly comes from the pose of the localized scan
     ///The search center is the scanPose
-    kt_double bestResponse = CorrelateScan(pScanMatcherGridSet, pScan, scanPose, coarseSearchOffset, coarseSearchResolution, m_pOpenMapper->m_pCoarseSearchAngleOffset->GetValue(), m_pOpenMapper->m_pCoarseAngleResolution->GetValue(), doPenalize, rMean, rCovariance, false);
+    kt_double bestResponse = CorrelateScan(pScanMatcherGridSet, pScan, scanPose, coarseSearchOffset, coarseSearchResolution, m_pOpenMapper->m_pCoarseSearchAngleOffset->GetValue(), m_pOpenMapper->m_pCoarseAngleResolution->GetValue(), doPenalize, rMean, rCovariance, false, customObj);
 
     if (m_pOpenMapper->m_pUseResponseExpansion->GetValue() == true)
     {
@@ -617,7 +617,7 @@ namespace karto
         {
           newSearchAngleOffset += math::DegreesToRadians(20);
 
-          bestResponse = CorrelateScan(pScanMatcherGridSet, pScan, scanPose, coarseSearchOffset, coarseSearchResolution, newSearchAngleOffset, m_pOpenMapper->m_pCoarseAngleResolution->GetValue(), doPenalize, rMean, rCovariance, false);
+          bestResponse = CorrelateScan(pScanMatcherGridSet, pScan, scanPose, coarseSearchOffset, coarseSearchResolution, newSearchAngleOffset, m_pOpenMapper->m_pCoarseAngleResolution->GetValue(), doPenalize, rMean, rCovariance, false, customObj);
 
           if (math::DoubleEqual(bestResponse, 0.0) == false)
           {
@@ -638,7 +638,7 @@ namespace karto
     {
       Vector2d fineSearchOffset(coarseSearchResolution * 0.5);
       Vector2d fineSearchResolution(pCorrelationGrid->GetResolution(), pCorrelationGrid->GetResolution());
-      bestResponse = CorrelateScan(pScanMatcherGridSet, pScan, rMean, fineSearchOffset, fineSearchResolution, 0.5 * m_pOpenMapper->m_pCoarseAngleResolution->GetValue(), m_pOpenMapper->m_pFineSearchAngleOffset->GetValue(), doPenalize, rMean, rCovariance, true);
+      bestResponse = CorrelateScan(pScanMatcherGridSet, pScan, rMean, fineSearchOffset, fineSearchResolution, 0.5 * m_pOpenMapper->m_pCoarseAngleResolution->GetValue(), m_pOpenMapper->m_pFineSearchAngleOffset->GetValue(), doPenalize, rMean, rCovariance, true, customObj);
     }
 
 #ifdef KARTO_DEBUG
@@ -741,7 +741,7 @@ namespace karto
 #endif
   ///Compute the response for scan matching
   kt_double ScanMatcher::CorrelateScan(ScanMatcherGridSet *pScanMatcherGridSet, LocalizedLaserScan *pScan, const Pose2 &rSearchCenter, const Vector2d &rSearchSpaceOffset, const Vector2d &rSearchSpaceResolution,
-                                       kt_double searchAngleOffset, kt_double searchAngleResolution, kt_bool doPenalize, Pose2 &rMean, Matrix3 &rCovariance, kt_bool doingFineMatch)
+                                       kt_double searchAngleOffset, kt_double searchAngleResolution, kt_bool doPenalize, Pose2 &rMean, Matrix3 &rCovariance, kt_bool doingFineMatch, bool customObj)
   {
     assert(searchAngleResolution != 0.0);
 
@@ -950,7 +950,7 @@ namespace karto
 
     if (!doingFineMatch)
     {
-      ComputePositionalCovariance(pSearchSpaceProbs, averagePose, bestResponse, rSearchCenter, rSearchSpaceOffset, rSearchSpaceResolution, searchAngleResolution, rCovariance);
+      ComputePositionalCovariance(pSearchSpaceProbs, averagePose, bestResponse, rSearchCenter, rSearchSpaceOffset, rSearchSpaceResolution, searchAngleResolution, rCovariance, customObj);
     }
     else
     {
@@ -976,7 +976,7 @@ namespace karto
 
   void ScanMatcher::ComputePositionalCovariance(Grid<kt_double> *pSearchSpaceProbs, const Pose2 &rBestPose, kt_double bestResponse,
                                                 const Pose2 &rSearchCenter, const Vector2d &rSearchSpaceOffset,
-                                                const Vector2d &rSearchSpaceResolution, kt_double searchAngleResolution, Matrix3 &rCovariance)
+                                                const Vector2d &rSearchSpaceResolution, kt_double searchAngleResolution, Matrix3 &rCovariance, bool customObj)
   {
     // reset covariance to identity matrix
     rCovariance.SetToIdentity();
@@ -991,6 +991,15 @@ namespace karto
       return;
     }
 
+    if (bestResponse < 50 && customObj==true)
+    {
+      std::cout<<"MAX variance"<<std::endl;
+      rCovariance(0, 0) = MAX_VARIANCE;                            // XX
+      rCovariance(1, 1) = MAX_VARIANCE;                            // YY
+      rCovariance(2, 2) = 4 * math::Square(searchAngleResolution); // TH*TH
+
+      return;
+    }
     kt_double accumulatedVarianceXX = 0;
     kt_double accumulatedVarianceXY = 0;
     kt_double accumulatedVarianceYY = 0;
@@ -1619,7 +1628,7 @@ namespace karto
             
             Pose2 MatchingPose(OriginTransform.TransformPose(pConnectObject->GetCorrectedPose()).GetPosition(), OldPose.GetHeading());
             pLastScan->SetSensorPose(MatchingPose);
-            kt_double BestResponse = m_pLoopScanMatcher->MatchScan(pLastScan, ConnectChain, BestLastPose, BestLastCovariance, false, false);
+            kt_double BestResponse = m_pLoopScanMatcher->MatchScan(pLastScan, ConnectChain, BestLastPose, BestLastCovariance, false, false, true);
             std::cout<<"Match around: "<<MatchingPose.GetX()<<", "<<MatchingPose.GetY()<<std::endl;
             std::cout<<"The response of last scan is: "<< BestResponse <<std::endl;
             std::cout<<"Distance is in m "<< OldPose.GetPosition().Distance(MatchingPose.GetPosition())<<std::endl;

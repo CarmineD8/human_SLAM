@@ -1114,7 +1114,7 @@ namespace karto
      * @return strength of response
      */
     kt_double MatchScan(LocalizedLaserScan* pScan, const LocalizedLaserScanList& rBaseScans, Pose2& rMean, Matrix3& rCovariance,
-                        kt_bool doPenalize = true, kt_bool doRefineMatch = true);
+                        kt_bool doPenalize = true, kt_bool doRefineMatch = true, bool customObj = false);
     
     /**
      * Finds the best pose for the scan centering the search in the correlation grid
@@ -1134,7 +1134,7 @@ namespace karto
      * @return strength of response
      */
     kt_double CorrelateScan(ScanMatcherGridSet* pScanMatcherGridSet, LocalizedLaserScan* pScan, const Pose2& rSearchCenter, const Vector2d& rSearchSpaceOffset, const Vector2d& rSearchSpaceResolution,
-                            kt_double searchAngleOffset, kt_double searchAngleResolution,	kt_bool doPenalize, Pose2& rMean, Matrix3& rCovariance, kt_bool doingFineMatch);
+                            kt_double searchAngleOffset, kt_double searchAngleResolution,	kt_bool doPenalize, Pose2& rMean, Matrix3& rCovariance, kt_bool doingFineMatch,bool specialObj);
     
     /**
      * Computes the positional covariance of the best pose
@@ -1149,7 +1149,7 @@ namespace karto
      */
     static void ComputePositionalCovariance(Grid<kt_double>* pSearchSpaceProbs, const Pose2& rBestPose, kt_double bestResponse, const Pose2& rSearchCenter,
                                             const Vector2d& rSearchSpaceOffset, const Vector2d& rSearchSpaceResolution,
-                                            kt_double searchAngleResolution, Matrix3& rCovariance);
+                                            kt_double searchAngleResolution, Matrix3& rCovariance, bool specialObj);
     
     /**
      * Computes the angular covariance of the best pose
