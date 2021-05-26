@@ -1617,9 +1617,11 @@ namespace karto
             LocalizedLaserScanList ConnectChain;
             kt_int32s HalfChainsize = m_pOpenMapper->m_pLoopMatchMinimumChainSize->GetValue();
             VertexList pVertexList = GetVertices();
+            for (int i=0; i < SearchedObjectList.Size(); i++)
+            {
             kt_int32s StartIndex = 0, EndIndex = pVertexList.Size() - 1;
-            ;
-            LocalizedObject* pConnectObject = SearchedObjectList[Indices[0]];
+            
+            LocalizedObject* pConnectObject = SearchedObjectList[i];
           
             kt_int32s pConnectID = pConnectObject->GetUniqueId();
             
@@ -1658,6 +1660,7 @@ namespace karto
                     std::cout<<"Wrong matching! The distance is: "<< OldPose.GetPosition().Distance(MatchingPose.GetPosition())<<std::endl;
             }
         }
+      }
       }
     }
   }

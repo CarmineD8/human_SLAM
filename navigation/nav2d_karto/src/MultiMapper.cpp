@@ -285,14 +285,17 @@ void MultiMapper::receiveCustomerOrder(const keyboard::Key keyboard_msg) /// wor
 	mFirstOrder = true;
 	OrderNum = keyboard_msg.code;
 
-	for (auto i : mCustomerProbArray)
+	// for (auto i : mCustomerProbArray)
+	// {
+	// 	if (i == OrderNum)
+	// 	{
+	// 		mFirstOrder = false;
+	// 	}
+	// }
+	if (mCustomerProbArray.size()>1)
 	{
-		if (i == OrderNum)
-		{
-			mFirstOrder = false;
-		}
+		mFirstOrder=false;
 	}
-
 	// std::vector<kt_float>::iterator it;
 	// it = mCustomerProbArray.begin();
 	// it = mCustomerProbArray.insert(it, OrderNum);
