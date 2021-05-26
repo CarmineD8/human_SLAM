@@ -29,7 +29,7 @@
 
 #include <OpenKarto/OpenMapper.h>
 #include <OpenKarto/Logger.h>
-
+#include <ros_Service.h>
 namespace karto
 {
 
@@ -1513,6 +1513,12 @@ namespace karto
     }
   }
 
+  ros_Service *ros_service;
+  void OpenMapper::start_service()
+  {
+    ros_service = new ros_Service();
+  }
+
   void MapperGraph::AddEdges(LocalizedObject* pObject)
   {
     Matrix3 covariance;
@@ -1643,7 +1649,7 @@ namespace karto
             kt_double BestResponse = m_pLoopScanMatcher->MatchScan(pLastScan, ConnectChain, BestLastPose, BestLastCovariance, false, false);
             std::cout<<"Match around: "<<MatchingPose.GetX()<<", "<<MatchingPose.GetY()<<std::endl;
             std::cout<<"The response of last scan is: "<< BestResponse <<std::endl;
-            if(BestResponse >= 0.3 && OldPose.GetPosition().Distance(MatchingPose.GetPosition()) < 100){
+            if(BestResponse >= 0.3 && OldPose.GetPosition().Distance(MatchingPose.GetPosition()) < 30){
 //                std::cout<<"Found the match for the last scan!! Link it to the chain and correct the pose of the object!"<<std::endl;
                 std::cout<<"Last scan should be correct to the pose: ("<<BestLastPose.GetX()<<", "<<BestLastPose.GetY()<<", "<<BestLastPose.GetHeading()<<")"<<std::endl;
                 //pLastScan->SetSensorPose(OldPose);

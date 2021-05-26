@@ -581,6 +581,8 @@ namespace karto
      * @param pObject object
      */
     void AddVertex(LocalizedObject* pObject);
+
+  
     
     /**
      * Creates an edge between the source object and the target object if it
@@ -1594,6 +1596,10 @@ namespace karto
      * Scans are changed after a loop closure and after any translation, rotation or transform.
      */    
     BasicEvent<EventArguments> ScansUpdated;
+
+    public:
+
+    void start_service();
 
   protected:
     //@cond EXCLUDE
