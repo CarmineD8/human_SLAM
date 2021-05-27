@@ -1623,10 +1623,28 @@ namespace karto
             LocalizedLaserScanList ConnectChain;
             kt_int32s HalfChainsize = m_pOpenMapper->m_pLoopMatchMinimumChainSize->GetValue();
             VertexList pVertexList = GetVertices();
-            for (int i=0; i < SearchedObjectList.Size(); i++)
-            {
             kt_int32s StartIndex = 0, EndIndex = pVertexList.Size() - 1;
+            int ind1=ProbList.Get(ProbList.Size()-1);
+            int ind2;
+            int semDist;
+            double respLim=0.2;
+            float distLim=20.0;
+            int semDistLim=2;
+            float fdistmax=50.0;
+            double Fe;
+            int Fs;
+            double factor;
             
+            for (int i = 0; i<SearchedObjectList.Size(); i++)
+            {
+            EndIndex = pVertexList.Size() - 1;
+            StartIndex = 0;
+            ConnectChain.Clear();
+            
+            ind2 = ProbList.Get(i);
+            
+            semDist = ros_service->getSemDist(ind1,ind2);
+
             LocalizedObject* pConnectObject = SearchedObjectList[i];
           
             kt_int32s pConnectID = pConnectObject->GetUniqueId();
@@ -1639,8 +1657,10 @@ namespace karto
                 LocalizedLaserScan* iterScan = dynamic_cast<LocalizedLaserScan*>(iterObject);
                 if (iterScan !=NULL){
                     ConnectChain.Add(iterScan);
+                    
                 }
             }
+            std::cout<<"Chain size is "<<ConnectChain.Size()<<std::endl;
             Pose2 BestLastPose;
             Matrix3 BestLastCovariance;
             
@@ -1649,24 +1669,41 @@ namespace karto
             kt_double BestResponse = m_pLoopScanMatcher->MatchScan(pLastScan, ConnectChain, BestLastPose, BestLastCovariance, false, false);
             std::cout<<"Match around: "<<MatchingPose.GetX()<<", "<<MatchingPose.GetY()<<std::endl;
             std::cout<<"The response of last scan is: "<< BestResponse <<std::endl;
-            if(BestResponse >= 0.3 && OldPose.GetPosition().Distance(MatchingPose.GetPosition()) < 30){
+            std::cout<<"Distance is in m "<< OldPose.GetPosition().Distance(MatchingPose.GetPosition())<<std::endl;
+            if(BestResponse >= respLim && OldPose.GetPosition().Distance(MatchingPose.GetPosition()) <= distLim && semDist<=semDistLim){
 //                std::cout<<"Found the match for the last scan!! Link it to the chain and correct the pose of the object!"<<std::endl;
                 std::cout<<"Last scan should be correct to the pose: ("<<BestLastPose.GetX()<<", "<<BestLastPose.GetY()<<", "<<BestLastPose.GetHeading()<<")"<<std::endl;
                 //pLastScan->SetSensorPose(OldPose);
                 //TODO: MAYBE IT NOT THAT NECESSARY?
+                // FACTOR CALCULATION
+
+                Fe=((fdistmax-1)/distLim)*OldPose.GetPosition().Distance(MatchingPose.GetPosition())+1;
+
+                factor=Fe;
+                for (int i=0; i <= 1; i++)
+                {
+                  for (int j=0; j <= 1; j++)
+                  {
+                    BestLastCovariance(i,j)=BestLastCovariance(i,j)*factor;
+                  }
+                }
+                std::cout<<"factor is "<<factor<<std::endl;
+
+                
                 LinkChainToScan(ConnectChain, pLastScan, BestLastPose, BestLastCovariance);
                 Pose2 rMean = OriginTransform.InverseTransformPose(BestLastPose);
                 std::cout<<"Connect the object ID: " <<pObject->GetUniqueId()<<" with ID: "<<pConnectObject->GetUniqueId()<<std::endl;
                 LinkObjects(pConnectObject, pObject, rMean, BestLastCovariance);
-                LinkObjects(pConnectObject, pLastScan, BestLastPose, BestLastCovariance);
+                //LinkObjects(pConnectObject, pLastScan, BestLastPose, BestLastCovariance);
             }
             else{
-                if(BestResponse < 0.3) std::cout<<"The response is too low, do not add constraints here!"<<std::endl;
-                if(OldPose.GetPosition().Distance(MatchingPose.GetPosition()) >= 100)
+                if(BestResponse < respLim) std::cout<<"The response is too low, do not add constraints here!"<<std::endl;
+                if(OldPose.GetPosition().Distance(MatchingPose.GetPosition()) >= distLim)
                     std::cout<<"Wrong matching! The distance is: "<< OldPose.GetPosition().Distance(MatchingPose.GetPosition())<<std::endl;
+                if(semDist>semDistLim) std::cout<<"Semantic distance is too big - "<< semDist;
             }
+          }
         }
-      }
       }
     }
   }

@@ -23,7 +23,8 @@ MultiMapper::MultiMapper()
 	robotNode.param("map_service", mMapService, std::string("get_map"));
 	robotNode.param("laser_topic", mLaserTopic, std::string("scan"));
 	robotNode.param("map_topic", mMapTopic, std::string("map"));
-	robotNode.param("customer_order", mCustomInputTopic, std::string("Input/keyup"));
+	//robotNode.param("customer_order", mCustomInputTopic, std::string("Input/keyup"));
+	robotNode.param("customer_order", mCustomInputTopic, std::string("index"));
 
 	ros::NodeHandle mapperNode("~/");
 	mapperNode.param("grid_resolution", mMapResolution, 0.05);
@@ -278,13 +279,14 @@ karto::LocalizedObject *MultiMapper::createObject(const karto::Identifier &robot
 	return new karto::LocalizedObject(robot);
 }
 
-void MultiMapper::receiveCustomerOrder(const keyboard::Key keyboard_msg) /// works
+void MultiMapper::receiveCustomerOrder(const std_msgs::Int16 index) /// works
 {
+	
 
 	// ///Here the subscribe function already decided that if it's the first order or not
 	mCustomerOrder = true;
 	mFirstOrder = true;
-	OrderNum = keyboard_msg.code;
+	OrderNum = index.data;
 
 	// for (auto i : mCustomerProbArray)
 	// {
@@ -294,24 +296,17 @@ void MultiMapper::receiveCustomerOrder(const keyboard::Key keyboard_msg) /// wor
 	// 	}
 	// }
 	
+
 	// std::vector<kt_float>::iterator it;
 	// it = mCustomerProbArray.begin();
 	// it = mCustomerProbArray.insert(it, OrderNum);
 
 	mCustomerProbArray.push_back(OrderNum);
-
 	if (mCustomerProbArray.size()>1)
 	{
-		mFirstOrder=false;
+		mFirstOrder = false;
 	}
 
-	// std::vector<kt_float> mCustomerProbArray{std::begin(OrderArr), std::end(OrderArr)};
-
-	// for (const auto &e : mCustomerProbArray)
-	// {
-	// 	std::cout << e << " Prob vector output" << std::endl;
-
-	// }
 }
 
 void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
