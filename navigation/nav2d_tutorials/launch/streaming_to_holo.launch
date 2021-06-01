@@ -6,18 +6,24 @@
 	<!-- Start Mapper to genreate map from laser scans -->
 	<node name="Mapper" pkg="nav2d_karto" type="mapper" output="screen">  
 	<remap from="scan" to="base_scan2"/> 
-	<!-- <rosparam file="$(find nav2d_tutorials)/param/mapper_indoor.yaml"/> -->
-    <rosparam file="$(find nav2d_tutorials)/config/zena2_r0.yaml"/>
+	<rosparam file="$(find nav2d_tutorials)/param/mapper_indoor.yaml"/>
+    <!-- <rosparam file="$(find nav2d_tutorials)/config/zena2_r0.yaml"/> -->
 	</node>
 	
 	<!--rosbag play-->
-	<node pkg="rosbag" type="play" name="player0" args="--clock -r 1.3 -s 0 $(find nav2d_tutorials)/launch/bag_files/2Robots_CLAM/r0.bag"> 
-	</node>
+	<!-- <node pkg="rosbag" type="play" name="player0" args="-clock -r 1.5 -s 0 $(find nav2d_tutorials)/launch/bag_files/2Robots_CLAM/r0.bag"> 
+	</node>  -->
+   
 
 	<!-- <node name="Input" pkg="keyboard" type="keyboard">
-    </node>		 -->
+    </node>		  -->
 	<node name="dist_service" pkg="service_node" type="service_class.py" output="screen">
 	</node>
+
+    <include file="$(find rviz_camera_stream)/launch/demo.launch" />
+
+    <node name="map2server" pkg="rviz_camera_stream" type="image_save.py">
+    </node>
 
 	<node name="recongnizer" pkg="recognition" type="pico_class.py" output="screen">
 	</node>
@@ -25,10 +31,7 @@
 	<node name="word_to_index" pkg="recognition" type="word2index.py" output="screen">
 	</node>
 
-	<include file="$(find rviz_camera_stream)/launch/demo.launch" />
 
-	<node name="map2server" pkg="rviz_camera_stream" type="image_save.py">
-    </node>
 
 	<node name="RVIZ" pkg="rviz" type="rviz" args=" -d $(find nav2d_tutorials)/param/tutorial3.rviz" />  
 

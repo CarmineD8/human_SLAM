@@ -1572,7 +1572,7 @@ namespace karto
             printf("%d ", pSearchedObject->GetUniqueId());
             
         }
-        // printf("]\n");
+        printf("]\n");
         // if (SearchedObjectList.Size() != ProbList.Size()) {
         //     std::cout << "Has " << SearchedObjectList.Size() << " special nodes but " << ProbList.Size() - 1
         //               << " probabilities." << std::endl;
@@ -1580,14 +1580,7 @@ namespace karto
         //     assert(false);
         // }
 
-        // kt_float Max_Prob = 0.0;
-        // kt_int32s Max_Index = 0;
-        // for(kt_size_t i=0; i<ProbList.Size(); i++){
-        //     if(ProbList.Get(i) > Max_Prob){
-        //         Max_Prob = ProbList.Get(i);
-        //         Max_Index = i;
-        //     }
-        // }
+      
         float_t Dist=0.0;
         float_t Min_Dist=1000000.0;
         kt_float Index=0;
@@ -1600,25 +1593,8 @@ namespace karto
           }
         }
 
-        for(kt_size_t i=0; i<Indices.size(); i++){
-          Pose2 MatchingPose(OriginTransform.TransformPose(SearchedObjectList[Indices[i]]->GetCorrectedPose()).GetPosition(), OldPose.GetHeading());
-          Dist=OldPose.GetPosition().Distance(MatchingPose.GetPosition());
-        
-          if (Dist<Min_Dist){
-            Min_Dist=Dist;
-            
-            Index=i;
-          }
+ 
 
-        }
-
-
-        // if(Max_Prob > 0.0) FoundConnection = true;
-        // if(!FoundConnection){
-        //   std::cout << "There's no connection!"<<std::endl;
-        //   return;
-        // }
-          ///When there is a connection, the last scan should try to match the chain
         if(pLastScan != NULL){
             LocalizedLaserScanList ConnectChain;
             kt_int32s HalfChainsize = m_pOpenMapper->m_pLoopMatchMinimumChainSize->GetValue();
@@ -1630,9 +1606,10 @@ namespace karto
             double respLim=0.2;
             float distLim=20.0;
             int semDistLim=2;
-            float fdistmax=50.0;
+            float fmax=100;
             double Fe;
-            int Fs;
+            double Fs;
+            double Fr;
             double factor;
             
             for (int i = 0; i<SearchedObjectList.Size(); i++)
@@ -1677,9 +1654,10 @@ namespace karto
                 //TODO: MAYBE IT NOT THAT NECESSARY?
                 // FACTOR CALCULATION
 
-                Fe=((fdistmax-1)/distLim)*OldPose.GetPosition().Distance(MatchingPose.GetPosition())+1;
-
-                factor=Fe;
+                Fe=((fmax-1)/distLim)*OldPose.GetPosition().Distance(MatchingPose.GetPosition())+1;
+                Fs=fmax*semDist/4;
+                Fr=fmax*(1-BestResponse);
+                factor=(Fe+Fs+Fr)/3;
                 for (int i=0; i <= 1; i++)
                 {
                   for (int j=0; j <= 1; j++)
