@@ -1658,9 +1658,9 @@ namespace karto
                 Fs=fmax*semDist/4;
                 Fr=fmax*(1-BestResponse);
                 factor=(Fe+Fs+Fr)/3;
-                for (int i=0; i <= 1; i++)
+                for (int i=0; i <= 2; i++)
                 {
-                  for (int j=0; j <= 1; j++)
+                  for (int j=0; j <= 2; j++)
                   {
                     BestLastCovariance(i,j)=BestLastCovariance(i,j)*factor;
                   }
@@ -2661,16 +2661,16 @@ namespace karto
                 m_pGraph->AddEdges(pLocalizedObject);
 
                 kt_bool LoopClosed = m_pGraph->TryCloseLoop(pLocalizedObject);
-                if(!LoopClosed){
-                    std::cout<<"Did not close loop for the object, try last scan."<<std::endl;
-                    if(pLastScan!=NULL && m_pUseScanMatching->GetValue()){
-                        List<Identifier> sensorNames = m_pMapperSensorManager->GetSensorNames();
-                        karto_const_forEach(List<Identifier>, &sensorNames)
-                        {
-                            LoopClosed = m_pGraph->TryCloseLoop(pLastScan, *iter);
-                        }
-                    }
-                }
+                // if(!LoopClosed){
+                //     std::cout<<"Did not close loop for the object, try last scan."<<std::endl;
+                //     if(pLastScan!=NULL && m_pUseScanMatching->GetValue()){
+                //         List<Identifier> sensorNames = m_pMapperSensorManager->GetSensorNames();
+                //         karto_const_forEach(List<Identifier>, &sensorNames)
+                //         {
+                //             LoopClosed = m_pGraph->TryCloseLoop(pLastScan, *iter);
+                //         }
+                //     }
+                // }
                 if(!LoopClosed){
                     std::cout<<"Can not close loop here! Because..."<<std::endl;
                 }
