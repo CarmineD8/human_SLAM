@@ -22,6 +22,8 @@
 
     <include file="$(find rviz_camera_stream)/launch/demo.launch" />
 
+	<!-- <include file="$(find imu_pedometer)/launch/test2.launch" /> -->
+
     <node name="map2server" pkg="rviz_camera_stream" type="image_save.py">
     </node>
 
@@ -30,6 +32,7 @@
 
 	<node name="word_to_index" pkg="recognition" type="word2index.py" output="screen">
 	</node>
+
 
 
 

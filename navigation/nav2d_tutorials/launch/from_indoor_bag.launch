@@ -11,7 +11,7 @@
 	</node>
 	
 	<!--rosbag play-->
-	<node pkg="rosbag" type="play" name="player0" args="--clock -r 0.8 -s 0 $(find nav2d_tutorials)/launch/Bags/2021-01-25-13-51-21.bag"> 
+	<node pkg="rosbag" type="play" name="player0" args="--clock -r 1 -s 0 $(find nav2d_tutorials)/launch/Bags/2021-01-25-13-51-21.bag"> 
 	</node> 
    
 
