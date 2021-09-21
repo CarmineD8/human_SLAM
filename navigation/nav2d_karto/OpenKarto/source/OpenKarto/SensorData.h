@@ -413,6 +413,16 @@ namespace karto
     {
       m_CorrectedPose = rPose;
     }
+     virtual inline void SetCustomMessage(const std::string& msg)
+    {
+      m_Message = msg;
+    }
+
+    inline const std::string& GetCustomMsg() const 
+    {
+      return m_Message;
+    }
+
 
     /**
      * Gets the GPS reading of this scan (return value is
@@ -507,6 +517,12 @@ namespace karto
      * Odometric pose of object
      */
     Pose2 m_OdometricPose;
+
+    /**
+     * Special message
+     * 
+     */
+     std::string m_Message;
     
     /**
      * Corrected pose of object calculated by mapper (or some other module)

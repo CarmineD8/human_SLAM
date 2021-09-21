@@ -75,6 +75,7 @@ private:
 	ros::Publisher mOtherRobotsPublisher;
 	ros::Publisher mMarkersPublisher;
 	ros::Publisher mMatchedPublisher;
+	ros::Publisher mMessagePublisher;
 	ros::Subscriber mLaserSubscriber;
 	ros::Subscriber mScanSubscriber;
 	ros::Subscriber mObjectSubscriber;

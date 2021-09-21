@@ -1603,8 +1603,8 @@ namespace karto
             int ind1=ProbList.Get(ProbList.Size()-1);
             int ind2;
             int semDist;
-            double respLim=0.2;
-            float distLim=20.0;
+            double respLim=0.1;
+            float distLim=100.0;
             int semDistLim=2;
             float fmax=100;
             double Fe;
@@ -1646,6 +1646,7 @@ namespace karto
             kt_double BestResponse = m_pLoopScanMatcher->MatchScan(pLastScan, ConnectChain, BestLastPose, BestLastCovariance, false, false);
             std::cout<<"Match around: "<<MatchingPose.GetX()<<", "<<MatchingPose.GetY()<<std::endl;
             std::cout<<"The response of last scan is: "<< BestResponse <<std::endl;
+            std::cout<<"Semantic distance is: "<< semDist <<std::endl;
             std::cout<<"Distance is in m "<< OldPose.GetPosition().Distance(MatchingPose.GetPosition())<<std::endl;
             if(BestResponse >= respLim && OldPose.GetPosition().Distance(MatchingPose.GetPosition()) <= distLim && semDist<=semDistLim){
 //                std::cout<<"Found the match for the last scan!! Link it to the chain and correct the pose of the object!"<<std::endl;

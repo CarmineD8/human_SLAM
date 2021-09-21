@@ -54,10 +54,10 @@ MultiMapper::MultiMapper()
 
 	mVerticesPublisher = mapperNode.advertise<visualization_msgs::Marker>("vertices", 1, true);
 	mEdgesPublisher = mapperNode.advertise<visualization_msgs::Marker>("edges", 1, true);
-	mMarkersPublisher = mapperNode.advertise<visualization_msgs::Marker>("markers", 1, true);
 	mMatchedPublisher = mapperNode.advertise<visualization_msgs::Marker>("matched_markers", 1, true);
 	mPosePublisher = robotNode.advertise<geometry_msgs::PoseStamped>("localization_result", 1, true);
 	mMarkersPublisher = mapperNode.advertise<visualization_msgs::Marker>("markers", 1, true);
+	mMessagePublisher=mapperNode.advertise<visualization_msgs::Marker>("text_marker",1,true);
 	mCustomerSubscriber = robotNode.subscribe(mCustomInputTopic, 1, &MultiMapper::receiveCustomerOrder, this);
 
 	// Initialize KARTO-Mapper
@@ -484,6 +484,7 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 			laserScan->SetOdometricPose(kartoPose);
 			laserScan->SetCorrectedPose(kartoPose);
 			laserScan->AddCustomItem(ProbListItem);
+			laserScan->SetCustomMessage("fun stuff");
 
 
 			bool success;
@@ -530,8 +531,10 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 				cout << "In case it dies here" << endl;
 				karto::MapperGraph::VertexList MarkedNodes = mMapper->GetGraph()->GetVertices();
 
+
 				karto::LocalizedObjectPtr markedObject = MarkedNodes[MarkedNodes.Size() - 1]->GetVertexObject();
 				markedList.push_back(markedObject);
+
 
 				std::cout << "number of nodes: " << mNodesAdded << std::endl;
 				std::cout << "Pose after correction:" << std::endl;
@@ -578,6 +581,7 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 			imageObject->SetSensorIdentifier(mLaser->GetIdentifier());
 			imageObject->SetOdometricPose(kartoPose);
 			imageObject->SetCorrectedPose(kartoPose);
+			imageObject->SetCustomMessage("fun stuff");
 
 			karto::CustomItemPtr ProbListItem = new karto::CustomItem(imageObject->GetIdentifier());
 			karto::List<kt_float> ProbList;
@@ -833,6 +837,39 @@ bool MultiMapper::sendMap()
 		}
 
 		mMatchedPublisher.publish(m_nodes);
+
+		// Publish text tags
+		visualization_msgs::Marker txt_nodes;
+		txt_nodes.header.frame_id = mMapFrame;
+		txt_nodes.header.stamp = ros::Time();
+		txt_nodes.id = 0;
+		txt_nodes.type = visualization_msgs::Marker::TEXT_VIEW_FACING;
+		txt_nodes.action = visualization_msgs::Marker::ADD;
+
+		txt_nodes.pose.position.x = 0;
+		txt_nodes.pose.position.y = 0;
+		txt_nodes.pose.position.z = 0;
+
+		txt_nodes.scale.x = 1;
+		txt_nodes.scale.y = 1;
+		txt_nodes.scale.z = 0.1;
+		txt_nodes.color.a = 1.0;
+		txt_nodes.color.r = 1.0;
+		txt_nodes.color.g = 1.0;
+		txt_nodes.color.b = 1.0;
+		txt_nodes.points.resize(markedList.size());
+		txt_nodes.text="yayayayyayaayayaya";
+		for (int i = 0; i < markedList.size(); i++)
+		{
+			txt_nodes.points[i].x = markedList[i]->GetCorrectedPose().GetX();
+			txt_nodes.points[i].y = markedList[i]->GetCorrectedPose().GetY();
+			txt_nodes.points[i].z = 0;
+	
+			
+		}
+
+		mMessagePublisher.publish(txt_nodes);
+
 	}
 	return true;
 }

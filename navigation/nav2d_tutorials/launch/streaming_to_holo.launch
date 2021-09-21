@@ -33,6 +33,10 @@
 	<node name="word_to_index" pkg="recognition" type="word2index.py" output="screen">
 	</node>
 
+	<!-- rosrun image_transport republish raw in:=/rviz1/camera1/image compressed out:=/compressed_img -->
+	<node name="to_compressed" pkg="image_transport" type="republish" args="raw in:=/rviz1/camera1/image compressed out:=/compressed_img">
+	</node>
+
 
 
 

@@ -9,6 +9,8 @@ Panels:
         - /TF1
         - /Marker1
         - /Marker2
+        - /Marker3
+        - /Marker3/Status1
       Splitter Ratio: 0.5423280000686646
     Tree Height: 575
   - Class: rviz/Selection
@@ -154,6 +156,8 @@ Visualization Manager:
         All Enabled: true
         base_link:
           Value: true
+        camera1:
+          Value: true
         laser:
           Value: true
         map:
@@ -170,6 +174,8 @@ Visualization Manager:
       Show Names: true
       Tree:
         map:
+          camera1:
+            {}
           odometry_offset:
             laser:
               base_link:
@@ -189,6 +195,14 @@ Visualization Manager:
     - Class: rviz/Marker
       Enabled: true
       Marker Topic: /Mapper/matched_markers
+      Name: Marker
+      Namespaces:
+        "": true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /Mapper/text_marker
       Name: Marker
       Namespaces:
         "": true
@@ -231,10 +245,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 13.922122955322266
+      Scale: 25.74024200439453
       Target Frame: map
-      X: 29.785247802734375
-      Y: -8.534358978271484
+      X: -4.029014587402344
+      Y: 37.71343231201172
     Saved: ~
 Window Geometry:
   Displays:

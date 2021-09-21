@@ -1,0 +1,9 @@
+<launch>
+<node name="recongnizer" pkg="recognition" type="pico_class.py" output="screen">
+	</node>
+
+<node pkg="rosbag" type="record" name="rosbagging"
+       args="record -a /home/mike"/>  
+     
+	
+</launch>
