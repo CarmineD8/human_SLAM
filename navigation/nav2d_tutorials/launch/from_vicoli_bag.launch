@@ -12,9 +12,12 @@
 	</node>
 	
 	<!--rosbag play-->
-	<node pkg="rosbag" type="play" name="player0" args="--clock -r 1.2 -s 0 /chatter_word:=/unused_voice $(find nav2d_tutorials)/launch/Bags/2021-09-14-11-14-06.bag"> 
-	</node> 
-   
+	<!-- <node pkg="rosbag" type="play" name="player0" args="-clock -r 1 -s 0 /chatter_word:=/unused_voice $(find nav2d_tutorials)/launch/Bags/2021-09-14-11-14-06.bag"> 
+	</node>  -->
+
+
+    <node pkg="rosbag" type="play" name="player0" args="--clock -r 1 -s 0 $(find nav2d_tutorials)/launch/bag_files/timed_r0.bag" output="screen"> 
+	</node>
 
 	<!-- <node name="Input" pkg="keyboard" type="keyboard">
     </node>		  -->
@@ -42,5 +45,8 @@
 		<remap from="headpose" to="head_pose" />
 		<remap from="base_scan" to="odomscan"/>
 	</node>  
+
+	<!-- <node pkg="rosbag" type="record" name="rosbagging"
+       args="record -a /home/mike"/>   -->
 
 </launch>

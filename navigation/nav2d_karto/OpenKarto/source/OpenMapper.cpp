@@ -1604,9 +1604,9 @@ namespace karto
             int ind2;
             int semDist;
             double respLim=0.1;
-            float distLim=100.0;
-            int semDistLim=2;
-            float fmax=100;
+            float distLim=15.0;
+            int semDistLim=1;
+            float fmax=10000;
             double Fe;
             double Fs;
             double Fr;

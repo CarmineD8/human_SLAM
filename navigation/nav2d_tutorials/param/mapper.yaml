@@ -1,10 +1,10 @@
 ### Mapper ################################################
 
-grid_resolution: 0.05 #0.05
-range_threshold: 20 #10 per indoor
+grid_resolution: 0.1 #0.05
+range_threshold: 10 #10 per indoor
 map_update_rate: 1
 publish_pose_graph: true
-max_covariance: 0.01 #0.05
+max_covariance: 0.05 #0.05
 transform_publish_period: 0.5
 min_map_size: 10
 
@@ -14,7 +14,7 @@ min_particles: 500
 max_particles: 25000
 alpha_slow: 0.001 #0.001
 alpha_fast: 0.1 #0.1
-min_translation: 0.2 #0.2
+min_translation: 0.3 #0.2
 min_rotation: 0.7 #0.5
 pop_err: 0.01 #0.01
 pop_z: 0.99 #0.99  
@@ -38,8 +38,8 @@ UseScanMatching: true   #use false in a simlator because the odomety and laser s
 UseScanBarycenter: true
 UseResponseExpansion: true
 
-MinimumTravelDistance: 0.2 #0.5 #0.2        meglio 0.2 - 0.52 per walker4, 0.5 - 0.1 per walker 2-3 0.15 per indoor 
-MinimumTravelHeading:  0.05 #0.549 0.15 per indoor
+MinimumTravelDistance: 0.4 #0.5 #0.2        meglio 0.2 - 0.52 per walker4, 0.5 - 0.1 per walker 2-3 0.15 per indoor 
+MinimumTravelHeading:  0.15 #0.549 0.15 per indoor
 
 LinkMatchMinimumResponseFine: 0.6 #0.6
 LinkScanMaximumDistance: 10.0 #5.0 #5.0

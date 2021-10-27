@@ -42,7 +42,7 @@
 
 	<node name="RVIZ" pkg="rviz" type="rviz" args=" -d $(find nav2d_tutorials)/param/tutorial3.rviz" />  
 
-	<node name="broadcaster" pkg="pose_to_tftf" type="tf_node">
+	<node name="broadcaster" pkg="pose_to_tftf" type="tf_node" output="screen">
 		<remap from="odompose" to="body_pose"/> 
 		<remap from="headpose" to="head_pose" />
 		<remap from="base_scan" to="odomscan"/>
