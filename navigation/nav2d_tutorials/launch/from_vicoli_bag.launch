@@ -16,7 +16,7 @@
 	</node>  -->
 
 
-    <node pkg="rosbag" type="play" name="player0" args="--clock -r 1 -s 0 $(find nav2d_tutorials)/launch/bag_files/timed_r0.bag" output="screen"> 
+    <node pkg="rosbag" type="play" name="player0" args="--clock -r 1 -s 0 $(find nav2d_tutorials)/launch/bag_files/timed_r0.bag"> 
 	</node>
 
 	<!-- <node name="Input" pkg="keyboard" type="keyboard">
@@ -30,6 +30,9 @@
     </node>
 
 	<node name="recongnizer" pkg="recognition" type="pico_class.py" output="screen">
+	</node>
+
+	<node name="bag_parser" pkg="recognition" type="parse_bag.py" output="screen">
 	</node>
 
 	<node name="word_to_index" pkg="recognition" type="word2index.py" output="screen">
