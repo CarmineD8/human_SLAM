@@ -1606,7 +1606,7 @@ namespace karto
             double respLim=0.1;
             float distLim=15.0;
             int semDistLim=1;
-            float fmax=100000;
+            float fmax=1000;
             double Fe;
             double Fs;
             double Fr;
@@ -1620,7 +1620,15 @@ namespace karto
             
             ind2 = ProbList.Get(i);
             
-            semDist = ros_service->getSemDist(ind1,ind2);
+            // semDist = ros_service->getSemDist(ind1,ind2);
+            if (ind1==ind2)
+            {
+              semDist=0;
+            }
+            else 
+            {
+              semDist=5;
+            }
 
             LocalizedObject* pConnectObject = SearchedObjectList[i];
           

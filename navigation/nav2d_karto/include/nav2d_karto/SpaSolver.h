@@ -59,6 +59,8 @@ private:
 	SysSPA2d m_Spa;
 	
 	ros::Time mLastSPA;
+
+	int16_t num_closed_loops;
 };
 
 #endif // KARTO_SPASOLVER_H

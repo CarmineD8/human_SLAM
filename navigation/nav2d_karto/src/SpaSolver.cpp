@@ -49,6 +49,9 @@ void SpaSolver::Compute()
 	m_Spa.doSPA(40);
     m_Spa.doSPAwindowed(100,40,1.0e-4,SBA_SPARSE_CHOLESKY);
 	ROS_INFO("Finished doSPA for loop closure");
+	num_closed_loops+=1;
+	ROS_INFO("Number of closed loops is ");
+	ROS_INFO("%i",num_closed_loops);
 	NodeVector nodes = m_Spa.getNodes();
 	forEach(NodeVector, &nodes)
 	{
