@@ -1604,7 +1604,8 @@ namespace karto
             int ind2;
             int semDist;
             double respLim=0.1;
-            float distLim=15.0;
+            float distLim=20.0;
+            float distMin=7.0;
             int semDistLim=1;
             float fmax=1000;
             double Fe;
@@ -1656,7 +1657,7 @@ namespace karto
             std::cout<<"The response of last scan is: "<< BestResponse <<std::endl;
             std::cout<<"Semantic distance is: "<< semDist <<std::endl;
             std::cout<<"Distance is in m "<< OldPose.GetPosition().Distance(MatchingPose.GetPosition())<<std::endl;
-            if(BestResponse >= respLim && OldPose.GetPosition().Distance(MatchingPose.GetPosition()) <= distLim && semDist<=semDistLim){
+            if(BestResponse >= respLim && OldPose.GetPosition().Distance(MatchingPose.GetPosition()) <= distLim && semDist<=semDistLim && OldPose.GetPosition().Distance(MatchingPose.GetPosition())>distMin){
 //                std::cout<<"Found the match for the last scan!! Link it to the chain and correct the pose of the object!"<<std::endl;
                 std::cout<<"Last scan should be correct to the pose: ("<<BestLastPose.GetX()<<", "<<BestLastPose.GetY()<<", "<<BestLastPose.GetHeading()<<")"<<std::endl;
                 //pLastScan->SetSensorPose(OldPose);
