@@ -58,9 +58,9 @@ MinimumAnglePenalty: 0.9 #0.9
 DistanceVariancePenalty: 0.6 #0.3 3 per indoor
 MinimumDistancePenalty: 0.7 #0.5
 
-ScanBufferSize: 40  #70 7 ScanBufferSize = ScanBufferMaximunScanDistance/#MinimumTravelHeadi7g
-ScanBufferMaximumScanDistance: 20 #20.0 2 per indoor
-CorrelationSearchSpaceDimension: 1.0 #1.0 #0.3 0.4 per indoor
+ScanBufferSize: 20  #70 7 ScanBufferSize = ScanBufferMaximunScanDistance/#MinimumTravelHeadi7g
+ScanBufferMaximumScanDistance: 5 #20.0 2 per indoor
+CorrelationSearchSpaceDimension: 0.4 #1.0 #0.3 0.4 per indoor
 CorrelationSearchSpaceResolution: 0.01 #0.01
 CoarseAngleResolution: 0.0349066 #0.0349066
 FineSearchAngleOffset: 0.00349066 #0.00349066
