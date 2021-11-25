@@ -121,7 +121,7 @@ namespace karto
      * Gets sensor data time
      * @return time
      */
-    inline kt_int64s GetTime() const
+    inline kt_double GetTime() const
     {
       return m_Time;
     }
@@ -130,7 +130,7 @@ namespace karto
      * Sets sensor data time
      * @param time new time
      */
-    inline void SetTime(kt_int64s time)
+    inline void SetTime(kt_double time)
     {
       m_Time = time;
     }
@@ -197,7 +197,7 @@ namespace karto
     /**
      * Time the sensor data was created
      */
-    kt_int64s m_Time;
+    kt_double m_Time;
   }; // SensorData
 
   /**

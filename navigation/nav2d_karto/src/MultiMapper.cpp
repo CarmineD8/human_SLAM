@@ -706,6 +706,12 @@ bool MultiMapper::sendMap()
 	// Publish the pose-graph
 	if (mPublishPoseGraph)
 	{
+		// Publish vertices with unique identifiers 
+
+
+
+
+
 		// Publish the vertices
 		karto::MapperGraph::VertexList vertices = mMapper->GetGraph()->GetVertices();
 		visualization_msgs::Marker marker;
@@ -738,7 +744,7 @@ bool MultiMapper::sendMap()
 		{
 			marker.points[i].x = vertices[i]->GetVertexObject()->GetCorrectedPose().GetX();
 			marker.points[i].y = vertices[i]->GetVertexObject()->GetCorrectedPose().GetY();
-			marker.points[i].z = 0;
+			marker.points[i].z = vertices[i]->GetVertexObject()->GetTime();
 		}
 		
 		mVerticesPublisher.publish(marker);

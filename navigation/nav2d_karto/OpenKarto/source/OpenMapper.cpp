@@ -85,6 +85,10 @@ namespace karto
       pObject->SetUniqueId(uniqueId);
 
       m_Objects.Add(pObject);
+
+      // assign time id to object
+
+      pObject->SetTime(ros::Time::now().toSec());
       
       // if object is scan and it was scan-matched, add it to scan buffer
       LocalizedLaserScan* pScan = dynamic_cast<LocalizedLaserScan*>(pObject);
@@ -1605,7 +1609,7 @@ namespace karto
             int semDist;
             double respLim=0.05;
             float distLim=30.0;
-            float distMin=5.0;
+            float distMin=3.5;
             int semDistLim=1;
             float fmax=1000;
             double Fe;
@@ -1664,18 +1668,18 @@ namespace karto
                 //TODO: MAYBE IT NOT THAT NECESSARY?
                 // FACTOR CALCULATION
 
-                Fe=((fmax-1)/distLim)*OldPose.GetPosition().Distance(MatchingPose.GetPosition())+1;
-                Fs=fmax*semDist/4;
-                Fr=fmax*(1-BestResponse);
-                factor=1;
-                for (int i=0; i <= 2; i++)
-                {
-                  for (int j=0; j <= 2; j++)
-                  {
-                    BestLastCovariance(i,j)=BestLastCovariance(i,j)*factor;
-                  }
-                }
-                std::cout<<"factor is "<<factor<<std::endl;
+                // Fe=((fmax-1)/distLim)*OldPose.GetPosition().Distance(MatchingPose.GetPosition())+1;
+                // Fs=fmax*semDist/4;
+                // Fr=fmax*(1-BestResponse);
+                // factor=1;
+                // for (int i=0; i <= 2; i++)
+                // {
+                //   for (int j=0; j <= 2; j++)
+                //   {
+                //     BestLastCovariance(i,j)=BestLastCovariance(i,j)*factor;
+                //   }
+                // }
+                // std::cout<<"factor is "<<factor<<std::endl;
 
                 
                 LinkChainToScan(ConnectChain, pLastScan, BestLastPose, BestLastCovariance);

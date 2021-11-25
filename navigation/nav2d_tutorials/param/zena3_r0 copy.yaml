@@ -38,18 +38,18 @@ UseScanMatching: true   #use false in a simlator because the odomety and laser s
 UseScanBarycenter: true
 UseResponseExpansion: true
 
-MinimumTravelDistance: 0.4 #0.5 #0.2        meglio 0.2 - 0.52 per walker4, 0.5 - 0.1 per walker 2-3 0.15 per indoor 
-MinimumTravelHeading:  0.15 #0.549 0.15 per indoor
+MinimumTravelDistance: 0.5 #0.5 #0.2        meglio 0.2 - 0.52 per walker4, 0.5 - 0.1 per walker 2-3 0.15 per indoor 
+MinimumTravelHeading:  0.20 #0.549 0.15 per indoor
 
 LinkMatchMinimumResponseFine: 0.6 #0.6
-LinkScanMaximumDistance: 10.0 #5.0 #5.0
+LinkScanMaximumDistance: 3.0 #5.0 #5.0
 
-LoopSearchMaximumDistance: 4.0 #10.0 #4.0
-LoopSearchSpaceDimension: 4.0 
+LoopSearchMaximumDistance: 0.5 #10.0 #4.0
+LoopSearchSpaceDimension: 0.5 
 LoopSearchSpaceSmearDeviation: 0.03 # 0.03
 
 
-LoopMatchMinimumChainSize: 10.0 #3.0 #10
+LoopMatchMinimumChainSize: 3.0 #3.0 #10
 LoopMatchMinimumResponseFine: 0.5 #0.7
 LoopMatchMinimumResponseCoarse: 0.6 #0.7
 LoopMatchMaximumVarianceCoarse: 0.20 # 0.16 
@@ -60,7 +60,7 @@ DistanceVariancePenalty: 3 #0.3 3 per indoor
 MinimumDistancePenalty: 0.7 #0.5
 
 ScanBufferSize: 70 #70 7 ScanBufferSize = ScanBufferMaximunScanDistance/#MinimumTravelHeadi7g
-ScanBufferMaximumScanDistance: 20 #20.0 2 per indoor
+ScanBufferMaximumScanDistance: 1 #20.0 2 per indoor
 CorrelationSearchSpaceDimension: 1.0 #1.0 #0.3 0.4 per indoor
 CorrelationSearchSpaceResolution: 0.01 #0.01
 CoarseAngleResolution: 0.0349066 #0.0349066

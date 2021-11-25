@@ -8,7 +8,7 @@
 	<remap from="scan" to="base_scan2"/> 
 	<!-- <rosparam file="$(find nav2d_tutorials)/param/mapper_indoor.yaml"/> -->
     <rosparam file="$(find nav2d_tutorials)/param/mapper.yaml"/>
-    <!-- <rosparam file="$(find nav2d_tutorials)/config/zena2_r0(1).yaml"/> -->
+    <!-- <rosparam file="$(find nav2d_tutorials)/param/zena3_r0 copy.yaml"/> -->
 	</node>
 	
 	<!--rosbag play-->
@@ -16,7 +16,7 @@
 	</node>  -->
 
 
-    <node pkg="rosbag" type="play" name="player0" args="--clock -r 1.1 -s 0 $(find nav2d_tutorials)/launch/bag_files/timed_r0.bag"> 
+    <node pkg="rosbag" type="play" name="player0" args="--clock -r 1 -s 0 $(find nav2d_tutorials)/launch/bag_files/timed_r0.bag"> 
 	</node>
 
 	<!-- <node name="Input" pkg="keyboard" type="keyboard">
@@ -32,8 +32,8 @@
 	<node name="recongnizer" pkg="recognition" type="pico_class.py" output="screen">
 	</node>
 
-	<node name="bag_parser" pkg="recognition" type="parse_bag.py" >
-	</node>
+	<!-- <node name="bag_parser" pkg="recognition" type="parse_bag.py" >
+	</node> -->
 
 	<node name="word_to_index" pkg="recognition" type="word2index.py" output="screen">
 	</node>
