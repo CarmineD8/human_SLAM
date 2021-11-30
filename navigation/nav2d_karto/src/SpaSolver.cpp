@@ -18,16 +18,25 @@
 #include <ros/console.h>
 
 #include <nav2d_karto/SpaSolver.h>
+#include <iostream>
+#include <fstream>
+#include <ctime>
 
 SpaSolver::SpaSolver()
 {
 //	m_Spa.verbose = true;
 	mLastSPA = ros::Time::now();
+	time_t now = time(0);
+	char* dt = ctime(&now);
+	string str(dt);
+	
+	file.open("/home/mike/Output/Uncorrected/num_loops/"+str+".txt");
+
 }
 
 SpaSolver::~SpaSolver()
 {
-
+	file.close();
 }
 
 void SpaSolver::Clear()
@@ -50,6 +59,9 @@ void SpaSolver::Compute()
     m_Spa.doSPAwindowed(100,40,1.0e-4,SBA_SPARSE_CHOLESKY);
 	ROS_INFO("Finished doSPA for loop closure");
 	num_closed_loops+=1;
+
+	file<<num_closed_loops;
+
 	ROS_INFO("Number of closed loops is ");
 	ROS_INFO("%i",num_closed_loops);
 	NodeVector nodes = m_Spa.getNodes();

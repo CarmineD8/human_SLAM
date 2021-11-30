@@ -30,6 +30,8 @@
 #include <ros/time.h>
 
 #include <nav2d_karto/spa2d.h>
+#include <iostream>
+#include <fstream>
 
 typedef std::vector<karto::Matrix3> CovarianceVector;
 
@@ -61,6 +63,8 @@ private:
 	ros::Time mLastSPA;
 
 	int16_t num_closed_loops;
+
+	ofstream file;
 };
 
 #endif // KARTO_SPASOLVER_H
