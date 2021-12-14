@@ -37,7 +37,7 @@ namespace karto
   //#define KARTO_DEBUG
   //#define KARTO_DEBUG2
 
-  #define MAX_VARIANCE            500.0
+  #define MAX_VARIANCE            400.0
   #define DISTANCE_PENALTY_GAIN   0.2
   #define ANGLE_PENALTY_GAIN      0.2
 
@@ -1609,7 +1609,7 @@ namespace karto
             int semDist;
             double respLim=0.05;
             float distLim=30.0;
-            float distMin=3.5;
+            float distMin=4.5;
             int semDistLim=1;
             float fmax=1000;
             double Fe;
@@ -1625,15 +1625,15 @@ namespace karto
             
             ind2 = ProbList.Get(i);
             
-            // semDist = ros_service->getSemDist(ind1,ind2);
-            if (ind1==ind2)
-            {
-              semDist=0;
-            }
-            else 
-            {
-              semDist=5;
-            }
+            semDist = ros_service->getSemDist(ind1,ind2);
+            // if (ind1==ind2)
+            // {
+            //   semDist=0;
+            // }
+            // else 
+            // {
+            //   semDist=5;
+            // }
 
             LocalizedObject* pConnectObject = SearchedObjectList[i];
           

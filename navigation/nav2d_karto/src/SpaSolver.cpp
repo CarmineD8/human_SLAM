@@ -21,6 +21,7 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
+#include <boost/filesystem.hpp>
 
 SpaSolver::SpaSolver()
 {
@@ -29,8 +30,15 @@ SpaSolver::SpaSolver()
 	time_t now = time(0);
 	char* dt = ctime(&now);
 	string str(dt);
+	std::string filename;
+	ros::NodeHandle nh;
+
+	nh.getParam("/current_filename",filename);
+
+	std::cout<<"Filename is "<<filename<<std::endl;
+	boost::filesystem::create_directories("/home/mike/Output/Corrected/"+filename+"/num_loops");
 	
-	file.open("/home/mike/Output/Uncorrected/num_loops/"+str+".txt");
+	file.open("/home/mike/Output/Corrected/"+filename+"/num_loops/"+str+".txt");
 
 }
 
@@ -60,7 +68,7 @@ void SpaSolver::Compute()
 	ROS_INFO("Finished doSPA for loop closure");
 	num_closed_loops+=1;
 
-	file<<num_closed_loops;
+	file<<num_closed_loops<<"\n";
 
 	ROS_INFO("Number of closed loops is ");
 	ROS_INFO("%i",num_closed_loops);

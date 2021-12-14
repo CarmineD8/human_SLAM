@@ -32,6 +32,7 @@
 #include <nav2d_karto/spa2d.h>
 #include <iostream>
 #include <fstream>
+#include <ros/ros.h>
 
 typedef std::vector<karto::Matrix3> CovarianceVector;
 
@@ -65,6 +66,8 @@ private:
 	int16_t num_closed_loops;
 
 	ofstream file;
+
+	// std::string filename;
 };
 
 #endif // KARTO_SPASOLVER_H
