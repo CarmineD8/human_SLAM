@@ -23,8 +23,8 @@ MultiMapper::MultiMapper()
 	robotNode.param("map_service", mMapService, std::string("get_map"));
 	robotNode.param("laser_topic", mLaserTopic, std::string("scan"));
 	robotNode.param("map_topic", mMapTopic, std::string("map"));
-	//robotNode.param("customer_order", mCustomInputTopic, std::string("Input/keyup"));
-	robotNode.param("customer_order", mCustomInputTopic, std::string("index"));
+	robotNode.param("customer_order", mCustomInputTopic, std::string("Input/keyup"));
+	// robotNode.param("customer_order", mCustomInputTopic, std::string("index"));
 
 	ros::NodeHandle mapperNode("~/");
 	mapperNode.param("grid_resolution", mMapResolution, 0.05);
@@ -279,14 +279,14 @@ karto::LocalizedObject *MultiMapper::createObject(const karto::Identifier &robot
 	return new karto::LocalizedObject(robot);
 }
 
-void MultiMapper::receiveCustomerOrder(const std_msgs::Int16 index) /// works
+void MultiMapper::receiveCustomerOrder(const keyboard::Key index) /// works
 {
 	
 
 	// ///Here the subscribe function already decided that if it's the first order or not
 	mCustomerOrder = true;
 	mFirstOrder = true;
-	OrderNum = index.data;
+	OrderNum = index.code;
 
 	// for (auto i : mCustomerProbArray)
 	// {
@@ -430,15 +430,15 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 				std::cout << "Pose after correction:" << std::endl;
 				std::cout << "x: " << laserScan->GetCorrectedPose().GetX() << std::endl;
 				std::cout << "y: " << laserScan->GetCorrectedPose().GetY() << std::endl;
-				std::cout << "heading: " << laserScan->GetCorrectedPose().GetHeading() << std::endl;
+				// std::cout << "heading: " << laserScan->GetCorrectedPose().GetHeading() << std::endl;
 
-				cout << "Order vector [";
+				// cout << "Order vector [";
 
-				for (const auto &e : mCustomerProbArray)
-				{
-					std::cout << e << ", ";
-				}
-				cout << "]" << endl;
+				// for (const auto &e : mCustomerProbArray)
+				// {
+				// 	std::cout << e << ", ";
+				// }
+				// cout << "]" << endl;
 
 				ros::WallDuration d = ros::WallTime::now() - mLastMapUpdate;
 				if (mMapUpdateRate > 0 && d.toSec() > mMapUpdateRate)
@@ -480,7 +480,7 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 
 			std::cout << "This object does not have match, put a normal scan here." << std::endl;
 			std::cout << "The number of received orders: " << mCustomerProbArray.size() << std::endl;
-			cout << "PROB LIST is " << ProbListItem << endl;
+			
 			laserScan->SetOdometricPose(kartoPose);
 			laserScan->SetCorrectedPose(kartoPose);
 			laserScan->AddCustomItem(ProbListItem);
@@ -528,7 +528,7 @@ void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 				}
 				mNodesAdded++;
 				mMapChanged = true;
-				cout << "In case it dies here" << endl;
+				
 				karto::MapperGraph::VertexList MarkedNodes = mMapper->GetGraph()->GetVertices();
 
 
