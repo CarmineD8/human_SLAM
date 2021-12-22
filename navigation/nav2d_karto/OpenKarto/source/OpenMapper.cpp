@@ -1593,7 +1593,7 @@ namespace karto
           int ind1 = ProbList.Get(ProbList.Size() - 1);
           int ind2;
           int semDist;
-          double respLim = 0.3;
+          double respLim = 0.2;
           float distLim = 30.0;
           float distMin = 3.5;
           int semDistLim = 1;
@@ -1700,13 +1700,15 @@ namespace karto
               std::cout << "Connect the object ID: " << pObject->GetUniqueId() << " with ID: " << pConnectObject->GetUniqueId() << std::endl;
                 // means.Add(LargestMean);
                 // covariances.Add(LargestCovariance);
-                LinkChainToScan(ConnectChain, pScan, LargestMean, LargestCovariance);
-                LinkObjects(pLastObject, pScan, LargestMean, LargestCovariance);
-                LinkObjects(pLastScan, pScan, LargestMean, LargestCovariance);
-                LinkChainToScan(pSensorManager->GetRunningScans(rSensorName), pScan, LargestMean, LargestCovariance);
                 
-
+                LinkChainToScan(ConnectChain, pLastScan,BestLastPose, BestLastCovariance);
                 LinkObjects(pConnectObject, pObject, rMean, BestLastCovariance);
+                LinkObjects(pConnectObject, pLastScan, BestLastPose, BestLastCovariance);
+               
+                
+                
+                
+               
 
               // LinkObjects(pConnectObject, pLastScan, BestLastPose, BestLastCovariance);
             }
@@ -1739,7 +1741,7 @@ namespace karto
     LocalizedLaserScan *pLastScan = pSensorManager->GetLastScan(rSensorName);
     LocalizedObject *pLastObject = pSensorManager->GetLastObject(rSensorName);
     LocalizedLaserScan *pLastObjectIsScan = dynamic_cast<LocalizedLaserScan *>(pLastObject);
-    if (pLastObject != NULL && pLastObject->HasCustomItem() && pLastObjectIsScan == NULL && 1 == 2)
+    if (pLastObject != NULL && pLastObject->HasCustomItem() && pLastObjectIsScan == NULL)
     {
       std::cout << "The previous node is a special node, try matching." << std::endl;
       std::cout << "Pose before correction: " << std::endl;

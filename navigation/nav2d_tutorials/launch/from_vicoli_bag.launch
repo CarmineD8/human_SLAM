@@ -27,11 +27,11 @@
 
     <include file="$(find rviz_camera_stream)/launch/demo.launch" />
 
-    <node name="map2server" pkg="rviz_camera_stream" type="image_save.py">
-    </node>
+    <!-- <node name="map2server" pkg="rviz_camera_stream" type="image_save.py">
+    </node> -->
 
-	<node name="recongnizer" pkg="recognition" type="pico_class.py" output="screen">
-	</node>
+	<!-- <node name="recongnizer" pkg="recognition" type="pico_class.py" output="screen">
+	</node> -->
 
 	<node name="bag_parser" pkg="recognition" type="parse_bag.py" args="$(arg filename)" output="screen">
 	</node>
@@ -39,8 +39,8 @@
 	<node name="word_to_index" pkg="recognition" type="word2index.py" output="screen">
 	</node>
 
-	<node name="to_compressed" pkg="image_transport" type="republish" args="raw in:=/rviz1/camera1/image compressed out:=/compressed_img">
-	</node>
+	<!-- <node name="to_compressed" pkg="image_transport" type="republish" args="raw in:=/rviz1/camera1/image compressed out:=/compressed_img">
+	</node> -->
 
 	<node name="RVIZ" pkg="rviz" type="rviz" args=" -d $(find nav2d_tutorials)/param/tutorial3.rviz" />  
 
