@@ -28,9 +28,9 @@ There are three two launch files:
 IMPORTANT:
 For have much less perfomance issues with SLAM and be able to run at the speed of 1, is it important to build the catkin_ws with the following command:
 
-...
+```
 
 catkin build -DCMAKE_BUILD_TYPE=RelWithDebInfo
-...
+```
 
 For some reason building it without this argument resulted in a much poorer perfomance of the system.
