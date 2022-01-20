@@ -23,7 +23,10 @@ There are three two launch files:
    - streaming_to_holo.launch - streams live data SLAM from the sensors to the Microsoft Hololens 2. Compressed image from RVIZ is published as 
  topic to the ROS network which then can be picked up by the application in Unity running on Hololens 2 with the help of ROS_connector module.
    - from_vicoli_bag.launch - plays a bag file recorded from vicoli and performs SLAM on it.
-   
+ 
+ exp_automated.bash is a bash script located at human_SLAM/navigation/nav2d_karto/src/exp_automated.bash. It is responsible for launching the analysis of SLAM algorithm.
+ 
+ 
    
 IMPORTANT:
 For have much less perfomance issues with SLAM and be able to run at the speed of 1, is it important to build the catkin_ws with the following command:
@@ -38,3 +41,5 @@ For some reason building it without this argument resulted in a much poorer perf
 ros-keyboard is used for manual testing of adding custom nodes - without voice commands. 
 
 OpemMapper.cpp contains the current algorithm of adding custom nodes and making links between them for the loop closure. For each node physical, semantic distances as well as scan response are compared and those under the theshold are allowed to make a link between them.
+
+
