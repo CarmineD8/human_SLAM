@@ -40,6 +40,13 @@ For some reason building it without this argument resulted in a much poorer perf
 
 ros-keyboard is used for manual testing of adding custom nodes - without voice commands. 
 
-OpemMapper.cpp contains the current algorithm of adding custom nodes and making links between them for the loop closure. For each node physical, semantic distances as well as scan response are compared and those under the theshold are allowed to make a link between them.
+# Loop-closure 
+
+OpemMapper.cpp contains the current algorithm of adding custom nodes and making links between them for the loop closure. For each node, physical, semantic distances as well as scan response are compared and those under the theshold are allowed to make a link between each other.
+
+
+
+
+
 
 
