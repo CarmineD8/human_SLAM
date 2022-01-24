@@ -38,11 +38,20 @@ catkin build -DCMAKE_BUILD_TYPE=RelWithDebInfo
 
 For some reason building it without this argument resulted in a much poorer perfomance of the system.
 
-ros-keyboard is used for manual testing of adding custom nodes - without voice commands. 
+
 
 # Loop-closure 
 
-OpemMapper.cpp contains the current algorithm of adding custom nodes and making links between them for the loop closure. For each node, physical, semantic distances as well as scan response are compared and those under the theshold are allowed to make a link between each other.
+OpemMapper.cpp contains the current algorithm of adding custom nodes and making links between them for the loop closure. For each custom node, physical, semantic distances as well as scan response are compared and those under the theshold are allowed to make a link between each other.
+
+Custom nodes can be added in three ways:
+  - voice commands from the user based on the onthologies. Voice commands are entered as indices which correspond to a word in the dictionary, which then can be translated to the corresponding
+  - ros-keyboard module provides to enter the indices numbers with the keyboard
+  - parse_bag.py in recognition repo automatically parses indices at the correct time 
+ 
+
+
+
 
 
 
