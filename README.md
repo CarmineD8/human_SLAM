@@ -47,11 +47,15 @@ OpemMapper.cpp contains the current algorithm of adding custom nodes and making 
 Custom nodes can be added in three ways:
   - voice commands from the user based on the onthologies. Voice commands are entered as indices which correspond to a word in the dictionary, which then can be translated to the corresponding
   - ros-keyboard module provides to enter the indices numbers with the keyboard
-  - parse_bag.py in recognition repo automatically parses indices at the correct time 
- 
+  - parse_bag.py in recognition repo automatically parses indices at the correct time. src/human_SLAM/navigation/nav2d_tutorials/launch/timed_bag.py is able to transform a normal bag file into a bag file with a topic which publishes current time.
+
+Below you can see an example of uncorrected map
+ ![rviz_screenshot_2021_03_22-16_17_27](https://user-images.githubusercontent.com/47984690/151000981-27b0c87c-28db-4c3c-83b8-962b0c2ec5ac.png)
 
 
 
+And the same map, but with custom nodes added
+![rviz_screenshot_2021_03_22-16_01_59](https://user-images.githubusercontent.com/47984690/151001082-22c1f839-e311-412e-a8bc-a2d47d5e2e4e.png)
 
 
 
