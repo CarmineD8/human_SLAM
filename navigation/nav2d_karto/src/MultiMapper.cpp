@@ -23,8 +23,8 @@ MultiMapper::MultiMapper()
 	robotNode.param("map_service", mMapService, std::string("get_map"));
 	robotNode.param("laser_topic", mLaserTopic, std::string("scan"));
 	robotNode.param("map_topic", mMapTopic, std::string("map"));
-	// robotNode.param("customer_order", mCustomInputTopic, std::string("Input/keyup"));
-	robotNode.param("customer_order", mCustomInputTopic, std::string("index"));
+	robotNode.param("customer_order", mCustomInputTopic, std::string("Input/keyup"));
+	// robotNode.param("customer_order", mCustomInputTopic, std::string("index"));
 
 	ros::NodeHandle mapperNode("~/");
 	mapperNode.param("grid_resolution", mMapResolution, 0.05);
@@ -279,32 +279,14 @@ karto::LocalizedObject *MultiMapper::createObject(const karto::Identifier &robot
 	return new karto::LocalizedObject(robot);
 }
 
-// void MultiMapper::receiveCustomerOrder(const keyboard::Key index) /// works
-// {
-	
-
-// 	// ///Here the subscribe function already decided that if it's the first order or not
-// 	mCustomerOrder = true;
-// 	mFirstOrder = true;
-// 	OrderNum = index.code;
-
-
-// 	mCustomerProbArray.push_back(OrderNum);
-// 	if (mCustomerProbArray.size()>1)
-// 	{
-// 		mFirstOrder = false;
-// 	}
-
-// }
-
-void MultiMapper::receiveCustomerOrder(const std_msgs::Int16 index) /// works
+void MultiMapper::receiveCustomerOrder(const keyboard::Key index) /// works
 {
 	
 
 	// ///Here the subscribe function already decided that if it's the first order or not
 	mCustomerOrder = true;
 	mFirstOrder = true;
-	OrderNum = index.data;
+	OrderNum = index.code;
 
 
 	mCustomerProbArray.push_back(OrderNum);
@@ -314,6 +296,24 @@ void MultiMapper::receiveCustomerOrder(const std_msgs::Int16 index) /// works
 	}
 
 }
+
+// void MultiMapper::receiveCustomerOrder(const std_msgs::Int16 index) /// works
+// {
+	
+
+// 	// ///Here the subscribe function already decided that if it's the first order or not
+// 	mCustomerOrder = true;
+// 	mFirstOrder = true;
+// 	OrderNum = index.data;
+
+
+// 	mCustomerProbArray.push_back(OrderNum);
+// 	if (mCustomerProbArray.size()>1)
+// 	{
+// 		mFirstOrder = false;
+// 	}
+
+// }
 
 void MultiMapper::receiveLaserScan(const sensor_msgs::LaserScan::ConstPtr &scan)
 {
