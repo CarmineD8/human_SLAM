@@ -1571,9 +1571,6 @@ namespace karto
         //     assert(false);
         // }
 
-        float_t Dist = 0.0;
-        float_t Min_Dist = 1000000.0;
-        kt_float Index = 0;
         Pose2 OldPose = pLastScan->GetSensorPose();
         std::vector<int16_t> Indices;
         for (kt_size_t i = 0; i < ProbList.Size() - 1; i++)
@@ -1608,19 +1605,25 @@ namespace karto
             EndIndex = pVertexList.Size() - 1;
             StartIndex = 0;
             ConnectChain.Clear();
-
+            bool ontology = true;
             ind2 = ProbList.Get(i);
-
-            // semDist = ros_service->getSemDist(ind1,ind2);
-            if (ind1 == ind2)
+            ros::param::get("/Ontology",ontology);
+            if (ontology)
             {
-              semDist = 0;
+              semDist = ros_service->getSemDist(ind1,ind2);
             }
             else
             {
-              semDist = 5;
+              if (ind1 == ind2)
+              
+              {
+                semDist = 0;
+              }
+              else
+              {
+                semDist = 5;
+              }
             }
-
             LocalizedObject *pConnectObject = SearchedObjectList[i];
 
             kt_int32s pConnectID = pConnectObject->GetUniqueId();

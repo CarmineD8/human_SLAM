@@ -10,7 +10,7 @@ do
       logpath=/home/mike/Output/Corrected/$filename/
       mkdir -p $logpath/logs
 
-      roslaunch nav2d_tutorials from_vicoli_bag.launch filename:=$filename >> $logpath/logs/$now
+      roslaunch nav2d_tutorials from_vicoli_bag_automated.launch filename:=$filename >> $logpath/logs/$now
    
    done
 

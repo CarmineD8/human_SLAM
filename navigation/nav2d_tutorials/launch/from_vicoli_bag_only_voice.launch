@@ -1,7 +1,11 @@
 <launch>
 	
-	
->
+	<!-- RosParam to disable or enable ontology -->
+	<!-- If set to false - semantic distance is not used - only same words are connected
+	If set to true - semantic distance is acquired from ontology tree -->
+	<arg name="Onto" default='true'/>
+	<param name="Ontology" type="bool" value="$(arg Onto)" />
+
 	<!-- Start Mapper to genreate map from laser scans -->
 	<node name="Mapper" pkg="nav2d_karto" type="mapper" output="screen">  
 	<remap from="scan" to="base_scan2"/> 
