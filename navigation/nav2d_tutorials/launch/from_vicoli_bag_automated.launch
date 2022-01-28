@@ -1,6 +1,7 @@
 <launch>
 	<arg name="filename"/>
-	
+	<arg name="Onto" default='true'/>
+	<param name="Ontology" type="bool" value="$(arg Onto)" />
 	<node name="pose_saver" pkg="trajectory_analysis" type="slam_an.py">
 	</node>
 	<!-- Start Mapper to genreate map from laser scans -->

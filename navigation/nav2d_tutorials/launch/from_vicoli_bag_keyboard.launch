@@ -1,8 +1,6 @@
 <launch>
-	
-	
-	<node name="pose_saver" pkg="trajectory_analysis" type="slam_an.py">
-	</node>
+	<arg name="Onto" default='false'/>
+	<param name="Ontology" type="bool" value="$(arg Onto)" />
 	<!-- Start Mapper to genreate map from laser scans -->
 	<node name="Mapper" pkg="nav2d_karto" type="mapper" output="screen" args="--verbose">  
 	<remap from="scan" to="base_scan2"/> 

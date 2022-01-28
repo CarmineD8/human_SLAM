@@ -279,6 +279,24 @@ karto::LocalizedObject *MultiMapper::createObject(const karto::Identifier &robot
 	return new karto::LocalizedObject(robot);
 }
 
+// void MultiMapper::receiveCustomerOrder(const keyboard::Key index) /// works
+// {
+	
+
+// 	// ///Here the subscribe function already decided that if it's the first order or not
+// 	mCustomerOrder = true;
+// 	mFirstOrder = true;
+// 	OrderNum = index.code;
+
+
+// 	mCustomerProbArray.push_back(OrderNum);
+// 	if (mCustomerProbArray.size()>1)
+// 	{
+// 		mFirstOrder = false;
+// 	}
+
+// }
+
 void MultiMapper::receiveCustomerOrder(const std_msgs::Int16 index) /// works
 {
 	
@@ -288,18 +306,6 @@ void MultiMapper::receiveCustomerOrder(const std_msgs::Int16 index) /// works
 	mFirstOrder = true;
 	OrderNum = index.data;
 
-	// for (auto i : mCustomerProbArray)
-	// {
-	// 	if (i == OrderNum)
-	// 	{
-	// 		mFirstOrder = false;
-	// 	}
-	// }
-	
-
-	// std::vector<kt_float>::iterator it;
-	// it = mCustomerProbArray.begin();
-	// it = mCustomerProbArray.insert(it, OrderNum);
 
 	mCustomerProbArray.push_back(OrderNum);
 	if (mCustomerProbArray.size()>1)
