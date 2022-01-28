@@ -1,7 +1,6 @@
 <launch>
 	<arg name="filename"/>
-	<!--node name = "keyboard" pkg="move_robot_keyboard" type="command_image"/-->
-	<!--node pkg="move_robot_keyboard" type="publish_image" name="readImage" output="screen" /-->
+	
 	<node name="pose_saver" pkg="trajectory_analysis" type="slam_an.py">
 	</node>
 	<!-- Start Mapper to genreate map from laser scans -->
@@ -13,8 +12,7 @@
 	</node>
 	
 	<!--rosbag play-->
-	<!-- <node pkg="rosbag" type="play" name="player0" args="-clock -r 1 -s 0 /chatter_word:=/unused_voice $(find nav2d_tutorials)/launch/Bags/2021-09-14-11-14-06.bag"> 
-	</node>  -->
+	
 
 
     <node pkg="rosbag" type="play" name="player0" args="--clock -r 1 -s 0 $(find nav2d_tutorials)/launch/bag_files/timed_r0.bag" required="true"> 
@@ -27,11 +25,8 @@
 
     <include file="$(find rviz_camera_stream)/launch/demo.launch" />
 
-    <!-- <node name="map2server" pkg="rviz_camera_stream" type="image_save.py">
-    </node> -->
 
-	<!-- <node name="recongnizer" pkg="recognition" type="pico_class.py" output="screen">
-	</node> -->
+	
 
 	<node name="bag_parser" pkg="recognition" type="parse_bag.py" args="$(arg filename)" output="screen">
 	</node>
@@ -51,10 +46,5 @@
 	</node>  
 
 
-	
-
-
-	<!-- <node pkg="rosbag" type="record" name="rosbagging"
-       args="record -a /home/mike"/>   -->
 
 </launch>
