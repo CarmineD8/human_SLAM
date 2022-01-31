@@ -18,14 +18,6 @@ roslaunch nav2d_tutorials zena_two_robots.launch
 ```
 
 The other two packages are used for building the frame related to the lasers for the different human operators, and to publish laser data in different topics, which is necessary for building the map in a collaborative way.
-
-There are three two launch files: 
-   - streaming_to_holo.launch - streams live data SLAM from the sensors to the Microsoft Hololens 2. Compressed image from RVIZ is published as 
- topic to the ROS network which then can be picked up by the application in Unity running on Hololens 2 with the help of ROS_connector module.
-   - from_vicoli_bag.launch - plays a bag file recorded from vicoli and performs SLAM on it.
- 
- exp_automated.bash is a bash script located at human_SLAM/navigation/nav2d_karto/src/exp_automated.bash. It is responsible for launching the analysis of SLAM algorithm.
- 
  
    
 IMPORTANT:
@@ -59,6 +51,15 @@ And the same map, but with custom nodes added
 
 
 
+# How to run
+
+There are 4 launch files: 
+   - streaming_to_holo.launch - streams live SLAM data from the sensors to the Microsoft Hololens 2. Compressed image from RVIZ is published as 
+ topic to the ROS network which then can be picked up by the application in Unity running on Hololens 2 with the help of ROS_connector module. Before running this launch file, pedometer has to be launched from a seperate terminal with root access, as well as read_thingy91.py when proper connection with the cloud is established. Supports addition of custom nodes via voice input.
+   - from_vicoli_bag_only_voice.launch - plays a bag file recorded from vicoli and performs SLAM on it. Supports input with a voice as method of addition custom nodes. Two modes of operation: with and without ontology - more can be found in the launch file.
+   - from_vicoli_bag_only_keyboard.launch - does the same as the previous, but with keyboard as a method of adding custom nodes. Mostly used for easier debigging. PLEASE NOTE: Switch to latest-keyboard branch to use this launch file.
+   - from_vicoli_bag_only_automated.launch - works in tandem with exp_automated.bash script. Input: recorded timed (with current as a topic) + recorded responses from the experiment as a list of words. Output: 10 recorded trajectories of the operator + generated maps + logs. This data can later be used for further statistical prcoessing. Important: in the bash script don't forget to set Onto to true or false - depending on the data set. 
+ 
 
 
 
