@@ -184,7 +184,7 @@ int main(int argc, char** argv){
         transform.setRotation(q);
         //t2 is the transform of theta between the body and head frame(The heading in the head frame gives the heading of the laser frame)
         tf::Transform t2;
-        std::cout<<"BODY - POSE ANGLE IS"<<body_z-pose_z<<std::endl;
+        // std::cout<<"BODY - POSE ANGLE IS"<<body_z-pose_z<<std::endl;
         t2.setOrigin(tf::Vector3(0.0, 0.0, body_z-pose_z));
         tf::Quaternion q2;
         q2.setRPY(0.0, 0.0, 0.0);

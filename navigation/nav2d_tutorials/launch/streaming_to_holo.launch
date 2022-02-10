@@ -15,8 +15,9 @@
 	</node>  -->
    
 
-	<!-- <node name="Input" pkg="keyboard" type="keyboard">
-    </node>		  -->
+	<include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
+
+
 	<node name="dist_service" pkg="service_node" type="service_class.py" output="screen">
 	</node>
 
